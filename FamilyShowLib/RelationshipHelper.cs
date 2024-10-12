@@ -167,5 +167,53 @@ namespace FamilyShowLib
                 person.HasSpouse = true;
             }
         }
+
+        /// <summary>
+        /// Performs the business logic for adding the Sibling relationship between the person and the sibling.
+        /// </summary>
+        public static void AddSibling(PeopleCollection family, Person person, Person sibling)
+        {
+            // Handle siblings
+            if (person.Siblings.Count > 0)
+            {
+                // Make the siblings siblings to each other.
+                foreach (Person existingSibling in person.Siblings)
+                {
+                    family.AddSibling(existingSibling, sibling);
+                }
+            }
+
+            if (person.Parents != null)
+            {
+                switch (person.Parents.Count)
+                {
+                    // No parents
+                    case 0:
+                        family.AddSibling(person, sibling);
+                        break;
+
+                    // Single parent
+                    case 1:
+                        family.AddSibling(person, sibling);
+                        family.AddChild(person.Parents[0], sibling, ParentChildModifier.Natural);
+                        break;
+
+                    // 2 parents
+                    case 2:
+                        // Add the sibling as a child of the same parents
+                        foreach (Person parent in person.Parents)
+                        {
+                            family.AddChild(parent, sibling, ParentChildModifier.Natural);
+                        }
+
+                        family.AddSibling(person, sibling);
+                        break;
+
+                    default:
+                        family.AddSibling(person, sibling);
+                        break;
+                }
+            }
+        }
     }
 }
