@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -34,6 +35,46 @@ namespace FamilyShowLib
                 ExportPeople();
                 ExportFamilies();
                 WriteLine(0, "TRLR", "");
+            }
+        }
+
+        /// <summary>
+        /// Export each person to the GEDCOM file.
+        /// </summary>
+        private void ExportPeople()
+        {
+            foreach (Person person in people)
+            {
+                // Start of a new individual record.
+                WriteLine(0, string.Format(CultureInfo.InvariantCulture,
+                    "@{0}@", idMap.Get(person.Id)), "INDI");
+
+                // Export details.
+
+                // Name.
+                ExportName(person);
+
+                // Nickname.
+                if (!string.IsNullOrEmpty(person.NickName))
+                    WriteLine(2, "NICK", person.NickName);
+
+                // Prefix.
+                if (!string.IsNullOrEmpty(person.Suffix))
+                    WriteLine(2, "NPFX", person.Suffix);
+
+                // Married name.
+                if (!string.IsNullOrEmpty(person.MarriedName))
+                    WriteLine(2, "_MARNM", person.MarriedName);
+
+                // Gender.
+                ExportGender(person);
+
+                // Birth and death info.
+                ExportEvent("BIRT", person.BirthDate, person.BirthPlace);
+                ExportEvent("DEAT", person.DeathDate, person.DeathPlace);
+
+                // Photos.
+                ExportPhotos(person);
             }
         }
     }
