@@ -15,6 +15,11 @@ namespace FamilyShowLib
             get { return newPerson; }
         }
 
+        public ContentChangedEventArgs(Person newPerson)
+        {
+            this.newPerson = newPerson;
+        }
+
     }
 
     public class People
