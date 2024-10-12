@@ -345,6 +345,20 @@ namespace FamilyShowLib
             return result;
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
+        private static string GetId(XmlNode node)
+        {
+            try
+            {
+                return node.Attributes["Value"].Value.Replace('@', ' ').Trim();
+            }
+            catch
+            {
+                // Invalid line, keep processing the file.
+                return string.Empty;
+            }
+        }
+
 
     }
 }
