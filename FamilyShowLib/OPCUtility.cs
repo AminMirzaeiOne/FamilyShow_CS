@@ -94,5 +94,64 @@ namespace FamilyShowLib
             // Add a Package Relationship to the Document Part
             package.CreateRelationship(packagePartDocument.Uri, TargetMode.Internal, PackageRelationshipType);
         }
+
+
+        /// <summary>
+        ///   Extracts content and resource parts from a given Package
+        ///   zip file to a specified target directory.</summary>
+        /// <param name="packagePath">
+        ///   The relative path and filename of the Package zip file.</param>
+        /// <param name="targetDirectory">
+        ///   The relative path from the current directory to the targer folder.
+        /// </param>
+        public static void ExtractPackage(string packagePath, string targetDirectory)
+        {
+            try
+            {
+                // Create a new Target directory.  If the Target directory
+                // exists, first delete it and then create a new empty one.
+                DirectoryInfo directoryInfo = new DirectoryInfo(targetDirectory);
+                if (directoryInfo.Exists)
+                    directoryInfo.Delete(true);
+                directoryInfo.Create();
+            }
+            catch
+            {
+                // ignore errors
+            }
+
+            // Open the Package.
+            using (Package package = Package.Open(packagePath, FileMode.Open, FileAccess.Read))
+            {
+                PackagePart documentPart = null;
+                PackagePart resourcePart = null;
+
+                // Get the Package Relationships and look for the Document part based on the RelationshipType
+                Uri uriDocumentTarget = null;
+                foreach (PackageRelationship relationship in package.GetRelationshipsByType(PackageRelationshipType))
+                {
+                    // Resolve the Relationship Target Uri so the Document Part can be retrieved.
+                    uriDocumentTarget = PackUriHelper.ResolvePartUri(new Uri("/", UriKind.Relative), relationship.TargetUri);
+
+                    // Open the Document Part, write the contents to a file.
+                    documentPart = package.GetPart(uriDocumentTarget);
+                    ExtractPart(documentPart, targetDirectory);
+                }
+
+                // Get the Document part's Relationships, and look for required resources.
+                Uri uriResourceTarget = null;
+                foreach (PackageRelationship relationship in documentPart.GetRelationshipsByType(ResourceRelationshipType))
+                {
+                    // Resolve the Relationship Target Uri so the Resource Part can be retrieved.
+                    uriResourceTarget = PackUriHelper.ResolvePartUri(documentPart.Uri, relationship.TargetUri);
+
+                    // Open the Resource Part and write the contents to a file.
+                    resourcePart = package.GetPart(uriResourceTarget);
+                    ExtractPart(resourcePart, targetDirectory);
+                }
+            }
+        }
+
+
     }
 }
