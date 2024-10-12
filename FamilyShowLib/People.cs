@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace FamilyShowLib
 {
+    public class ContentChangedEventArgs : EventArgs
+    {
+
+    }
+
     public class People
     {
 
