@@ -117,5 +117,55 @@ namespace FamilyShowLib
 
             return children;
         }
+
+        /// <summary>
+        /// Performs the business logic for adding the Spousal relationship between the person and the spouse.
+        /// </summary>
+        public static void AddSpouse(PeopleCollection family, Person person, Person spouse, SpouseModifier modifier)
+        {
+            // Assume the spouse's gender based on the counterpart of the person's gender
+            if (person.Gender == Gender.Male)
+                spouse.Gender = Gender.Female;
+            else
+                spouse.Gender = Gender.Male;
+
+            if (person.Spouses != null)
+            {
+                switch (person.Spouses.Count)
+                {
+                    // No existing spouse	
+                    case 0:
+                        family.AddSpouse(person, spouse, modifier);
+
+                        // Add any of the children as the child of the spouse.
+                        if (person.Children != null || person.Children.Count > 0)
+                        {
+                            foreach (Person child in person.Children)
+                            {
+                                family.AddChild(spouse, child, ParentChildModifier.Natural);
+                            }
+                        }
+                        break;
+
+                    // Existing spouse(s)
+                    default:
+                        // If specifying a new married spouse, make existing spouses former.
+                        if (modifier == SpouseModifier.Current)
+                        {
+                            foreach (Relationship relationship in person.Relationships)
+                            {
+                                if (relationship.RelationshipType == RelationshipType.Spouse)
+                                    ((SpouseRelationship)relationship).SpouseModifier = SpouseModifier.Former;
+                            }
+                        }
+
+                        family.AddSpouse(person, spouse, modifier);
+                        break;
+                }
+
+                // Setter for property change notification
+                person.HasSpouse = true;
+            }
+        }
     }
 }
