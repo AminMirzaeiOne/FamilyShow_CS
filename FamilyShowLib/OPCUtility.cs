@@ -182,5 +182,20 @@ namespace FamilyShowLib
         }
 
 
+        /// <summary>
+        /// Copies data from a source stream to a target stream.
+        /// NOTE: This method was taken from the PackageWrite sample in the Microsoft Windows SDK
+        /// </summary>
+        private static void CopyStream(Stream source, Stream target)
+        {
+            const int bufSize = 0x1000;
+            byte[] buf = new byte[bufSize];
+            int bytesRead = 0;
+
+            while ((bytesRead = source.Read(buf, 0, bufSize)) > 0)
+                target.Write(buf, 0, bytesRead);
+        }
+
+
     }
 }
