@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace FamilyShowLib
 {
-    public class Relationship
+    public abstract class Relationship
     {
+        /// <summary>
+        /// Describes the kinship between person objects
+        /// </summary>
+        [Serializable]
+
+        private RelationshipType relationshipType;
 
     }
 }
