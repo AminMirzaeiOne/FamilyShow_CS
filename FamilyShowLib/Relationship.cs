@@ -157,4 +157,20 @@ namespace FamilyShowLib
             this.RelationTo = person;
         }
     }
+
+    /// <summary>
+    /// Describes the kindship between a siblings
+    /// </summary>
+    [Serializable]
+    public class SiblingRelationship : Relationship
+    {
+        // Paramaterless constructor required for XML serialization
+        public SiblingRelationship() { }
+
+        public SiblingRelationship(Person person)
+        {
+            RelationshipType = RelationshipType.Sibling;
+            this.RelationTo = person;
+        }
+    }
 }
