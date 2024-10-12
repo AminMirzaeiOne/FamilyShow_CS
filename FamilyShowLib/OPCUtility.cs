@@ -152,6 +152,35 @@ namespace FamilyShowLib
             }
         }
 
+        /// <summary>
+        ///   Extracts a specified package part to a target folder.</summary>
+        /// <param name="packagePart">
+        ///   The package part to extract.</param>
+        /// <param name="targetDirectory">
+        ///   The absolute path to the targer folder.</param>
+        private static void ExtractPart(PackagePart packagePart, string targetDirectory)
+        {
+            // Create a string with the full path to the target directory.
+            string pathToTarget = targetDirectory;
+
+            // Remove leading slash from the Part Uri, and make a new Uri from the result
+            string stringPart = packagePart.Uri.ToString().TrimStart('/');
+            Uri partUri = new Uri(stringPart, UriKind.Relative);
+
+            // Create a full Uri to the Part based on the Package Uri
+            Uri uriFullPartPath =
+             new Uri(new Uri(pathToTarget, UriKind.Absolute), partUri);
+
+            // Create the necessary Directories based on the Full Part Path
+            Directory.CreateDirectory(Path.GetDirectoryName(uriFullPartPath.LocalPath));
+
+            // Create the file with the Part content
+            using (FileStream fileStream = new FileStream(uriFullPartPath.LocalPath, FileMode.Create))
+            {
+                CopyStream(packagePart.GetStream(), fileStream);
+            }
+        }
+
 
     }
 }
