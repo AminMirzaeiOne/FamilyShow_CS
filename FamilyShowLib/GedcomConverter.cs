@@ -173,5 +173,14 @@ namespace FamilyShowLib
             set { this.tag = value; }
         }
 
+        /// <summary>
+        /// Data of the tag.
+        /// </summary>
+        public string Data
+        {
+            get { return this.data; }
+            set { this.data = value; }
+        }
+
     }
 }
