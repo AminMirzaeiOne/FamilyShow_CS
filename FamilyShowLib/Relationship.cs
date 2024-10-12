@@ -77,5 +77,15 @@ namespace FamilyShowLib
             get { return parentChildModifier; }
             set { parentChildModifier = value; }
         }
+
+        // Paramaterless constructor required for XML serialization
+        public ParentRelationship() { }
+
+        public ParentRelationship(Person personId, ParentChildModifier parentChildType)
+        {
+            RelationshipType = RelationshipType.Parent;
+            this.RelationTo = personId;
+            this.parentChildModifier = parentChildType;
+        }
     }
 }
