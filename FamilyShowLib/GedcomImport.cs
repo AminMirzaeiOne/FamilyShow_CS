@@ -267,6 +267,11 @@ namespace FamilyShowLib
             return GetValueId(node, "HUSB");
         }
 
+        private static string GetWifeID(XmlNode node)
+        {
+            return GetValueId(node, "WIFE");
+        }
+
 
     }
 }
