@@ -8,6 +8,14 @@ namespace FamilyShow
 {
     public class CommonDialog
     {
+        #region fields
 
+        // Structure used when displaying Open and SaveAs dialogs.
+        private OpenFileName ofn = new OpenFileName();
+
+        // List of filters to display in the dialog.
+        private List<FilterEntry> filter = new List<FilterEntry>();
+
+        #endregion
     }
 }
