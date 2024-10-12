@@ -414,5 +414,7 @@ namespace FamilyShowLib
             }
         }
 
+        public bool IsOldVersion { get; set; }
+
     }
 }
