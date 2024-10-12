@@ -509,5 +509,16 @@ namespace FamilyShowLib
                 this.Add(sibling);
         }
 
+        public Person Find(string id)
+        {
+            foreach (Person person in this)
+            {
+                if (person.Id == id)
+                    return person;
+            }
+
+            return null;
+        }
+
     }
 }
