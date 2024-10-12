@@ -232,6 +232,21 @@ namespace FamilyShowLib
             person.DeathPlace = GetValue(node, "DEAT/PLAC");
         }
 
+        /// <summary>
+        /// Return a list of photos specified in the GEDCOM XML file.
+        /// </summary>
+        private static string[] GetPhotos(XmlNode node)
+        {
+            string[] photos;
+            XmlNodeList list = node.SelectNodes("OBJE");
+            photos = new string[list.Count];
+
+            for (int i = 0; i < list.Count; i++)
+                photos[i] = GetFile(list[i]);
+
+            return photos;
+        }
+
 
     }
 }
