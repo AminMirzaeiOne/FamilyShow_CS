@@ -19,5 +19,12 @@ namespace FamilyShow
         {
             obj.SetValue(BindableTextProperty, value);
         }
+
+        public static readonly DependencyProperty BindableTextProperty =
+           DependencyProperty.RegisterAttached("BindableText",
+               typeof(string),
+               typeof(BindableExtender),
+               new UIPropertyMetadata(null,
+                   BindableTextProperty_PropertyChanged));
     }
 }
