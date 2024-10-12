@@ -197,6 +197,106 @@ namespace FamilyShowLib
             Save();
         }
 
+        /// <summary>
+        /// Load the list of people from Family.Show version 2.0 file format
+        /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
+        public void LoadVersion2()
+        {
+            // Loading, clear existing nodes
+            this.PeopleCollection.Clear();
+
+            try
+            {
+                // Use the default path and filename if none were provided
+                if (string.IsNullOrEmpty(this.FullyQualifiedFilename))
+                    this.FullyQualifiedFilename = People.DefaultFullyQualifiedFilename;
+
+                XmlSerializer xml = new XmlSerializer(typeof(People));
+                using (Stream stream = new FileStream(this.FullyQualifiedFilename, FileMode.Open, FileAccess.Read, FileShare.Read))
+                {
+                    People pc = (People)xml.Deserialize(stream);
+                    stream.Close();
+
+                    foreach (Person person in pc.PeopleCollection)
+                        this.PeopleCollection.Add(person);
+
+                    // Setup temp folders for this family to be packaged into OPC later
+                    string tempFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                        App.ApplicationFolderName);
+                    tempFolder = Path.Combine(tempFolder, App.AppDataFolderName);
+                    RecreateDirectory(tempFolder);
+
+                    string photoFolder = Path.Combine(tempFolder, Photo.Const.PhotosFolderName);
+                    RecreateDirectory(photoFolder);
+
+                    string storyFolder = Path.Combine(tempFolder, Story.Const.StoriesFolderName);
+                    RecreateDirectory(storyFolder);
+
+                    foreach (Person p in this.PeopleCollection)
+                    {
+                        // To avoid circular references when serializing family data to xml, only the person Id
+                        // is seralized to express relationships. When family data is loaded, the correct
+                        // person object is found using the person Id and assigned to the appropriate relationship.
+                        foreach (Relationship r in p.Relationships)
+                        {
+                            r.RelationTo = this.PeopleCollection.Find(r.PersonId);
+                        }
+
+                        // store the stories into temp directory to be packaged into OPC later
+                        foreach (Photo photo in p.Photos)
+                        {
+                            string photoOldPath = Path.Combine(Path.Combine(
+                                Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                                App.ApplicationFolderName), photo.RelativePath);
+                            if (File.Exists(photoOldPath))
+                            {
+                                string photoFile = Path.Combine(photoFolder, Path.GetFileName(photo.FullyQualifiedPath));
+
+                                // Remove spaces since they'll be packaged as %20, breaking relative paths that expect spaces
+                                photoFile = photoFile.Replace(" ", "");
+                                photo.RelativePath = photo.RelativePath.Replace(" ", "");
+
+                                File.Copy(photoOldPath, photoFile, true);
+                            }
+                        }
+
+                        // store the person's story into temp directory to be packaged into OPC later
+                        if (p.Story != null)
+                        {
+                            string storyOldPath = Path.Combine(Path.Combine(
+                                Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                                App.ApplicationFolderName), p.Story.RelativePath);
+                            if (File.Exists(storyOldPath))
+                            {
+                                string storyFile = Path.Combine(storyFolder, Path.GetFileName(p.Story.AbsolutePath));
+
+                                // Remove spaces since they'll be packaged as %20, breaking relative paths that expect spaces
+                                storyFile = ReplaceEncodedCharacters(storyFile);
+                                p.Story.RelativePath = ReplaceEncodedCharacters(p.Story.RelativePath);
+
+                                File.Copy(storyOldPath, storyFile, true);
+                            }
+                        }
+                    }
+
+                    // Set the current person in the list
+                    this.CurrentPersonId = pc.CurrentPersonId;
+                    this.CurrentPersonName = pc.CurrentPersonName;
+                    this.PeopleCollection.Current = this.PeopleCollection.Find(this.CurrentPersonId);
+                }
+
+                this.PeopleCollection.IsDirty = false;
+                return;
+            }
+            catch (Exception ex)
+            {
+                // Could not load the file. Handle all exceptions
+                // the same, ignore and continue.
+                this.fullyQualifiedFilename = string.Empty;
+            }
+        }
+
 
     }
 }
