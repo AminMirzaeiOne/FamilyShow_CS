@@ -97,5 +97,38 @@ namespace FamilyShowLib
             // Write the updates to the file system.
             doc.Save(xmlFilePath);
         }
+
+        /// <summary>
+        /// Append child continue nodes to the parent.
+        /// </summary>
+        static private void AppendValues(XmlNode node)
+        {
+            // Get the value for the parent node.
+            StringBuilder sb = new StringBuilder(node.Attributes["Value"].Value);
+
+            // Find all of the child continue nodes.
+            XmlNodeList list = node.SelectNodes("CONT | CONC");
+            foreach (XmlNode childNode in list)
+            {
+                switch (childNode.Name)
+                {
+                    // Concatenate.
+                    case "CONC":
+                        sb.Append(childNode.Attributes["Value"].Value);
+                        break;
+
+                    // Continue, add line return and then the text.
+                    case "CONT":
+                        sb.AppendFormat("\r{0}", childNode.Attributes["Value"].Value);
+                        break;
+                }
+
+                // Remove all of the child continue nodes.
+                node.RemoveChild(childNode);
+            }
+
+            // Update the parent node value.
+            node.Attributes["Value"].Value = sb.ToString();
+        }
     }
 }
