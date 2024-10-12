@@ -21,6 +21,9 @@ namespace FamilyShowLib
         // person object will be assigned to the relationTo property (please see app.xaml.cs).
         private string personId;
 
+        // Store the person's name with the Id to make the xml file more readable
+        private string personFullname;
+
 
     }
 }
