@@ -297,6 +297,14 @@ namespace FamilyShowLib
             }
         }
 
+        private static string ReplaceEncodedCharacters(string fileName)
+        {
+            fileName = fileName.Replace(" ", "");
+            fileName = fileName.Replace("{", "");
+            fileName = fileName.Replace("}", "");
+            return fileName;
+        }
+
 
     }
 }
