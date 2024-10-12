@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -270,6 +271,14 @@ namespace FamilyShowLib
         private static string GetWifeID(XmlNode node)
         {
             return GetValueId(node, "WIFE");
+        }
+
+        private static Gender GetGender(XmlNode node)
+        {
+            string value = GetValue(node, "SEX");
+            if (string.Compare(value, "f", true, CultureInfo.InvariantCulture) == 0)
+                return Gender.Female;
+            return Gender.Male;
         }
 
 
