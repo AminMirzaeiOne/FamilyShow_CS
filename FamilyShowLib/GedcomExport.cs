@@ -14,5 +14,8 @@ namespace FamilyShowLib
 
         // Maps GUID IDs (which are too long for GEDCOM) to smaller IDs.
         private GedcomIdMap idMap = new GedcomIdMap();
+
+        // The people collection that is being exported.
+        private PeopleCollection people;
     }
 }
