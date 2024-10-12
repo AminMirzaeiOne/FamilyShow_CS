@@ -1053,6 +1053,26 @@ namespace FamilyShowLib
             return null;
         }
 
+        /// <summary>
+        /// Gets the combination of parent sets for this person and his/her spouses
+        /// </summary>
+        /// <returns></returns>
+        public ParentSetCollection MakeParentSets()
+        {
+            ParentSetCollection parentSets = new ParentSetCollection();
+
+            foreach (Person spouse in Spouses)
+            {
+                ParentSet ps = new ParentSet(this, spouse);
+
+                // Don't add the same parent set twice.
+                if (!parentSets.Contains(ps))
+                    parentSets.Add(ps);
+            }
+
+            return parentSets;
+        }
+
 
     }
 }
