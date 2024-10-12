@@ -180,4 +180,15 @@ namespace FamilyShowLib
     /// </summary>
     [Serializable]
     public class RelationshipCollection : ObservableCollection<Relationship> { }
+
+    /// <summary>
+    /// Enumeration of connection types between person objects
+    /// </summary>
+    public enum RelationshipType
+    {
+        Child,
+        Parent,
+        Sibling,
+        Spouse
+    }
 }
