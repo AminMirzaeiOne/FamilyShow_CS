@@ -44,5 +44,8 @@ namespace FamilyShowLib
         {
             public const string DataFileName = "default.family";
         }
+
+        // Fields
+        private PeopleCollection peopleCollection;
     }
 }
