@@ -313,6 +313,18 @@ namespace FamilyShowLib
             AddParent(family, person, newParentSet);
         }
 
+        /// <summary>
+        /// Helper function for removing sibling relationships
+        /// </summary>
+        private static void RemoveSiblingRelationships(Person person)
+        {
+            for (int i = person.Relationships.Count - 1; i >= 0; i--)
+            {
+                if (person.Relationships[i].RelationshipType == RelationshipType.Sibling)
+                    person.Relationships.RemoveAt(i);
+            }
+        }
+
 
     }
 }
