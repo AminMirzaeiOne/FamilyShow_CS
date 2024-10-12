@@ -76,5 +76,15 @@ namespace FamilyShowLib
             get { return peopleCollection; }
         }
 
+        /// <summary>
+        /// Id of currently selected person.
+        /// </summary>
+        [XmlAttribute(AttributeName = "Current")]
+        public string CurrentPersonId
+        {
+            get { return currentPersonId; }
+            set { currentPersonId = value; }
+        }
+
     }
 }
