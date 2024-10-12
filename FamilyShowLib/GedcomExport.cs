@@ -94,5 +94,28 @@ namespace FamilyShowLib
             foreach (Family family in map.Values)
                 ExportFamily(family);
         }
+
+        /// <summary>
+        /// Export one family group to the GEDCOM file.
+        /// </summary>
+        private void ExportFamily(Family family)
+        {
+            // Return right away if this is only a single person without any children.
+            if (family.ParentRight == null && family.Children.Count == 0)
+                return;
+
+            // Start of new family record.
+            WriteLine(0, string.Format(CultureInfo.InvariantCulture, "@F{0}@", familyId++), "FAM");
+
+            // Marriage info.
+            ExportMarriage(family.ParentLeft, family.ParentRight, family.Relationship);
+
+            // Children.
+            foreach (Person child in family.Children)
+            {
+                WriteLine(1, "CHIL", string.Format(
+                    CultureInfo.InvariantCulture, "@{0}@", idMap.Get(child.Id)));
+            }
+        }
     }
 }
