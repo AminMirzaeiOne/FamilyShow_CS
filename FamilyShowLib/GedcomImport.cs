@@ -247,6 +247,11 @@ namespace FamilyShowLib
             return photos;
         }
 
+        private static string GetSuffix(XmlNode node)
+        {
+            return GetValue(node, "NAME/NPFX");
+        }
+
 
     }
 }
