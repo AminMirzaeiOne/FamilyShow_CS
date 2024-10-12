@@ -76,5 +76,26 @@ namespace FamilyShowLib
                     CombineSplitValues(xmlFilePath);
             }
         }
+
+        /// <summary>
+        /// GEDCOM lines have a max length of 255 characters, this goes through
+        /// the XML files and combines all of the split lines which makes the
+        /// XML file easier to process.
+        /// </summary>
+        static private void CombineSplitValues(string xmlFilePath)
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load(xmlFilePath);
+
+            // Get all nodes that contain child continue nodes.
+            XmlNodeList list = doc.SelectNodes("//CONT/.. | //CONC/..");
+
+            // Go through each node and append child continue nodes.
+            foreach (XmlNode node in list)
+                AppendValues(node);
+
+            // Write the updates to the file system.
+            doc.Save(xmlFilePath);
+        }
     }
 }
