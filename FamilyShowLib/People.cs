@@ -397,5 +397,22 @@ namespace FamilyShowLib
         private Person current;
         private bool dirty;
 
+        /// <summary>
+        /// Person currently selected in application
+        /// </summary>
+        public Person Current
+        {
+            get { return current; }
+            set
+            {
+                if (current != value)
+                {
+                    current = value;
+                    OnPropertyChanged("Current");
+                    OnCurrentChanged();
+                }
+            }
+        }
+
     }
 }
