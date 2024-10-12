@@ -252,6 +252,11 @@ namespace FamilyShowLib
             return GetValue(node, "NAME/NPFX");
         }
 
+        private static string GetMarriedName(XmlNode node)
+        {
+            return GetValue(node, "NAME/_MARNM");
+        }
+
 
     }
 }
