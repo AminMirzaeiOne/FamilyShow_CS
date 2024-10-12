@@ -20,6 +20,8 @@ namespace FamilyShowLib
         }
 
         private string relativePath;
+        private bool isAvatar;
+
 
     }
 }
