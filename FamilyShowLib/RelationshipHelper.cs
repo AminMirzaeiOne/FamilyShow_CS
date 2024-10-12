@@ -288,6 +288,31 @@ namespace FamilyShowLib
             }
         }
 
+        /// <summary>
+        /// Performs the business logic for changing the person parents
+        /// </summary>
+        public static void ChangeParents(PeopleCollection family, Person person, ParentSet newParentSet)
+        {
+            // Don't do anything if there is nothing to change or if the parents are the same
+            if (person.ParentSet == null || newParentSet == null || person.ParentSet.Equals(newParentSet))
+                return;
+
+            // store the current parent set which will be removed
+            ParentSet formerParentSet = person.ParentSet;
+
+            // Remove the first parent
+            RemoveParentChildRelationship(person, formerParentSet.FirstParent);
+
+            // Remove the person as a child of the second parent
+            RemoveParentChildRelationship(person, formerParentSet.SecondParent);
+
+            // Remove the sibling relationships
+            RemoveSiblingRelationships(person);
+
+            // Add the new parents
+            AddParent(family, person, newParentSet);
+        }
+
 
     }
 }
