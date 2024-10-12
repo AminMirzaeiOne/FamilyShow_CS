@@ -308,6 +308,15 @@ namespace FamilyShowLib
             return children;
         }
 
+        private static string GetFirstName(XmlNode node)
+        {
+            string name = GetValue(node, "NAME");
+            string[] parts = name.Split('/');
+            if (parts.Length > 0)
+                return parts[0].Trim();
+            return string.Empty;
+        }
+
 
     }
 }
