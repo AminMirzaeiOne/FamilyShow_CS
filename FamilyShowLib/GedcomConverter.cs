@@ -154,5 +154,15 @@ namespace FamilyShowLib
         // Tag can contain alphanumeric characters, _, ., or -.
         private readonly Regex regTag = new Regex(@"[^\w.-]");
 
+
+        /// <summary>
+        /// Level of the tag.
+        /// </summary>
+        public int Level
+        {
+            get { return this.level; }
+            set { this.level = value; }
+        }
+
     }
 }
