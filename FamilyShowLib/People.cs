@@ -149,6 +149,44 @@ namespace FamilyShowLib
             this.peopleCollection = new PeopleCollection();
         }
 
+        /// <summary>
+        /// Persist the current list of people to disk.
+        /// </summary>
+        public void Save()
+        {
+            // Return right away if nothing to save.
+            if (this.PeopleCollection == null || this.PeopleCollection.Count == 0)
+                return;
+
+            // Set the current person id and name before serializing
+            this.CurrentPersonName = this.PeopleCollection.Current.FullName;
+            this.CurrentPersonId = this.PeopleCollection.Current.Id;
+
+            // Use the default path and filename if none was provided
+            if (string.IsNullOrEmpty(this.FullyQualifiedFilename))
+                this.FullyQualifiedFilename = People.DefaultFullyQualifiedFilename;
+
+            // Setup temp folders for this family to be packaged into OPC later
+            string tempFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                App.ApplicationFolderName);
+            tempFolder = Path.Combine(tempFolder, App.AppDataFolderName);
+
+            // Create the necessary directories
+            Directory.CreateDirectory(tempFolder);
+
+            // Create xml content file
+            XmlSerializer xml = new XmlSerializer(typeof(People));
+            using (Stream stream = new FileStream(Path.Combine(tempFolder, OPCContentFileName), FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                xml.Serialize(stream, this);
+            }
+
+            // save to file package
+            OPCUtility.CreatePackage(FullyQualifiedFilename, tempFolder);
+
+            this.PeopleCollection.IsDirty = false;
+        }
+
 
     }
 }
