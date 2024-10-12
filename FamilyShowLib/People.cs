@@ -495,5 +495,19 @@ namespace FamilyShowLib
                 this.Add(spouse);
         }
 
+        /// <summary>
+        /// Adds sibling relation between the person and the sibling
+        /// </summary>
+        public void AddSibling(Person person, Person sibling)
+        {
+            //assign sibling to each other    
+            person.Relationships.Add(new SiblingRelationship(sibling));
+            sibling.Relationships.Add(new SiblingRelationship(person));
+
+            //add the sibling to the main people list
+            if (!this.Contains(sibling))
+                this.Add(sibling);
+        }
+
     }
 }
