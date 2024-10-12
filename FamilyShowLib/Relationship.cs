@@ -63,4 +63,13 @@ namespace FamilyShowLib
 
 
     }
+
+    /// <summary>
+    /// Describes the kinship between a child and parent.
+    /// </summary>
+    [Serializable]
+    public class ParentRelationship : Relationship
+    {
+
+    }
 }
