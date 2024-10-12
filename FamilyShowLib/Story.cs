@@ -14,5 +14,8 @@ namespace FamilyShowLib
             // Name of the folder
             public const string StoriesFolderName = "Stories";
         }
+
+        private string relativePath;
+
     }
 }
