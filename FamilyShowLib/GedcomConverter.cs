@@ -146,5 +146,9 @@ namespace FamilyShowLib
         private readonly Regex regSplit = new Regex(
             @"(?<level>\d+)\s+(?<tag>[\S]+)(\s+(?<data>.+))?");
 
+        // Expression pattern used to clean up the GEDCOM line.
+        // Only allow viewable characters.
+        private readonly Regex regClean = new Regex(@"[^\x20-\x7e]");
+
     }
 }
