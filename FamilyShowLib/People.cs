@@ -520,5 +520,8 @@ namespace FamilyShowLib
             return null;
         }
 
+        protected override event PropertyChangedEventHandler PropertyChanged;
+
+
     }
 }
