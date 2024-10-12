@@ -13,5 +13,11 @@ namespace FamilyShow
         {
             return (string)obj.GetValue(BindableTextProperty);
         }
+
+        public static void SetBindableText(DependencyObject obj,
+           string value)
+        {
+            obj.SetValue(BindableTextProperty, value);
+        }
     }
 }
