@@ -481,5 +481,19 @@ namespace FamilyShowLib
                 this.Add(child);
         }
 
+        /// <summary>
+        /// Add Spouse relationship between the person and the spouse with the provided spouse relationship type.
+        /// </summary>
+        public void AddSpouse(Person person, Person spouse, SpouseModifier spouseType)
+        {
+            //assign spouses to each other    
+            person.Relationships.Add(new SpouseRelationship(spouse, spouseType));
+            spouse.Relationships.Add(new SpouseRelationship(person, spouseType));
+
+            //add the spouse to the main people list
+            if (!this.Contains(spouse))
+                this.Add(spouse);
+        }
+
     }
 }
