@@ -394,5 +394,8 @@ namespace FamilyShowLib
     {
         public PeopleCollection() { }
 
+        private Person current;
+        private bool dirty;
+
     }
 }
