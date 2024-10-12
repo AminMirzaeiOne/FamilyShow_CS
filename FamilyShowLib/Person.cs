@@ -1210,4 +1210,9 @@ namespace FamilyShowLib
         #endregion
     }
 
+    /// <summary>
+    /// Collection of ParentSet objects.
+    /// </summary>
+    public class ParentSetCollection : Collection<ParentSet> { }
+
 }
