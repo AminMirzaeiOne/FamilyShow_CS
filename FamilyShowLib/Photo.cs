@@ -22,6 +22,21 @@ namespace FamilyShowLib
         private string relativePath;
         private bool isAvatar;
 
+        /// <summary>
+        /// The relative path to the photo.
+        /// </summary>
+        public string RelativePath
+        {
+            get { return relativePath; }
+            set
+            {
+                if (relativePath != value)
+                {
+                    relativePath = value;
+                    OnPropertyChanged("relativePath");
+                }
+            }
+        }
 
     }
 }
