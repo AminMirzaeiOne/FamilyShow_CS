@@ -155,5 +155,8 @@ namespace FamilyShowLib
             }
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+
     }
 }
