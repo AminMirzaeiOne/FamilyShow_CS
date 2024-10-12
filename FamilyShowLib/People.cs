@@ -53,5 +53,9 @@ namespace FamilyShowLib
         // person object will be assigned to the current property (please see app.xaml.cs).
         // The currentPersonId is set in the Save method of this class.
         private string currentPersonId;
+
+        // Store the person's name with the Id to make the xml file more readable.
+        // The currentPersonName is set in the Save method of this class.
+        private string currentPersonName;
     }
 }
