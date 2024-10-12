@@ -86,5 +86,13 @@ namespace FamilyShowLib
             set { currentPersonId = value; }
         }
 
+        // Name of current selected person (included for readability in xml file).
+        [XmlAttribute(AttributeName = "CurrentName")]
+        public string CurrentPersonName
+        {
+            get { return currentPersonName; }
+            set { currentPersonName = value; }
+        }
+
     }
 }
