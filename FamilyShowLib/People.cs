@@ -133,5 +133,17 @@ namespace FamilyShowLib
             }
         }
 
+        /// <summary>
+        /// Fully qualified filename (absolute pathname and filename) for the data file
+        /// </summary>
+        [XmlIgnore]
+        public string FullyQualifiedFilename
+        {
+            get { return fullyQualifiedFilename; }
+
+            set { fullyQualifiedFilename = value; }
+        }
+
+
     }
 }
