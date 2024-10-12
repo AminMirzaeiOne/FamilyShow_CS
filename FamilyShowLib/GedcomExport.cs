@@ -209,6 +209,74 @@ namespace FamilyShowLib
             WriteLine(1, "SEX", (person.Gender == Gender.Female) ? "F" : "M");
         }
 
+        // Write a GEDCOM line, this is more involved since the line cannot contain 
+        // carriage returns or exceed 255 characters. First, divide the value by carriage 
+        // return. Then divide each carriage-return line into chunks of 200 characters. 
+        // The first line contains the original tag name and level, carriage returns contain
+        // the CONT tag and continue lines contains CONC.
+        private void WriteLine(int level, string tag, string value)
+        {
+            // The entire line length cannot exceed 255 characters using
+            // 200 for the value which should say below the 255 line length.
+            const int ValueLimit = 200;
+
+            // Most lines do not need special processing, export the line if it
+            // does not contain carriage returns or exceed the line length.
+            if (value.Length < ValueLimit && !value.Contains("\r") && !value.Contains("\n"))
+            {
+                writer.WriteLine(string.Format(
+                    CultureInfo.InvariantCulture,
+                    "{0} {1} {2}", level, tag, value));
+
+                return;
+            }
+
+            // First divide the value by carriage returns.
+            value = value.Replace("\r\n", "\n");
+            value = value.Replace("\r", "\n");
+            string[] lines = value.Split('\n');
+
+            // Process each line.
+            for (int lineIndex = 0; lineIndex < lines.Length; lineIndex++)
+            {
+                // The current line processing.
+                string line = lines[lineIndex];
+
+                // Write each line but don't exceed the line limit, loop here
+                // and write each chunk out at a time.
+                int chunkCount = (line.Length + ValueLimit - 1) / ValueLimit;
+
+                for (int chunkIndex = 0; chunkIndex < chunkCount; chunkIndex++)
+                {
+                    // Current position in the value.
+                    int pos = chunkIndex * ValueLimit;
+
+                    // Current value chunk to write.
+                    string chunk = line.Substring(pos, Math.Min(line.Length - pos, ValueLimit));
+
+                    // Always use the original level and tag for the first line, but use
+                    // the concatenation tag (CONT) for all other lines.
+                    if (lineIndex == 0 && chunkIndex == 0)
+                    {
+                        writer.WriteLine(string.Format(CultureInfo.InvariantCulture,
+                            "{0} {1} {2}", level, tag, chunk));
+                    }
+                    else
+                    {
+                        writer.WriteLine(string.Format(CultureInfo.InvariantCulture,
+                            "{0} {1} {2}", level + 1, "CONC", chunk));
+                    }
+                }
+
+                // All lines except the last line have the continue (CONT) tag.
+                if (lineIndex < lines.Length - 1)
+                {
+                    writer.WriteLine(string.Format(CultureInfo.InvariantCulture,
+                       "{0} {1}", level + 1, "CONT"));
+                }
+            }
+        }
+
 
     }
 }
