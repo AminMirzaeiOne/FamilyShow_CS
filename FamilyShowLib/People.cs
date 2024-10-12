@@ -465,5 +465,21 @@ namespace FamilyShowLib
                 CurrentChanged(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// Adds Parent-Child relationship between person and child with the provided parent-child relationship type.
+        /// </summary>
+        public void AddChild(Person person, Person child, ParentChildModifier parentChildType)
+        {
+            //add child relationship to person
+            person.Relationships.Add(new ChildRelationship(child, parentChildType));
+
+            //add person as parent of child
+            child.Relationships.Add(new ParentRelationship(person, parentChildType));
+
+            //add the child to the main people list
+            if (!this.Contains(child))
+                this.Add(child);
+        }
+
     }
 }
