@@ -197,4 +197,11 @@ namespace FamilyShowLib
         Current,
         Former
     }
+
+    public enum ParentChildModifier
+    {
+        Natural,
+        Adopted,
+        Foster
+    }
 }
