@@ -1035,6 +1035,24 @@ namespace FamilyShowLib
             return (this.Id == other.Id);
         }
 
+        /// <summary>
+        /// Get the spouse relationship for the specified spouse.
+        /// </summary>
+        public SpouseRelationship GetSpouseRelationship(Person spouse)
+        {
+            foreach (Relationship relationship in this.relationships)
+            {
+                SpouseRelationship spouseRelationship = relationship as SpouseRelationship;
+                if (spouseRelationship != null)
+                {
+                    if (spouseRelationship.RelationTo.Equals(spouse))
+                        return spouseRelationship;
+                }
+            }
+
+            return null;
+        }
+
 
     }
 }
