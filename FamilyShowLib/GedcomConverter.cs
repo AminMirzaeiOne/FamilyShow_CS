@@ -164,5 +164,14 @@ namespace FamilyShowLib
             set { this.level = value; }
         }
 
+        /// <summary>
+        /// Line tag.
+        /// </summary>
+        public string Tag
+        {
+            get { return this.tag; }
+            set { this.tag = value; }
+        }
+
     }
 }
