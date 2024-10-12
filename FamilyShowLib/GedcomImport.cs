@@ -213,6 +213,15 @@ namespace FamilyShowLib
             }
         }
 
+        /// <summary>
+        /// Import the birth info from the GEDCOM XML file.
+        /// </summary>
+        private static void ImportBirth(Person person, XmlNode node)
+        {
+            person.BirthDate = GetValueDate(node, "BIRT/DATE");
+            person.BirthPlace = GetValue(node, "BIRT/PLAC");
+        }
+
 
     }
 }
