@@ -444,5 +444,15 @@ namespace FamilyShowLib
                 ContentChanged(this, new ContentChangedEventArgs(null));
         }
 
+        /// <summary>
+        /// The details of a person changed, and a new person was added to the collection.
+        /// </summary>
+        public void OnContentChanged(Person newPerson)
+        {
+            dirty = true;
+            if (ContentChanged != null)
+                ContentChanged(this, new ContentChangedEventArgs(newPerson));
+        }
+
     }
 }
