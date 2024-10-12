@@ -118,4 +118,43 @@ namespace FamilyShowLib
             this.parentChildModifier = parentChildType;
         }
     }
+
+    /// <summary>
+    /// Describes the kindship between a couple
+    /// </summary>
+    [Serializable]
+    public class SpouseRelationship : Relationship
+    {
+        private SpouseModifier spouseModifier;
+        private DateTime? marriageDate;
+        private DateTime? divorceDate;
+
+        public SpouseModifier SpouseModifier
+        {
+            get { return spouseModifier; }
+            set { spouseModifier = value; }
+        }
+
+        public DateTime? MarriageDate
+        {
+            get { return marriageDate; }
+            set { marriageDate = value; }
+        }
+
+        public DateTime? DivorceDate
+        {
+            get { return divorceDate; }
+            set { divorceDate = value; }
+        }
+
+        // Paramaterless constructor required for XML serialization
+        public SpouseRelationship() { }
+
+        public SpouseRelationship(Person person, SpouseModifier spouseType)
+        {
+            RelationshipType = RelationshipType.Spouse;
+            this.spouseModifier = spouseType;
+            this.RelationTo = person;
+        }
+    }
 }
