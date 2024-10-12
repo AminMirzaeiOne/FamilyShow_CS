@@ -190,6 +190,29 @@ namespace FamilyShowLib
             }
         }
 
+        /// <summary>
+        /// Import the note info from the GEDCOM XMl file.
+        /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
+        private static void ImportNote(Person person, XmlNode node)
+        {
+            try
+            {
+                string value = GetValue(node, "NOTE");
+                if (!string.IsNullOrEmpty(value))
+                {
+                    person.Story = new Story();
+                    string storyFileName = new StringBuilder(person.Name).Append(".rtf").ToString();
+                    person.Story.Save(value, storyFileName);
+                }
+            }
+            catch
+            {
+                // There was an error importing the note, ignore
+                // and continue processing the GEDCOM XML file.
+            }
+        }
+
 
     }
 }
