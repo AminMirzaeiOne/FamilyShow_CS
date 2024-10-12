@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,6 +32,38 @@ namespace FamilyShowLib
                 foreach (DirectoryInfo di in mainDirectory.GetDirectories())
                 {
                     CreatePart(package, di, true);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Adds files from the specified directory as parts of the package
+        /// </summary>
+        private static void CreatePart(Package package, DirectoryInfo directoryInfo, bool storeInDirectory)
+        {
+            foreach (FileInfo file in directoryInfo.GetFiles())
+            {
+                // Only Add files for the following known types
+                switch (file.Extension.ToLower())
+                {
+                    case ".xml":
+                        CreateDocumentPart(package, file, MediaTypeNames.Text.Xml, storeInDirectory);
+                        break;
+                    case ".jpg":
+                        CreateDocumentPart(package, file, MediaTypeNames.Image.Jpeg, storeInDirectory);
+                        break;
+                    case ".gif":
+                        CreateDocumentPart(package, file, MediaTypeNames.Image.Gif, storeInDirectory);
+                        break;
+                    case ".rtf":
+                        CreateDocumentPart(package, file, MediaTypeNames.Text.RichText, storeInDirectory);
+                        break;
+                    case ".txt":
+                        CreateDocumentPart(package, file, MediaTypeNames.Text.Plain, storeInDirectory);
+                        break;
+                    case ".html":
+                        CreateDocumentPart(package, file, MediaTypeNames.Text.Html, storeInDirectory);
+                        break;
                 }
             }
         }
