@@ -115,5 +115,23 @@ namespace FamilyShowLib
             }
         }
 
+        [XmlIgnore]
+        public static string DefaultFullyQualifiedFilename
+        {
+            get
+            {
+                // Absolute path to the application folder
+                string appLocation = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                    App.ApplicationFolderName);
+
+                // Create the directory if it doesn't exist
+                if (!Directory.Exists(appLocation))
+                    Directory.CreateDirectory(appLocation);
+
+                return Path.Combine(appLocation, Const.DataFileName);
+            }
+        }
+
     }
 }
