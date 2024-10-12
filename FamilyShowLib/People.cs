@@ -454,5 +454,10 @@ namespace FamilyShowLib
                 ContentChanged(this, new ContentChangedEventArgs(newPerson));
         }
 
+        /// <summary> 
+        /// The primary person changed in the list.
+        /// </summary>
+        public event EventHandler CurrentChanged;
+
     }
 }
