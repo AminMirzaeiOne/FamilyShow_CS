@@ -67,5 +67,14 @@ namespace FamilyShowLib
 
         private string OPCContentFileName = "content.xml";
 
+
+        /// <summary>
+        /// Collection of people.
+        /// </summary>
+        public PeopleCollection PeopleCollection
+        {
+            get { return peopleCollection; }
+        }
+
     }
 }
