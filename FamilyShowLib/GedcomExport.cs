@@ -177,6 +177,15 @@ namespace FamilyShowLib
             WriteLine(1, "NAME", value);
         }
 
+        private void ExportPhotos(Person person)
+        {
+            foreach (Photo photo in person.Photos)
+            {
+                WriteLine(1, "OBJE", "");
+                WriteLine(2, "FILE", photo.FullyQualifiedPath);
+            }
+        }
+
 
     }
 }
