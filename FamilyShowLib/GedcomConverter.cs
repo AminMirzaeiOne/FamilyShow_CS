@@ -142,6 +142,9 @@ namespace FamilyShowLib
         private string tag;
         private string data;
 
+        // Expression pattern used to parse the GEDCOM line.
+        private readonly Regex regSplit = new Regex(
+            @"(?<level>\d+)\s+(?<tag>[\S]+)(\s+(?<data>.+))?");
 
     }
 }
