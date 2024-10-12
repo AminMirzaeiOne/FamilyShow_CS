@@ -14,6 +14,8 @@ namespace FamilyShowLib
         [Serializable]
 
         private RelationshipType relationshipType;
+        private Person relationTo;
+
 
     }
 }
