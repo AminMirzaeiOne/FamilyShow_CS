@@ -459,5 +459,11 @@ namespace FamilyShowLib
         /// </summary>
         public event EventHandler CurrentChanged;
 
+        protected void OnCurrentChanged()
+        {
+            if (CurrentChanged != null)
+                CurrentChanged(this, EventArgs.Empty);
+        }
+
     }
 }
