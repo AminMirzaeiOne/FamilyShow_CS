@@ -1073,6 +1073,18 @@ namespace FamilyShowLib
             return parentSets;
         }
 
+        /// <summary>
+        /// Called to delete the person's photos
+        /// </summary>
+        public void DeletePhotos()
+        {
+            // Delete the person's photos
+            foreach (Photo photo in this.photos)
+            {
+                photo.Delete();
+            }
+        }
+
 
     }
 }
