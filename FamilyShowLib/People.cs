@@ -322,6 +322,64 @@ namespace FamilyShowLib
             }
         }
 
+        /// <summary>
+        /// Load the list of people from disk using the Open Package Convention format
+        /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
+        public void LoadOPC()
+        {
+            // Loading, clear existing nodes
+            this.PeopleCollection.Clear();
+
+            try
+            {
+                // Use the default path and filename if none were provided
+                if (string.IsNullOrEmpty(this.FullyQualifiedFilename))
+                    this.FullyQualifiedFilename = People.DefaultFullyQualifiedFilename;
+
+                string tempFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                    App.ApplicationFolderName);
+                tempFolder = Path.Combine(tempFolder, App.AppDataFolderName + @"\");
+
+                OPCUtility.ExtractPackage(FullyQualifiedFilename, tempFolder);
+
+                XmlSerializer xml = new XmlSerializer(typeof(People));
+                using (Stream stream = new FileStream(tempFolder + OPCContentFileName, FileMode.Open, FileAccess.Read, FileShare.Read))
+                {
+                    People pc = (People)xml.Deserialize(stream);
+                    stream.Close();
+
+                    foreach (Person person in pc.PeopleCollection)
+                        this.PeopleCollection.Add(person);
+
+                    // To avoid circular references when serializing family data to xml, only the person Id
+                    // is seralized to express relationships. When family data is loaded, the correct
+                    // person object is found using the person Id and assigned to the appropriate relationship.
+                    foreach (Person p in this.PeopleCollection)
+                    {
+                        foreach (Relationship r in p.Relationships)
+                        {
+                            r.RelationTo = this.PeopleCollection.Find(r.PersonId);
+                        }
+                    }
+
+                    // Set the current person in the list
+                    this.CurrentPersonId = pc.CurrentPersonId;
+                    this.CurrentPersonName = pc.CurrentPersonName;
+                    this.PeopleCollection.Current = this.PeopleCollection.Find(this.CurrentPersonId);
+                }
+
+                this.PeopleCollection.IsDirty = false;
+                return;
+            }
+            catch
+            {
+                // Could not load the file. Handle all exceptions
+                // the same, ignore and continue.
+                this.fullyQualifiedFilename = string.Empty;
+            }
+        }
+
 
     }
 }
