@@ -140,6 +140,8 @@ namespace FamilyShowLib
     {
         private int level;
         private string tag;
+        private string data;
+
 
     }
 }
