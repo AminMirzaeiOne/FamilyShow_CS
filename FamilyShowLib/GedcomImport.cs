@@ -291,6 +291,11 @@ namespace FamilyShowLib
             return node.SelectSingleNode("DIV") != null ? true : false;
         }
 
+        private static string GetFile(XmlNode node)
+        {
+            return GetValue(node, "FILE");
+        }
+
 
     }
 }
