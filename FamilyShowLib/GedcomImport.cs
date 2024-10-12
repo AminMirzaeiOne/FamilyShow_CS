@@ -161,6 +161,35 @@ namespace FamilyShowLib
             }
         }
 
+        /// <summary>
+        /// Import photo information from the GEDCOM XML file.
+        /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
+        private static void ImportPhotos(Person person, XmlNode node)
+        {
+            try
+            {
+                // Get list of photos for this person.
+                string[] photos = GetPhotos(node);
+                if (photos == null || photos.Length == 0)
+                    return;
+
+                // Import each photo. Make the first photo specified
+                // the default photo (avatar).
+                for (int i = 0; i < photos.Length; i++)
+                {
+                    Photo photo = new Photo(photos[i]);
+                    photo.IsAvatar = (i == 0) ? true : false;
+                    person.Photos.Add(photo);
+                }
+            }
+            catch
+            {
+                // There was an error importing a photo, ignore 
+                // and continue processing the GEDCOM XML file.
+            }
+        }
+
 
     }
 }
