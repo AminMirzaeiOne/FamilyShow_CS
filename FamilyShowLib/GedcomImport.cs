@@ -262,6 +262,11 @@ namespace FamilyShowLib
             return GetValue(node, "NAME/NICK");
         }
 
+        private static string GetHusbandID(XmlNode node)
+        {
+            return GetValueId(node, "HUSB");
+        }
+
 
     }
 }
