@@ -144,6 +144,11 @@ namespace FamilyShowLib
             set { fullyQualifiedFilename = value; }
         }
 
+        public People()
+        {
+            this.peopleCollection = new PeopleCollection();
+        }
+
 
     }
 }
