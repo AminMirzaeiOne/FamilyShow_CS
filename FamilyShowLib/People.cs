@@ -47,5 +47,11 @@ namespace FamilyShowLib
 
         // Fields
         private PeopleCollection peopleCollection;
+
+        // The current person's Id will be serialized instead of the current person object to avoid
+        // circular references during Xml Serialization. When family data is loaded, the corresponding
+        // person object will be assigned to the current property (please see app.xaml.cs).
+        // The currentPersonId is set in the Save method of this class.
+        private string currentPersonId;
     }
 }
