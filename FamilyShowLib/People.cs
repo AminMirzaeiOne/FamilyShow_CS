@@ -57,5 +57,8 @@ namespace FamilyShowLib
         // Store the person's name with the Id to make the xml file more readable.
         // The currentPersonName is set in the Save method of this class.
         private string currentPersonName;
+
+        // The fully qualified path and filename for the family file.
+        private string fullyQualifiedFilename;
     }
 }
