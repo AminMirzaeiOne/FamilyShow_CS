@@ -1085,6 +1085,18 @@ namespace FamilyShowLib
             }
         }
 
+        /// <summary>
+        /// Called to delete the person's story
+        /// </summary>
+        public void DeleteStory()
+        {
+            if (this.story != null)
+            {
+                this.story.Delete();
+                this.story = null;
+            }
+        }
+
 
     }
 }
