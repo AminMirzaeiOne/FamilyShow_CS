@@ -416,5 +416,23 @@ namespace FamilyShowLib
 
         public bool IsOldVersion { get; set; }
 
+        /// <summary>
+        /// A person or relationship was added, removed or modified in the list. This is used
+        /// instead of CollectionChanged since CollectionChanged can be raised before the 
+        /// relationships are setup (the Person was added to the list, but its Parents, Children,
+        /// Sibling and Spouse collections have not been established). This means the subscriber 
+        /// (the diagram control) will update before all of the information is available and 
+        /// relationships will not be displayed.
+        /// 
+        /// The ContentChanged event addresses this problem and allows the flexibility to
+        /// raise the event after *all* people have been added to the list, and *all* of
+        /// their relationships have been established. 
+        /// 
+        /// Objects that add or remove people from the list, or add or remove relationships
+        /// should call OnContentChanged when they want to notify subscribers that all
+        /// changes have been made.
+        /// </summary>
+        public event EventHandler<ContentChangedEventArgs> ContentChanged;
+
     }
 }
