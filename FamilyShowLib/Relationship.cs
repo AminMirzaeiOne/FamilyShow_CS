@@ -24,6 +24,15 @@ namespace FamilyShowLib
         // Store the person's name with the Id to make the xml file more readable
         private string personFullname;
 
+        /// <summary>
+        /// The Type of relationship.  Parent, child, sibling, or spouse
+        /// </summary>
+        public RelationshipType RelationshipType
+        {
+            get { return relationshipType; }
+            set { relationshipType = value; }
+        }
+
 
     }
 }
