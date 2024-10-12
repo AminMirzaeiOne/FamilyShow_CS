@@ -186,6 +186,24 @@ namespace FamilyShowLib
             }
         }
 
+        private void ExportEvent(string tag, DateTime? date, string place)
+        {
+            // Return right away if don't have a date or place to export.
+            if (date == null && string.IsNullOrEmpty(place))
+                return;
+
+            // Start the new event tag.
+            WriteLine(1, tag, "");
+
+            // Date.
+            if (date != null)
+                WriteLine(2, "DATE", date.Value.ToShortDateString());
+
+            // Place.
+            if (!string.IsNullOrEmpty(place))
+                WriteLine(2, "PLAC", place);
+        }
+
 
     }
 }
