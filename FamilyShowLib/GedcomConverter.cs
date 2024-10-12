@@ -150,5 +150,9 @@ namespace FamilyShowLib
         // Only allow viewable characters.
         private readonly Regex regClean = new Regex(@"[^\x20-\x7e]");
 
+        // Expression pattern used to clean up the GEDCOM tag.
+        // Tag can contain alphanumeric characters, _, ., or -.
+        private readonly Regex regTag = new Regex(@"[^\w.-]");
+
     }
 }
