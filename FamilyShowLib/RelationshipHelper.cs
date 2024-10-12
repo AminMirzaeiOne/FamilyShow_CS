@@ -76,5 +76,24 @@ namespace FamilyShowLib
             // Setter for property change notification
             person.HasParents = true;
         }
+
+        /// <summary>
+        /// Performs the business logic for adding the Parent relationship between the person and the parents.
+        /// </summary>
+        public static void AddParent(PeopleCollection family, Person person, ParentSet parentSet)
+        {
+            // First add child to parents.
+            family.AddChild(parentSet.FirstParent, person, ParentChildModifier.Natural);
+            family.AddChild(parentSet.SecondParent, person, ParentChildModifier.Natural);
+
+            // Next update the siblings. Get the list of full siblings for the person. 
+            // A full sibling is a sibling that has both parents in common. 
+            List<Person> siblings = GetChildren(parentSet);
+            foreach (Person sibling in siblings)
+            {
+                if (sibling != person)
+                    family.AddSibling(person, sibling);
+            }
+        }
     }
 }
