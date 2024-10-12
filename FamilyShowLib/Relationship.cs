@@ -10,11 +10,6 @@ namespace FamilyShowLib
 {
     public abstract class Relationship
     {
-        /// <summary>
-        /// Describes the kinship between person objects
-        /// </summary>
-        [Serializable]
-
         private RelationshipType relationshipType;
         private Person relationTo;
 

@@ -414,6 +414,15 @@ namespace FamilyShowLib
             }
         }
 
+        /// <summary>
+        /// Get or set if the list has been modified.
+        /// </summary>
+        public bool IsDirty
+        {
+            get { return dirty; }
+            set { dirty = value; }
+        }
+
         public bool IsOldVersion { get; set; }
 
         /// <summary>
