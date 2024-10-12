@@ -1009,6 +1009,24 @@ namespace FamilyShowLib
 
         #endregion
 
+        #region INotifyPropertyChanged Members
+
+        /// <summary>
+        /// INotifyPropertyChanged requires a property called PropertyChanged.
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Fires the event for the property when it changes.
+        /// </summary>
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        #endregion
+
 
     }
 }
