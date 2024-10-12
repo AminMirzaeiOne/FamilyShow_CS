@@ -131,4 +131,13 @@ namespace FamilyShowLib
             node.Attributes["Value"].Value = sb.ToString();
         }
     }
+
+    /// <summary>
+    /// Parses one line in a GEDCOM file.
+    /// </summary>
+    /// 
+    public class GedcomLine
+    {
+
+    }
 }
