@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace FamilyShowLib
 {
@@ -31,6 +32,21 @@ namespace FamilyShowLib
         {
             get { return relationshipType; }
             set { relationshipType = value; }
+        }
+
+        /// <summary>
+        /// The person id the relationship is to. See comment on personId above.
+        /// </summary>
+        [XmlIgnore]
+        public Person RelationTo
+        {
+            get { return relationTo; }
+            set
+            {
+                relationTo = value;
+                personId = ((Person)value).Id;
+                personFullname = ((Person)value).FullName;
+            }
         }
 
 
