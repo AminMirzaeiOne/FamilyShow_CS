@@ -153,6 +153,18 @@ namespace FamilyShow
             return NativeMethods.GetSaveFileName(ofn);
         }
 
+        /// <summary>
+        /// Set the low level filter with the filter collection.
+        /// </summary>
+        private void SetFilter()
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (FilterEntry entry in this.filter)
+                sb.AppendFormat("{0}\0{1}\0", entry.Display, entry.Extention);
+            sb.Append("\0\0");
+            ofn.filter = sb.ToString();
+        }
+
 
     }
 }
