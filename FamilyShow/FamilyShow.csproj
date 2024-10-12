@@ -103,6 +103,7 @@
   <ItemGroup>
     <Folder Include="Controls\" />
     <Folder Include="Images\" />
+    <Folder Include="SampleFiles\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
