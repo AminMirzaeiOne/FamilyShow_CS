@@ -51,6 +51,39 @@ namespace FamilyShowLib
             }
         }
 
+        /// <summary>
+        /// Imports the individuals (INDI tags) from the GEDCOM XML file.
+        /// </summary>
+        private void ImportPeople()
+        {
+            // Get list of people.
+            XmlNodeList list = doc.SelectNodes("/root/INDI");
+
+            foreach (XmlNode node in list)
+            {
+                // Create a new person that will be added to the collection.
+                Person person = new Person();
+
+                // Import details about the person.
+                person.FirstName = GetFirstName(node);
+                person.LastName = GetLastName(node);
+                person.NickName = GetNickName(node);
+                person.Suffix = GetSuffix(node);
+                person.MarriedName = GetMarriedName(node);
+
+                person.Id = GetId(node);
+                person.Gender = GetGender(node);
+
+                ImportBirth(person, node);
+                ImportDeath(person, node);
+
+                ImportPhotos(person, node);
+                ImportNote(person, node);
+
+                people.Add(person);
+            }
+        }
+
 
     }
 }
