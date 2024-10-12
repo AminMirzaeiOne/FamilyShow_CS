@@ -239,5 +239,29 @@ namespace FamilyShowLib
                 }
             }
         }
+
+        /// <summary>
+        /// Performs the business logic for updating the marriage date
+        /// </summary>
+        public static void UpdateMarriageDate(Person person, Person spouse, DateTime? dateTime)
+        {
+            foreach (Relationship relationship in person.Relationships)
+            {
+                if (relationship.RelationshipType == RelationshipType.Spouse && relationship.RelationTo.Equals(spouse))
+                {
+                    ((SpouseRelationship)relationship).MarriageDate = dateTime;
+                    break;
+                }
+            }
+
+            foreach (Relationship relationship in spouse.Relationships)
+            {
+                if (relationship.RelationshipType == RelationshipType.Spouse && relationship.RelationTo.Equals(person))
+                {
+                    ((SpouseRelationship)relationship).MarriageDate = dateTime;
+                    break;
+                }
+            }
+        }
     }
 }
