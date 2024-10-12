@@ -305,6 +305,23 @@ namespace FamilyShowLib
             return fileName;
         }
 
+        /// <summary>
+        /// Delete to clear existing files and re-Create the necessary directories
+        /// </summary>
+        public static void RecreateDirectory(string folderToDelete)
+        {
+            try
+            {
+                if (Directory.Exists(folderToDelete))
+                    Directory.Delete(folderToDelete, true);
+                Directory.CreateDirectory(folderToDelete);
+            }
+            catch
+            {
+                // ignore deletion errors
+            }
+        }
+
 
     }
 }
