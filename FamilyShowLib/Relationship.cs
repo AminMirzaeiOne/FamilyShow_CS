@@ -16,6 +16,11 @@ namespace FamilyShowLib
         private RelationshipType relationshipType;
         private Person relationTo;
 
+        // The person's Id will be serialized instead of the relationTo person object to avoid
+        // circular references during Xml Serialization. When family data is loaded, the corresponding
+        // person object will be assigned to the relationTo property (please see app.xaml.cs).
+        private string personId;
+
 
     }
 }
