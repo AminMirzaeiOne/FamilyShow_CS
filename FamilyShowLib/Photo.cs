@@ -18,5 +18,8 @@ namespace FamilyShowLib
         {
             public const string PhotosFolderName = "Images";
         }
+
+        private string relativePath;
+
     }
 }
