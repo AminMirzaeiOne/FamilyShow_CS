@@ -77,5 +77,22 @@ namespace FamilyShowLib
                 ExportPhotos(person);
             }
         }
+
+        // <summary>
+        /// Create the family section (the FAM tags) in the GEDCOM file.
+        /// </summary>
+        private void ExportFamilies()
+        {
+            // Exporting families is more difficult since need to export each
+            // family group. A family group consists of one or more parents,
+            // marriage / divorce information and children. The FamilyMap class
+            // creates a list of family groups from the People collection.
+            FamilyMap map = new FamilyMap();
+            map.Create(people);
+
+            // Created the family groups, now export each family.
+            foreach (Family family in map.Values)
+                ExportFamily(family);
+        }
     }
 }
