@@ -187,6 +187,16 @@ namespace FamilyShowLib
             this.PeopleCollection.IsDirty = false;
         }
 
+        /// <summary>
+        /// Saves the list of people to disk using the specified filename and path
+        /// </summary>
+        /// <param name="FQFilename">Fully qualified path and filename of family tree file to save</param>
+        public void Save(string FQFilename)
+        {
+            this.fullyQualifiedFilename = FQFilename;
+            Save();
+        }
+
 
     }
 }
