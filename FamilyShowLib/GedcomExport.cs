@@ -204,6 +204,11 @@ namespace FamilyShowLib
                 WriteLine(2, "PLAC", place);
         }
 
+        private void ExportGender(Person person)
+        {
+            WriteLine(1, "SEX", (person.Gender == Gender.Female) ? "F" : "M");
+        }
+
 
     }
 }
