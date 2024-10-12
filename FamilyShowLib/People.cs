@@ -64,5 +64,8 @@ namespace FamilyShowLib
         // Version of the file. This is not used at this time, but allows a future
         // version of the application to handle previous file formats.
         private string fileVersion = "1.0";
+
+        private string OPCContentFileName = "content.xml";
+
     }
 }
