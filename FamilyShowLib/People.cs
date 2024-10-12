@@ -10,6 +10,11 @@ namespace FamilyShowLib
     {
         private Person newPerson;
 
+        public Person NewPerson
+        {
+            get { return newPerson; }
+        }
+
     }
 
     public class People
