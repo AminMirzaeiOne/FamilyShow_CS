@@ -36,5 +36,45 @@ namespace FamilyShowLib
                     break;
             }
         }
+
+        /// <summary>
+        /// Performs the business logic for adding the Parent relationship between the person and the parent.
+        /// </summary>
+        public static void AddParent(PeopleCollection family, Person person, Person parent)
+        {
+            // A person can only have 2 parents, do nothing
+            if (person.Parents.Count == 2)
+                return;
+
+            // Add the parent to the main collection of people.
+            family.Add(parent);
+
+            switch (person.Parents.Count)
+            {
+                // No exisitng parents
+                case 0:
+                    family.AddChild(parent, person, ParentChildModifier.Natural);
+                    break;
+
+                // An existing parent
+                case 1:
+                    family.AddChild(parent, person, ParentChildModifier.Natural);
+                    family.AddSpouse(parent, person.Parents[0], SpouseModifier.Current);
+                    break;
+            }
+
+            // Handle siblings
+            if (person.Siblings.Count > 0)
+            {
+                // Make siblings the child of the new parent
+                foreach (Person sibling in person.Siblings)
+                {
+                    family.AddChild(parent, sibling, ParentChildModifier.Natural);
+                }
+            }
+
+            // Setter for property change notification
+            person.HasParents = true;
+        }
     }
 }
