@@ -281,6 +281,16 @@ namespace FamilyShowLib
             return Gender.Male;
         }
 
+        private static bool GetDivorced(XmlNode node)
+        {
+            string value = GetValue(node, "DIV");
+            if (string.Compare(value, "n", true, CultureInfo.InvariantCulture) == 0)
+                return false;
+
+            // Divorced if the tag exists.
+            return node.SelectSingleNode("DIV") != null ? true : false;
+        }
+
 
     }
 }
