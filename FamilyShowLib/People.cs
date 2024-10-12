@@ -60,5 +60,9 @@ namespace FamilyShowLib
 
         // The fully qualified path and filename for the family file.
         private string fullyQualifiedFilename;
+
+        // Version of the file. This is not used at this time, but allows a future
+        // version of the application to handle previous file formats.
+        private string fileVersion = "1.0";
     }
 }
