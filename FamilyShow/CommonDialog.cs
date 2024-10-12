@@ -118,6 +118,16 @@ namespace FamilyShow
 
         #endregion
 
+        public CommonDialog()
+        {
+            // Initialize structure that is passed to the API functions.
+            ofn.structSize = Marshal.SizeOf(ofn);
+            ofn.file = new String(new char[260]);
+            ofn.maxFile = ofn.file.Length;
+            ofn.fileTitle = new String(new char[100]);
+            ofn.maxFileTitle = ofn.fileTitle.Length;
+        }
+
 
     }
 }
