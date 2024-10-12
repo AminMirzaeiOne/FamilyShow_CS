@@ -20,5 +20,21 @@ namespace FamilyShowLib
 
         // Family group counter.
         private int familyId = 1;
+
+        /// <summary>
+        /// Export the data from the People collection to the specified GEDCOM file.
+        /// </summary>
+        public void Export(PeopleCollection peopleCollection, string gedcomFilePath)
+        {
+            this.people = peopleCollection;
+
+            using (writer = new StreamWriter(gedcomFilePath))
+            {
+                WriteLine(0, "HEAD", "");
+                ExportPeople();
+                ExportFamilies();
+                WriteLine(0, "TRLR", "");
+            }
+        }
     }
 }
