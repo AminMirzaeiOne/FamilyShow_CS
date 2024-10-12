@@ -87,5 +87,10 @@ namespace FamilyShowLib
             this.RelationTo = personId;
             this.parentChildModifier = parentChildType;
         }
+
+        public override string ToString()
+        {
+            return RelationTo.Name;
+        }
     }
 }
