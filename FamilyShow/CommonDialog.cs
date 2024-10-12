@@ -141,6 +141,18 @@ namespace FamilyShow
             return NativeMethods.GetOpenFileName(ofn);
         }
 
+        /// <summary>
+        /// Display the Vista-style common Save As dialog.
+        /// </summary>
+        public bool ShowSave()
+        {
+            SetFilter();
+            ofn.flags = (int)(OpenFileNameFlags.OFN_PATHMUSTEXIST | OpenFileNameFlags.OFN_OVERWRITEPROMPT);
+            if (Application.Current.MainWindow != null)
+                ofn.owner = new WindowInteropHelper(Application.Current.MainWindow).Handle;
+            return NativeMethods.GetSaveFileName(ofn);
+        }
+
 
     }
 }
