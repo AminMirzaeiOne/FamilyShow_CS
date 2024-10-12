@@ -325,6 +325,30 @@ namespace FamilyShowLib
             }
         }
 
+        /// <summary>
+        /// Helper function for removing a parent relationship
+        /// </summary>
+        private static void RemoveParentChildRelationship(Person person, Person parent)
+        {
+            foreach (Relationship relationship in person.Relationships)
+            {
+                if (relationship.RelationshipType == RelationshipType.Parent && relationship.RelationTo.Equals(parent))
+                {
+                    person.Relationships.Remove(relationship);
+                    break;
+                }
+            }
+
+            foreach (Relationship relationship in parent.Relationships)
+            {
+                if (relationship.RelationshipType == RelationshipType.Child && relationship.RelationTo.Equals(person))
+                {
+                    parent.Relationships.Remove(relationship);
+                    break;
+                }
+            }
+        }
+
 
     }
 }
