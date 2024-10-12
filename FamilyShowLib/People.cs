@@ -94,5 +94,13 @@ namespace FamilyShowLib
             set { currentPersonName = value; }
         }
 
+        // Version of the file.
+        [XmlAttribute(AttributeName = "FileVersion")]
+        public string Version
+        {
+            get { return fileVersion; }
+            set { fileVersion = value; }
+        }
+
     }
 }
