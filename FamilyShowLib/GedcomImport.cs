@@ -296,6 +296,18 @@ namespace FamilyShowLib
             return GetValue(node, "FILE");
         }
 
+        private static string[] GetChildrenIDs(XmlNode node)
+        {
+            string[] children;
+            XmlNodeList list = node.SelectNodes("CHIL");
+            children = new string[list.Count];
+
+            for (int i = 0; i < list.Count; i++)
+                children[i] = GetId(list[i]);
+
+            return children;
+        }
+
 
     }
 }
