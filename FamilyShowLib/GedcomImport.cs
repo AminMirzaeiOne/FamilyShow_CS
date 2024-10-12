@@ -84,6 +84,46 @@ namespace FamilyShowLib
             }
         }
 
+        /// <summary>
+        /// Imports the families (FAM tags) from the GEDCOM XML file.
+        /// </summary>
+        private void ImportFamilies()
+        {
+            // Get list of families.
+            XmlNodeList list = doc.SelectNodes("/root/FAM");
+            foreach (XmlNode node in list)
+            {
+                // Get family (husband, wife and children) IDs from the GEDCOM file.
+                string husband = GetHusbandID(node);
+                string wife = GetWifeID(node);
+                string[] children = GetChildrenIDs(node);
+
+                // Get the Person objects for the husband and wife,
+                // required for marriage info and adding children.
+                Person husbandPerson = people.Find(husband);
+                Person wifePerson = people.Find(wife);
+
+                // Add any marriage / divoirce details.
+                ImportMarriage(husbandPerson, wifePerson, node);
+
+                // Import the children.
+                foreach (string child in children)
+                {
+                    // Get the Person object for the child.
+                    Person childPerson = people.Find(child);
+
+                    // Calling RelationshipHelper.AddChild hooks up all of the
+                    // child relationships for the husband and wife. Also hooks up
+                    // the sibling relationships.
+                    if (husbandPerson != null && childPerson != null)
+                        RelationshipHelper.AddChild(people, husbandPerson, childPerson);
+
+                    if (husbandPerson == null && wifePerson != null & childPerson != null)
+                        RelationshipHelper.AddChild(people, wifePerson, childPerson);
+                }
+            }
+        }
+
 
     }
 }
