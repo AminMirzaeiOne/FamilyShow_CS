@@ -139,6 +139,7 @@ namespace FamilyShowLib
     public class GedcomLine
     {
         private int level;
+        private string tag;
 
     }
 }
