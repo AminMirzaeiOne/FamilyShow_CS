@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Interop;
 
 namespace FamilyShow
 {
@@ -126,6 +127,18 @@ namespace FamilyShow
             ofn.maxFile = ofn.file.Length;
             ofn.fileTitle = new String(new char[100]);
             ofn.maxFileTitle = ofn.fileTitle.Length;
+        }
+
+        /// <summary>
+        /// Display the Vista-style common Open dialog.
+        /// </summary>
+        public bool ShowOpen()
+        {
+            SetFilter();
+            ofn.flags = (int)OpenFileNameFlags.OFN_FILEMUSTEXIST;
+            if (Application.Current.MainWindow != null)
+                ofn.owner = new WindowInteropHelper(Application.Current.MainWindow).Handle;
+            return NativeMethods.GetOpenFileName(ofn);
         }
 
 
