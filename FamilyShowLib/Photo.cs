@@ -141,5 +141,19 @@ namespace FamilyShowLib
             return photoRelLocation;
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
+        public void Delete()
+        {
+            try
+            {
+                File.Delete(this.FullyQualifiedPath);
+            }
+            catch
+            {
+                // Could not delete the file. Handle all exceptions
+                // the same, ignore and continue.
+            }
+        }
+
     }
 }
