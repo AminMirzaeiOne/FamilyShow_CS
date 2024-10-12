@@ -165,6 +165,18 @@ namespace FamilyShowLib
             }
         }
 
+        private void ExportName(Person person)
+        {
+            string firstMiddleNameSpace = (!string.IsNullOrEmpty(person.FirstName) &&
+                !string.IsNullOrEmpty(person.MiddleName)) ? " " : "";
+
+            string value = string.Format(CultureInfo.InvariantCulture,
+                "{0}{1}{2}/{3}/", person.FirstName, firstMiddleNameSpace,
+                person.MiddleName, person.LastName);
+
+            WriteLine(1, "NAME", value);
+        }
+
 
     }
 }
