@@ -94,5 +94,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FamilyShowLib\FamilyShowLib.csproj">
+      <Project>{d5c3e1cf-4960-404f-8ccb-122efbee7379}</Project>
+      <Name>FamilyShowLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
