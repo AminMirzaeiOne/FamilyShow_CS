@@ -434,5 +434,15 @@ namespace FamilyShowLib
         /// </summary>
         public event EventHandler<ContentChangedEventArgs> ContentChanged;
 
+        /// <summary>
+        /// The details of a person changed.
+        /// </summary>
+        public void OnContentChanged()
+        {
+            dirty = true;
+            if (ContentChanged != null)
+                ContentChanged(this, new ContentChangedEventArgs(null));
+        }
+
     }
 }
