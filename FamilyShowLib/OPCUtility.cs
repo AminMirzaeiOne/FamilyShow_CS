@@ -67,5 +67,32 @@ namespace FamilyShowLib
                 }
             }
         }
+
+        /// <summary>
+        /// Adds the speficied file to the package as document part
+        /// </summary>
+        private static void CreateDocumentPart(Package package, FileInfo file, string contentType, bool storeInDirectory)
+        {
+            Uri partUriDocument;
+
+            // Convert system path and file names to Part URIs.
+            if (storeInDirectory)
+                partUriDocument = PackUriHelper.CreatePartUri(new Uri(Path.Combine(file.Directory.Name, file.Name), UriKind.Relative));
+            else
+                partUriDocument = PackUriHelper.CreatePartUri(new Uri(file.Name, UriKind.Relative));
+
+            // Add the Document part to the Package
+            PackagePart packagePartDocument = package.CreatePart(
+                partUriDocument, contentType);
+
+            // Copy the data to the Document Part
+            using (FileStream fileStream = new FileStream(file.FullName, FileMode.Open, FileAccess.Read))
+            {
+                CopyStream(fileStream, packagePartDocument.GetStream());
+            }
+
+            // Add a Package Relationship to the Document Part
+            package.CreateRelationship(packagePartDocument.Uri, TargetMode.Internal, PackageRelationshipType);
+        }
     }
 }
