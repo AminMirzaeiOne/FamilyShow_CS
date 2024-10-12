@@ -8,6 +8,7 @@ namespace FamilyShowLib
 {
     public class ContentChangedEventArgs : EventArgs
     {
+        private Person newPerson;
 
     }
 
