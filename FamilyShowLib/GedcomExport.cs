@@ -117,5 +117,54 @@ namespace FamilyShowLib
                     CultureInfo.InvariantCulture, "@{0}@", idMap.Get(child.Id)));
             }
         }
+
+        /// <summary>
+        /// Export marriage / divorce information.
+        /// </summary>
+        private void ExportMarriage(Person partnerLeft, Person partnerRight, SpouseRelationship relationship)
+        {
+            // PartnerLeft.
+            if (partnerLeft != null && partnerLeft.Gender == Gender.Male)
+                WriteLine(1, "HUSB", string.Format(CultureInfo.InvariantCulture,
+                "@{0}@", idMap.Get(partnerLeft.Id)));
+
+            if (partnerLeft != null && partnerLeft.Gender == Gender.Female)
+                WriteLine(1, "WIFE", string.Format(CultureInfo.InvariantCulture,
+                "@{0}@", idMap.Get(partnerLeft.Id)));
+
+            // PartnerRight.
+            if (partnerRight != null && partnerRight.Gender == Gender.Male)
+                WriteLine(1, "HUSB", string.Format(CultureInfo.InvariantCulture,
+                "@{0}@", idMap.Get(partnerRight.Id)));
+
+            if (partnerRight != null && partnerRight.Gender == Gender.Female)
+                WriteLine(1, "WIFE", string.Format(CultureInfo.InvariantCulture,
+                "@{0}@", idMap.Get(partnerRight.Id)));
+
+            if (relationship == null)
+                return;
+
+            // Marriage.
+            if (relationship.SpouseModifier == SpouseModifier.Current)
+            {
+                WriteLine(1, "MARR", "Y");
+
+                // Date if it exist.
+                if (relationship.MarriageDate != null)
+                    WriteLine(2, "DATE", relationship.MarriageDate.Value.ToShortDateString());
+            }
+
+            // Divorce.
+            if (relationship.SpouseModifier == SpouseModifier.Former)
+            {
+                WriteLine(1, "DIV", "Y");
+
+                // Date if it exist.
+                if (relationship.DivorceDate != null)
+                    WriteLine(2, "DATE", relationship.DivorceDate.Value.ToShortDateString());
+            }
+        }
+
+
     }
 }
