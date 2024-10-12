@@ -317,6 +317,15 @@ namespace FamilyShowLib
             return string.Empty;
         }
 
+        private static string GetLastName(XmlNode node)
+        {
+            string name = GetValue(node, "NAME");
+            string[] parts = name.Split('/');
+            if (parts.Length > 1)
+                return parts[1].Trim();
+            return string.Empty;
+        }
+
 
     }
 }
