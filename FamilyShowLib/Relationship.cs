@@ -70,6 +70,12 @@ namespace FamilyShowLib
     [Serializable]
     public class ParentRelationship : Relationship
     {
-
+        // The ParentChildModifier are not currently used by the application
+        private ParentChildModifier parentChildModifier;
+        public ParentChildModifier ParentChildModifier
+        {
+            get { return parentChildModifier; }
+            set { parentChildModifier = value; }
+        }
     }
 }
