@@ -55,6 +55,12 @@ namespace FamilyShowLib
             set { personId = value; }
         }
 
+        public string PersonFullname
+        {
+            get { return personFullname; }
+            set { personFullname = value; }
+        }
+
 
     }
 }
