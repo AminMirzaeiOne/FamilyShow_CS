@@ -257,6 +257,11 @@ namespace FamilyShowLib
             return GetValue(node, "NAME/_MARNM");
         }
 
+        private static string GetNickName(XmlNode node)
+        {
+            return GetValue(node, "NAME/NICK");
+        }
+
 
     }
 }
