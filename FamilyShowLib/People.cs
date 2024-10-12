@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -100,6 +101,18 @@ namespace FamilyShowLib
         {
             get { return fileVersion; }
             set { fileVersion = value; }
+        }
+
+
+        [XmlIgnore]
+        public static string ApplicationFolderPath
+        {
+            get
+            {
+                return Path.Combine(
+                  Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                  App.ApplicationFolderName);
+            }
         }
 
     }
