@@ -1027,6 +1027,14 @@ namespace FamilyShowLib
 
         #endregion
 
+        /// <summary>
+        /// Determine equality between two person classes
+        /// </summary>
+        public bool Equals(Person other)
+        {
+            return (this.Id == other.Id);
+        }
+
 
     }
 }
