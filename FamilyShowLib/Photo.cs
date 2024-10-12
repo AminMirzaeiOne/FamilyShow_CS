@@ -90,5 +90,10 @@ namespace FamilyShowLib
                 this.relativePath = Copy(photoPath);
         }
 
+        public override string ToString()
+        {
+            return FullyQualifiedPath;
+        }
+
     }
 }
