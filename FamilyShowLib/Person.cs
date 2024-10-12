@@ -1107,6 +1107,37 @@ namespace FamilyShowLib
             get { return null; }
         }
 
+        public string this[string columnName]
+        {
+            get
+            {
+                string result = null;
+
+                if (columnName == "BirthDate")
+                {
+                    if (BirthDate == DateTime.MinValue)
+                        result = "This does not appear to be a valid date.";
+                }
+
+                if (columnName == "DeathDate")
+                {
+                    if (DeathDate == DateTime.MinValue)
+                        result = "This does not appear to be a valid date.";
+                }
+
+                return result;
+            }
+        }
+
 
     }
+
+    /// <summary>
+    /// Enumeration of the person's gender
+    /// </summary>
+    public enum Gender
+    {
+        Male, Female
+    }
+
 }
