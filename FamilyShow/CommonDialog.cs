@@ -17,5 +17,34 @@ namespace FamilyShow
         private List<FilterEntry> filter = new List<FilterEntry>();
 
         #endregion
+
+        #region properties
+
+        public List<FilterEntry> Filter
+        {
+            get { return filter; }
+        }
+
+        public string Title
+        {
+            set { ofn.title = value; }
+        }
+
+        public string InitialDirectory
+        {
+            set { ofn.initialDir = value; }
+        }
+
+        public string DefaultExtension
+        {
+            set { ofn.defExt = value; }
+        }
+
+        public string FileName
+        {
+            get { return ofn.file; }
+        }
+
+        #endregion
     }
 }
