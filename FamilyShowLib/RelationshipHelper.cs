@@ -95,5 +95,27 @@ namespace FamilyShowLib
                     family.AddSibling(person, sibling);
             }
         }
+
+        /// <summary>
+        /// Return a list of children for the parent set.
+        /// </summary>
+        private static List<Person> GetChildren(ParentSet parentSet)
+        {
+            // Get list of both parents.
+            List<Person> firstParentChildren = new List<Person>(parentSet.FirstParent.Children);
+            List<Person> secondParentChildren = new List<Person>(parentSet.SecondParent.Children);
+
+            // Combined children list that is returned.
+            List<Person> children = new List<Person>();
+
+            // Go through and add the children that have both parents.            
+            foreach (Person child in firstParentChildren)
+            {
+                if (secondParentChildren.Contains(child))
+                    children.Add(child);
+            }
+
+            return children;
+        }
     }
 }
