@@ -349,6 +349,34 @@ namespace FamilyShowLib
             }
         }
 
+        /// <summary>
+        /// Performs the business logic for changing the deleting the person
+        /// </summary>
+        public static void DeletePerson(PeopleCollection family, Person personToDelete)
+        {
+            if (!personToDelete.IsDeletable)
+                return;
+
+            // Remove the personToDelete from the relationships that contains the personToDelete.
+            foreach (Relationship relationship in personToDelete.Relationships)
+            {
+                foreach (Relationship rel in relationship.RelationTo.Relationships)
+                {
+                    if (rel.RelationTo.Equals(personToDelete))
+                    {
+                        relationship.RelationTo.Relationships.Remove(rel);
+                        break;
+                    }
+                }
+            }
+
+            // Delete the person's photos and story
+            personToDelete.DeletePhotos();
+            personToDelete.DeleteStory();
+
+            family.Remove(personToDelete);
+        }
+
 
     }
 }
