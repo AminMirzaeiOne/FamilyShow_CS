@@ -240,5 +240,15 @@ namespace FamilyShowLib
             }
         }
 
+        /// <summary>
+        /// Reset all values.
+        /// </summary>
+        private void Clear()
+        {
+            this.Level = 0;
+            this.Tag = "";
+            this.Data = "";
+        }
+
     }
 }
