@@ -222,6 +222,16 @@ namespace FamilyShowLib
             person.BirthPlace = GetValue(node, "BIRT/PLAC");
         }
 
+        /// <summary>
+        /// Import the death info from the GEDCOM XML file.
+        /// </summary>
+        private static void ImportDeath(Person person, XmlNode node)
+        {
+            person.IsLiving = (node.SelectSingleNode("DEAT") == null) ? true : false;
+            person.DeathDate = GetValueDate(node, "DEAT/DATE");
+            person.DeathPlace = GetValue(node, "DEAT/PLAC");
+        }
+
 
     }
 }
