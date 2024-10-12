@@ -124,6 +124,43 @@ namespace FamilyShowLib
             }
         }
 
+        /// <summary>
+        /// Update the marriage / divorce information for the two people.
+        /// </summary>
+        private static void ImportMarriage(Person husband, Person wife, XmlNode node)
+        {
+            // Return right away if there are not two people.
+            if (husband == null || wife == null)
+                return;
+
+            // See if a marriage (or divorce) is specified.
+            if (node.SelectSingleNode("MARR") != null || node.SelectSingleNode("DIV") != null)
+            {
+                // Get dates.
+                DateTime? marriageDate = GetValueDate(node, "MARR/DATE");
+                DateTime? divorceDate = GetValueDate(node, "DIV/DATE");
+                SpouseModifier modifier = GetDivorced(node) ? SpouseModifier.Former : SpouseModifier.Current;
+
+                // Add info to husband.
+                if (husband.GetSpouseRelationship(wife) == null)
+                {
+                    SpouseRelationship husbandMarriage = new SpouseRelationship(wife, modifier);
+                    husbandMarriage.MarriageDate = marriageDate;
+                    husbandMarriage.DivorceDate = divorceDate;
+                    husband.Relationships.Add(husbandMarriage);
+                }
+
+                // Add info to wife.
+                if (wife.GetSpouseRelationship(husband) == null)
+                {
+                    SpouseRelationship wifeMarriage = new SpouseRelationship(husband, modifier);
+                    wifeMarriage.MarriageDate = marriageDate;
+                    wifeMarriage.DivorceDate = divorceDate;
+                    wife.Relationships.Add(wifeMarriage);
+                }
+            }
+        }
+
 
     }
 }
