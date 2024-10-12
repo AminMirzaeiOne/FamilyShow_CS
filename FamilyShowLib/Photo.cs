@@ -58,5 +58,21 @@ namespace FamilyShowLib
             }
         }
 
+        /// <summary>
+        /// Whether the photo is the avatar photo or not.
+        /// </summary>
+        public bool IsAvatar
+        {
+            get { return isAvatar; }
+            set
+            {
+                if (isAvatar != value)
+                {
+                    isAvatar = value;
+                    OnPropertyChanged("IsAvatar");
+                }
+            }
+        }
+
     }
 }
