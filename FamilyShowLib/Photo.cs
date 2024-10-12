@@ -74,5 +74,21 @@ namespace FamilyShowLib
             }
         }
 
+
+        /// <summary>
+        /// Empty constructor is needed for serialization
+        /// </summary>
+        public Photo() { }
+
+        /// <summary>
+        /// Constructor for Photo. Copies the photoPath to the images folder
+        /// </summary>
+        public Photo(string photoPath)
+        {
+            if (!string.IsNullOrEmpty(photoPath))
+                // Copy the photo to the images folder
+                this.relativePath = Copy(photoPath);
+        }
+
     }
 }
