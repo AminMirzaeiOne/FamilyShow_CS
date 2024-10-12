@@ -93,4 +93,13 @@ namespace FamilyShowLib
             return RelationTo.Name;
         }
     }
+
+    /// <summary>
+    /// Describes the kindship between a parent and child.
+    /// </summary>
+    [Serializable]
+    public class ChildRelationship : Relationship
+    {
+
+    }
 }
