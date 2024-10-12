@@ -58,5 +58,14 @@ namespace FamilyShowLib
 
         #endregion
 
+        #region Constructors
+
+        /// <summary>
+        /// Empty constructor is needed for serialization
+        /// </summary>
+        public Story() { }
+
+        #endregion
+
     }
 }
