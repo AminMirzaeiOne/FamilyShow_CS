@@ -392,6 +392,7 @@ namespace FamilyShowLib
     [Serializable]
     public class PeopleCollection : ObservableCollection<Person>, INotifyPropertyChanged
     {
+        public PeopleCollection() { }
 
     }
 }
