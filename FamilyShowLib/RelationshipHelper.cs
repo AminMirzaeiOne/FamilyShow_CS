@@ -263,5 +263,31 @@ namespace FamilyShowLib
                 }
             }
         }
+
+        /// <summary>
+        /// Performs the business logic for updating the divorce date
+        /// </summary>
+        public static void UpdateDivorceDate(Person person, Person spouse, DateTime? dateTime)
+        {
+            foreach (Relationship relationship in person.Relationships)
+            {
+                if (relationship.RelationshipType == RelationshipType.Spouse && relationship.RelationTo.Equals(spouse))
+                {
+                    ((SpouseRelationship)relationship).DivorceDate = dateTime;
+                    break;
+                }
+            }
+
+            foreach (Relationship relationship in spouse.Relationships)
+            {
+                if (relationship.RelationshipType == RelationshipType.Spouse && relationship.RelationTo.Equals(person))
+                {
+                    ((SpouseRelationship)relationship).DivorceDate = dateTime;
+                    break;
+                }
+            }
+        }
+
+
     }
 }
