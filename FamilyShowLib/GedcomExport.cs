@@ -17,5 +17,8 @@ namespace FamilyShowLib
 
         // The people collection that is being exported.
         private PeopleCollection people;
+
+        // Family group counter.
+        private int familyId = 1;
     }
 }
