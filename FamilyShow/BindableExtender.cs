@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Documents;
 
 namespace FamilyShow
 {
@@ -26,5 +27,15 @@ namespace FamilyShow
                typeof(BindableExtender),
                new UIPropertyMetadata(null,
                    BindableTextProperty_PropertyChanged));
+
+        private static void BindableTextProperty_PropertyChanged(
+           DependencyObject dependencyObject,
+           DependencyPropertyChangedEventArgs e)
+        {
+            if (dependencyObject is Run)
+            {
+                ((Run)dependencyObject).Text = (string)e.NewValue;
+            }
+        }
     }
 }
