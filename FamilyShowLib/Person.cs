@@ -1102,6 +1102,11 @@ namespace FamilyShowLib
             return Name;
         }
 
+        public string Error
+        {
+            get { return null; }
+        }
+
 
     }
 }
