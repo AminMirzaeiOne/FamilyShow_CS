@@ -182,5 +182,63 @@ namespace FamilyShowLib
             set { this.data = value; }
         }
 
+        /// <summary>
+        /// Parse the Level, Tag, and Data fields from the GEDCOM line.
+        /// The following is a sample GEDCOM line:
+        /// 
+        ///    2 NAME Personal Ancestral File
+        ///    
+        /// The Level = 2, Tag = NAME, and Data = Personal Ancestral File.
+        /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
+        public bool Parse(string text)
+        {
+            try
+            {
+                // Init values.
+                Clear();
+
+                // Return right away is nothing to parse.
+                if (string.IsNullOrEmpty(text))
+                    return false;
+
+                // Clean up the line by only allowing viewable characters.
+                text = regClean.Replace(text, "");
+
+                // Get the parts of the line.
+                Match match = regSplit.Match(text);
+                this.level = Convert.ToInt32(match.Groups["level"].Value, CultureInfo.InvariantCulture);
+                this.tag = match.Groups["tag"].Value.Trim();
+                this.data = match.Groups["data"].Value.Trim();
+
+                // The pointer reference is specified in the tag, and the tag in the data,
+                // swap these two values to make it more consistent, the tag contains the 
+                // tag and data contains the pointer reference.
+                if (this.tag[0] == '@')
+                {
+                    string temp = this.tag;
+                    this.tag = this.data;
+                    this.data = temp;
+                    int pos = this.tag.IndexOf(' ');
+
+                    // Some GEDCOM files have additional info, 
+                    // we only handle the tag info.
+                    if (pos != -1)
+                        this.tag = this.tag.Substring(0, pos);
+                }
+
+                // Make sure there are not any invalid characters in the tag.
+                this.tag = regTag.Replace(this.tag, "");
+
+                return true;
+            }
+            catch
+            {
+                // This line is invalid, clear all values.
+                Clear();
+                return false;
+            }
+        }
+
     }
 }
