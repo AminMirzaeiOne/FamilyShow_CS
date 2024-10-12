@@ -191,4 +191,10 @@ namespace FamilyShowLib
         Sibling,
         Spouse
     }
+
+    public enum SpouseModifier
+    {
+        Current,
+        Former
+    }
 }
