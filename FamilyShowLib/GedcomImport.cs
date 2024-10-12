@@ -326,6 +326,25 @@ namespace FamilyShowLib
             return string.Empty;
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
+        private static DateTime? GetValueDate(XmlNode node, string xpath)
+        {
+            DateTime? result = null;
+
+            try
+            {
+                string value = GetValue(node, xpath);
+                if (!string.IsNullOrEmpty(value))
+                    result = DateTime.Parse(value, CultureInfo.InvariantCulture);
+            }
+            catch
+            {
+                // The date is invalid, ignore and continue processing.
+            }
+
+            return result;
+        }
+
 
     }
 }
