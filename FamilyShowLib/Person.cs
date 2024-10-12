@@ -969,5 +969,46 @@ namespace FamilyShowLib
             }
         }
         #endregion
+
+
+        #region Constructors
+
+        /// <summary>
+        /// Creates a new instance of a person object.
+        /// Each new instance will be given a unique identifier.
+        /// This parameterless constructor is also required for serialization.
+        /// </summary>
+        public Person()
+        {
+            this.id = Guid.NewGuid().ToString();
+            this.relationships = new RelationshipCollection();
+            this.photos = new PhotoCollection();
+            this.firstName = Const.DefaultFirstName;
+            this.isLiving = true;
+        }
+
+        /// <summary>
+        /// Creates a new instance of the person class with the firstname and the lastname.
+        /// </summary>
+        public Person(string firstName, string lastName) : this()
+        {
+            // Use the first name if specified, if not, the default first name is used.
+            if (!string.IsNullOrEmpty(firstName))
+                this.firstName = firstName;
+
+            this.lastName = lastName;
+        }
+
+        /// <summary>
+        /// Creates a new instance of the person class with the firstname, the lastname, and gender
+        /// </summary>
+        public Person(string firstName, string lastName, Gender gender) : this(firstName, lastName)
+        {
+            this.gender = gender;
+        }
+
+        #endregion
+
+
     }
 }
