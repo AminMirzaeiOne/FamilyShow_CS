@@ -65,6 +65,12 @@
             <TextBlock Style="{StaticResource AgeTextBlockStyle}" Text="{Binding Path=Age}"/>
         </DataTemplate>
 
+        <!-- birth date column -->
+        <DataTemplate x:Key="BirthDateColumnTemplate">
+            <TextBox Style="{StaticResource TextBoxStyle}"
+    Text="{Binding Path=BirthDate, Converter={StaticResource DateFormattingConverter}}" />
+        </DataTemplate>
+
     </UserControl.Resources>
     
     <Grid>
