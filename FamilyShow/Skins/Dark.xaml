@@ -35,4 +35,10 @@
     <SolidColorBrush x:Key="DisabledBackgroundBrush" Color="#EEE" />
     <SolidColorBrush x:Key="DisabledBorderBrush" Color="#AAA" />
 
+    <!-- DefaultedBorderBrush is used to show KeyBoardFocus -->
+    <LinearGradientBrush x:Key="DefaultedBorderBrush" EndPoint="0,1" StartPoint="0,0">
+        <GradientStop Color="#777" Offset="0.0" />
+        <GradientStop Color="#000" Offset="1.0" />
+    </LinearGradientBrush>
+
 </ResourceDictionary>
