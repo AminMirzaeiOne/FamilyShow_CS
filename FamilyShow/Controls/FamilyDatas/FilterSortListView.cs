@@ -124,6 +124,38 @@ namespace FamilyShow.Controls.FamilyDatas
                 this.filterDate = date;
         }
 
+        /// <summary>
+        /// Parse the filter age. The filter can represent a
+        /// single age (10), a range (10-20), or an ending (10+).
+        /// </summary>
+        private void ParseAge()
+        {
+            int age;
+
+            // Single age.
+            if (Int32.TryParse(this.filterText, out age))
+                this.minimumAge = age;
+
+            // Age range.
+            if (this.filterText.Contains("-"))
+            {
+                string[] list = this.filterText.Split('-');
+
+                if (Int32.TryParse(list[0], out age))
+                    this.minimumAge = age;
+
+                if (Int32.TryParse(list[1], out age))
+                    this.maximumAge = age;
+            }
+
+            // Ending age.
+            if (this.filterText.EndsWith("+"))
+            {
+                if (Int32.TryParse(this.filterText.Substring(0, this.filterText.Length - 1), out age))
+                    this.maximumAge = age;
+            }
+        }
+
 
     }
 
