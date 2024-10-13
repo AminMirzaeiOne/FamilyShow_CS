@@ -456,5 +456,15 @@ namespace FamilyShow.Controls.Diagrams
             return show;
         }
 
+        /// <summary>
+        /// Update the bottom label which contains the name, year range and age.
+        /// </summary>
+        private void UpdateBottomLabel()
+        {
+            string label = string.Format(CultureInfo.CurrentCulture, "{0}\r{1}",
+                this.person.FullName, this.DateInformation);
+            this.BottomLabel = label;
+        }
+
     }
 }
