@@ -44,5 +44,16 @@ namespace FamilyShow.Controls.Diagrams
 
         #endregion
 
+        protected override Size MeasureOverride(Size availableSize)
+        {
+            // Let each node determine how large they want to be.
+            Size size = new Size(double.PositiveInfinity, double.PositiveInfinity);
+            foreach (DiagramNode node in nodes)
+                node.Measure(size);
+
+            // Return the total size of the group.
+            return this.ArrangeNodes(false);
+        }
+
     }
 }
