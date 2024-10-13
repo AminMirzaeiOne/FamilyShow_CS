@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 using System.Windows.Threading;
 
 namespace FamilyShow.Controls.FamilyDatas
@@ -32,6 +34,19 @@ namespace FamilyShow.Controls.FamilyDatas
             this.Dispatcher.BeginInvoke(
                 DispatcherPriority.ApplicationIdle,
                 new FilterDelegate(FilterWorker));
+        }
+
+        /// <summary>
+        /// Worker method that filters the list.
+        /// </summary>
+        private void FilterWorker()
+        {
+            // Get the data the ListView is bound to.
+            ICollectionView view = CollectionViewSource.GetDefaultView(this.ItemsSource);
+
+            // Clear the list if the filter is empty, otherwise filter the list.
+            view.Filter = filter.IsEmpty ? null :
+                new Predicate<object>(FilterCallback);
         }
 
 
