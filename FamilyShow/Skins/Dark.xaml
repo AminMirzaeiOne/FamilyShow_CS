@@ -829,5 +829,12 @@
         <TextBlock Text="{Binding}" Foreground="{StaticResource FontColor}" />
     </DataTemplate>
 
+    <!-- Diagram Resources-->
+
+    <!-- Pens used to draw connector lines -->
+    <Pen x:Key="ChildConnectionPen" Brush="#80808080" Thickness="1" />
+    <Pen x:Key="MarriedConnectionPen" Brush="#ff90c090" Thickness="2" />
+    <Pen x:Key="FormerConnectionPen" Brush="#ff90c090" Thickness="2" DashStyle="{x:Static DashStyles.Dash}" />
+
 
 </ResourceDictionary>
