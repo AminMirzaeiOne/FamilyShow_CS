@@ -54,5 +54,8 @@
     <!-- This is the thickness setting for most borders -->
     <Thickness x:Key="BorderThickness">1,1,1,1</Thickness>
 
+    <!-- Padding value for labels -->
+    <Thickness x:Key="LabelPadding">5,8,5,2</Thickness>
+
 
 </ResourceDictionary>
