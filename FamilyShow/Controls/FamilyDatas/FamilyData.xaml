@@ -238,6 +238,14 @@
             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         </Style>
 
+        <Style x:Key="StatisticsHeaderStyle" TargetType="{x:Type Border}">
+            <Setter Property="Margin" Value="5,15,0,10"/>
+            <Setter Property="Padding" Value="10,5,10,5"/>
+            <Setter Property="Background" Value="{DynamicResource StatisticsHeaderBackgroundBrush}"/>
+            <Setter Property="BorderThickness" Value="0,1,0,0" />
+            <Setter Property="BorderBrush" Value="{DynamicResource StatisticsHeaderBorderBrush}" />
+        </Style>
+
     </UserControl.Resources>
     
     <Grid>
