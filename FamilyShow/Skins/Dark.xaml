@@ -797,5 +797,10 @@
         </Setter>
     </Style>
 
+    <!-- Converter Resources -->
+
+    <!-- Converter for displaying the "primary" photo text -->
+    <local:PrimaryAvatarConverter x:Key="PrimaryAvatarConverter" />
+
 
 </ResourceDictionary>
