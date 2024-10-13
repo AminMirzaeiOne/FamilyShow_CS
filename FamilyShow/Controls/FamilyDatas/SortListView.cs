@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace FamilyShow.Controls.FamilyDatas
 {
@@ -62,6 +63,22 @@ namespace FamilyShow.Controls.FamilyDatas
 
             // Update the column header based on the sort column and order.
             UpdateHeaderTemplate();
+        }
+
+        /// <summary>
+        /// Sort the data.
+        /// </summary>
+        private void SortList(string propertyName)
+        {
+            // Get the data to sort.
+            ICollectionView dataView = CollectionViewSource.GetDefaultView(this.ItemsSource);
+
+            // Specify the new sorting information.
+            dataView.SortDescriptions.Clear();
+            SortDescription description = new SortDescription(propertyName, sortDirection);
+            dataView.SortDescriptions.Add(description);
+
+            dataView.Refresh();
         }
 
     }
