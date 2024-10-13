@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace FamilyShow.Controls.FamilyDatas
 {
-    public class FilterSortListView
+    public class FilterSortListView : SortListView
     {
+        private delegate void FilterDelegate();
 
     }
 }
