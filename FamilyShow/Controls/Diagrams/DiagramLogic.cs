@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using FamilyShowLib;
 using System.Windows;
 using System.Collections.ObjectModel;
+using static FamilyShow.Controls.Diagrams.DiagramConnector;
 
 namespace FamilyShow.Controls.Diagrams
 {
@@ -245,6 +246,29 @@ namespace FamilyShow.Controls.Diagrams
                     DiagramNode node = CreateNode(sibling, nodeType, true, scale);
                     group.Add(node);
                     personLookup.Add(node.Person, new DiagramConnectorNode(node, group, row));
+                }
+            }
+        }
+
+        /// <summary>
+        /// Add the spouses to the specified row and group.
+        /// </summary>
+        private void AddSpouseNodes(Person person, DiagramRow row,
+            DiagramGroup group, Collection<Person> spouses,
+            NodeType nodeType, double scale, bool married)
+        {
+            foreach (Person spouse in spouses)
+            {
+                if (!personLookup.ContainsKey(spouse))
+                {
+                    // Spouse node.
+                    DiagramNode node = CreateNode(spouse, nodeType, true, scale);
+                    group.Add(node);
+
+                    // Add connection.
+                    DiagramConnectorNode connectorNode = new DiagramConnectorNode(node, group, row);
+                    personLookup.Add(node.Person, connectorNode);
+                    connections.Add(new MarriedDiagramConnector(married, personLookup[person], connectorNode));
                 }
             }
         }
