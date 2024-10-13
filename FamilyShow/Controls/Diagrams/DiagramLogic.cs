@@ -198,6 +198,15 @@ namespace FamilyShow.Controls.Diagrams
             return list;
         }
 
+        /// <summary>
+        /// Remove any people from the 'other' list from the 'people' list.
+        /// </summary>
+        private static void RemoveDuplicates(Collection<Person> people, Collection<Person> other)
+        {
+            foreach (Person person in other)
+                people.Remove(person);
+        }
+
 
 
     }
