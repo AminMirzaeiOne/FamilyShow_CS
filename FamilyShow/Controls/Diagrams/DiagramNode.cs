@@ -6,6 +6,20 @@ using System.Threading.Tasks;
 
 namespace FamilyShow.Controls.Diagrams
 {
+
+    /// <summary>
+    /// The type of node.
+    /// </summary>
+    public enum NodeType
+    {
+        Primary,
+        Related,
+        Spouse,
+        Sibling,
+        SiblingLeft,
+        SiblingRight
+    }
+
     public class DiagramNode
     {
 
