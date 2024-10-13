@@ -528,6 +528,20 @@ namespace FamilyShow.Controls.Diagrams
             }
         }
 
+        /// <summary>
+        /// Called when the current person in the main People collection changes.
+        /// This means the diagram should be updated based on the new selected person.
+        /// </summary>
+        private void OnFamilyCurrentChanged(object sender, EventArgs e)
+        {
+            // Save the bounds for the current primary person, this 
+            // is required later when animating the diagram.
+            selectedNodeBounds = logic.GetNodeBounds(logic.Family.Current);
+
+            // Repopulate the diagram.
+            Populate();
+        }
+
 
     }
 }
