@@ -231,6 +231,26 @@ namespace FamilyShow.Controls.Diagrams
             return node;
         }
 
+        /// <summary>
+        /// Add the siblings to the specified row and group.
+        /// </summary>
+        private void AddSiblingNodes(DiagramRow row, DiagramGroup group,
+            Collection<Person> siblings, NodeType nodeType, double scale)
+        {
+            foreach (Person sibling in siblings)
+            {
+                if (!personLookup.ContainsKey(sibling))
+                {
+                    // Siblings node.
+                    DiagramNode node = CreateNode(sibling, nodeType, true, scale);
+                    group.Add(node);
+                    personLookup.Add(node.Person, new DiagramConnectorNode(node, group, row));
+                }
+            }
+        }
+
+
+
 
 
     }
