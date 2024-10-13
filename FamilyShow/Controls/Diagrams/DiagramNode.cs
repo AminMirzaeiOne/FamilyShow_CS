@@ -327,5 +327,14 @@ namespace FamilyShow.Controls.Diagrams
 
         public static readonly DependencyProperty BottomLabelProperty =
             DependencyProperty.Register("BottomLabel", typeof(string), typeof(DiagramNode));
+
+        /// <summary>
+        /// The text displayed below the node.
+        /// </summary>
+        public string BottomLabel
+        {
+            get { return (String)this.GetValue(DiagramNode.BottomLabelProperty); }
+            set { SetValue(DiagramNode.BottomLabelProperty, value); }
+        }
     }
 }
