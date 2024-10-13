@@ -209,5 +209,7 @@
 
     <SolidColorBrush x:Key="DisabledMenuForegroundBrush" Color="#888" />
 
+    <!-- This BitmapEffect is used by the Simple MenuItem -->
+    <DropShadowBitmapEffect x:Key="PopupDropShadow" ShadowDepth="1.5" Softness="0.15" />
 
 </ResourceDictionary>
