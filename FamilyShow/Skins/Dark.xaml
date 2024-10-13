@@ -51,5 +51,8 @@
 
     <SolidColorBrush x:Key="SolidBorderBrush" Color="#888" />
 
+    <!-- This is the thickness setting for most borders -->
+    <Thickness x:Key="BorderThickness">1,1,1,1</Thickness>
+
 
 </ResourceDictionary>
