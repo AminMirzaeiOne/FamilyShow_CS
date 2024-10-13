@@ -207,6 +207,16 @@ namespace FamilyShow.Controls.Diagrams
                 people.Remove(person);
         }
 
+        /// <summary>
+        /// Create a DiagramNode.
+        /// </summary>
+        private DiagramNode CreateNode(Person person, NodeType type, bool clickEvent, double scale)
+        {
+            DiagramNode node = CreateNode(person, type, clickEvent);
+            node.Scale = scale;
+            return node;
+        }
+
 
 
     }
