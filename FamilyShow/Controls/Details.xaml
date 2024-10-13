@@ -580,6 +580,17 @@
                 </DataTemplate.Triggers>
             </DataTemplate>
 
+            <DataTemplate x:Key="ExistingFamilyMemberDataTemplate">
+                <StackPanel x:Name="panel" Margin="15,0,0,0">
+                    <TextBlock x:Name="text" Text="{Binding}" TextWrapping="Wrap" />
+                </StackPanel>
+                <DataTemplate.Triggers>
+                    <DataTrigger Binding="{Binding}" Value="Existing">
+                        <Setter Property="Visibility" Value="Collapsed" TargetName="panel" />
+                    </DataTrigger>
+                </DataTemplate.Triggers>
+            </DataTemplate>
+
 
 
         </ResourceDictionary>
