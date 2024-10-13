@@ -681,7 +681,15 @@
         </EventTrigger>
     </UserControl.Triggers>
 
-    <Grid>
-            
-    </Grid>
+    <DockPanel>
+        <!-- Details Header -->
+        <Border DockPanel.Dock="Top" x:Name="DetailsHeaderBorder" Background="{DynamicResource BackgroundBrush}" BorderThickness="1,1,1,0" CornerRadius="10,10,0,0" BorderBrush="{DynamicResource BorderBrush}">
+            <DockPanel x:Name="DetailsHeader">
+                <!-- Star -->
+                <Path StrokeThickness="1.500000" Stroke="#ffffffff" StrokeMiterLimit="1.000000" Fill="{DynamicResource PrimaryStarBrush}" Data="F1 M 9.816406,1.694336 L 12.351074,6.830078 L 18.018066,7.654297 L 13.918457,11.654297 L 14.886230,17.299805 L 9.816406,14.630859 L 4.746094,17.299805 L 5.713867,11.654297 L 1.611328,7.654297 L 7.281250,6.830078 L 9.816406,1.694336 Z" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" x:Name="Star"/>
+                <Button x:Name="DeleteButton" Content="Dele_te" FontSize="10" Width="40" Height="15" Click="DeleteButton_Click" HorizontalAlignment="Right" Margin="0,0,10,0" DockPanel.Dock="Right" Visibility="{Binding Path=IsDeletable, Converter={StaticResource BoolToVisibilityConverter}, Mode=Default}" Style="{DynamicResource RedButtonStyle}" />
+                <TextBlock x:Name="NameHeader" Text="{Binding Path=FullName, Mode=Default, FallbackValue=Current Person}" Style="{DynamicResource HeaderStyle}" FontWeight="Bold" Height="23.94" Margin="5,10,10,10" DockPanel.Dock="Left" TextTrimming="CharacterEllipsis" Foreground="{DynamicResource HeaderFontColor}"/>
+            </DockPanel>
+        </Border>
+    </DockPanel>
 </UserControl>
