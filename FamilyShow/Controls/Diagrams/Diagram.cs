@@ -579,6 +579,33 @@ namespace FamilyShow.Controls.Diagrams
             }
         }
 
+        /// <summary>
+        /// Animate the new person that was added to the diagram.
+        /// </summary>
+        private void AnimateNewPerson()
+        {
+            // The new person is optional, can be null.
+            if (newPerson == null)
+                return;
+
+            // Get the UI element to animate.                
+            DiagramNode node = logic.GetDiagramNode(newPerson);
+            if (node != null)
+            {
+                // Create the new person animation.
+                DoubleAnimation anim = new DoubleAnimation(0, 1,
+                    App.GetAnimationDuration(Const.NewPersonAnimationDuration));
+
+                // Animate the node.
+                ScaleTransform transform = new ScaleTransform();
+                transform.BeginAnimation(ScaleTransform.ScaleXProperty, anim);
+                transform.BeginAnimation(ScaleTransform.ScaleYProperty, anim);
+                node.RenderTransform = transform;
+            }
+
+            newPerson = null;
+        }
+
 
     }
 }
