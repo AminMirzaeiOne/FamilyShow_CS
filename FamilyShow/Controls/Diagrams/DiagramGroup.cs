@@ -61,5 +61,11 @@ namespace FamilyShow.Controls.Diagrams
             return ArrangeNodes(true);
         }
 
+        protected override int VisualChildrenCount
+        {
+            // Return the number of nodes.
+            get { return nodes.Count; }
+        }
+
     }
 }
