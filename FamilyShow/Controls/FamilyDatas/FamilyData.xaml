@@ -119,6 +119,13 @@
             </Setter>
         </Style>
 
+        <!-- style applied to column headers -->
+        <Style x:Key="ColumnHeaderStyle" TargetType="{x:Type Border}">
+            <Setter Property="BorderBrush" Value="{DynamicResource HeaderBorderBrush}"/>
+            <Setter Property="Background" Value="{DynamicResource HeaderBackgroundBrush}"/>
+            <Setter Property="BorderThickness" Value="0,1,0,1"/>
+        </Style>
+
     </UserControl.Resources>
     
     <Grid>
