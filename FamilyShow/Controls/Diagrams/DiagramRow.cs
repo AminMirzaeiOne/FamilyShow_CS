@@ -98,5 +98,16 @@ namespace FamilyShow.Controls.Diagrams
 
         #endregion
 
+        /// <summary>
+        /// Add the group to the row.
+        /// </summary>
+        public void Add(DiagramGroup group)
+        {
+            groups.Add(group);
+            this.AddVisualChild(group);
+        }
+
+
+
     }
 }
