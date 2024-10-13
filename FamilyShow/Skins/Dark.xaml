@@ -841,4 +841,19 @@
     <FontFamily x:Key="ConnectionTextFont">Calibri</FontFamily>
     <System:Double x:Key="ConnectionTextSize">12</System:Double>
 
+    <!-- Node colors -->
+    <Color x:Key="PrimaryColor">#fff06423</Color>
+    <Color x:Key="PrimaryStarColor">#ff3952a3</Color>
+    <Color x:Key="PrimaryHoverColor">#ffff8443</Color>
+    <Color x:Key="RelatedColor">#fff06423</Color>
+    <Color x:Key="RelatedHoverColor">#ffff8443</Color>
+    <Color x:Key="SpouseColor">#ff6797c8</Color>
+    <Color x:Key="SpouseHoverColor">#ff87b7e8</Color>
+    <Color x:Key="SiblingColor">#fff09822</Color>
+    <Color x:Key="SiblingHoverColor">#ffffb842</Color>
+    <Color x:Key="SiblingLeftColor">#ff6797c8</Color>
+    <Color x:Key="SiblingLeftHoverColor">#ff87b7e8</Color>
+    <Color x:Key="SiblingRightColor">#fff09822</Color>
+    <Color x:Key="SiblingRightHoverColor">#ffffb842</Color>
+
 </ResourceDictionary>
