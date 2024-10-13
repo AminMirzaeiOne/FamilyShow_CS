@@ -990,4 +990,11 @@
         <GradientStop Color="#fff09822" Offset="0.5" />
     </LinearGradientBrush>
 
+    <LinearGradientBrush x:Key="MaleSiblingRightLivingHoverFill" EndPoint="1,0.5" StartPoint="0,0.5">
+        <GradientStop Color="#ffffb842" Offset="0" />
+        <GradientStop Color="#ff87b7e8" Offset="1" />
+        <GradientStop Color="#ff87b7e8" Offset="0.505" />
+        <GradientStop Color="#ffffb842" Offset="0.5" />
+    </LinearGradientBrush>
+
 </ResourceDictionary>
