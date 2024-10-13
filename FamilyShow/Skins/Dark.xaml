@@ -813,5 +813,16 @@
         </local:ComposingConverter.Converters>
     </local:ComposingConverter>
 
+    <!-- Data Tempaltes-->
+    <!-- This is the style for the photo in the list of photos on the PersonInfo control -->
+    <DataTemplate DataType="{x:Type Microsoft.FamilyShowLib:Photo}">
+        <Grid>
+            <Border VerticalAlignment="Center" HorizontalAlignment="Center" Margin="2" DockPanel.Dock="Top">
+                <Image Source="{Binding FullyQualifiedPath, Converter={StaticResource ImageConverter}}" Stretch="UniformToFill" MaxHeight="65" MaxWidth="65" MinHeight="65" MinWidth="65" />
+            </Border>
+            <TextBlock Text="{Binding IsAvatar, Converter={StaticResource PrimaryAvatarConverter}}" DockPanel.Dock="Bottom" Foreground="#FF000000" HorizontalAlignment="Right" Margin="0,-10,5,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" />
+        </Grid>
+    </DataTemplate>
+
 
 </ResourceDictionary>
