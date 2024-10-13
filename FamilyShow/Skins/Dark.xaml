@@ -71,4 +71,10 @@
         <GradientStop Color="#FF1C1C1C" Offset="1" />
     </LinearGradientBrush>
 
+    <!-- The Diagram Gradient Brush is used as the background for the Diagram area-->
+    <LinearGradientBrush x:Key="DiagramGradientBrush" EndPoint="0.439,0.967" StartPoint="0.561,0.033">
+        <GradientStop Color="#FF202020" Offset="0" />
+        <GradientStop Color="#FF545454" Offset="1" />
+    </LinearGradientBrush>
+
 </ResourceDictionary>
