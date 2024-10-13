@@ -22,6 +22,11 @@ namespace FamilyShow.Controls.Diagrams
 
     public class DiagramNode
     {
-
+        private static class Const
+        {
+            public static double OpacityFiltered = 0.15;
+            public static double OpacityNormal = 1.0;
+            public static double AnimationDuration = 300;
+        }
     }
 }
