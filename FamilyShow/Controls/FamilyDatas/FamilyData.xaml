@@ -246,6 +246,12 @@
             <Setter Property="BorderBrush" Value="{DynamicResource StatisticsHeaderBorderBrush}" />
         </Style>
 
+        <Style x:Key="StatisticsControlStyle" TargetType="{x:Type Border}">
+            <Setter Property="Margin" Value="10,0,10,0"/>
+            <Setter Property="Background" Value="{DynamicResource StatisticsControlBackgroundBrush}"/>
+            <Setter Property="CornerRadius" Value="3,3,3,3"/>
+        </Style>
+
     </UserControl.Resources>
     
     <Grid>
