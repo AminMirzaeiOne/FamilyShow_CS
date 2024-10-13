@@ -145,6 +145,24 @@
             <Setter Property="CornerRadius" Value="0,5,5,0"/>
         </Style>
 
+        <!-- header used when no sorting -->
+        <Style x:Key="FamilyDataGridViewColumnHeader" TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="GridViewColumnHeader.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border x:Name="Bd" Style="{DynamicResource ColumnHeaderStyle}">
+                            <DockPanel>
+                                <TextBlock Text="{TemplateBinding GridViewColumnHeader.Content}"
+              TextAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" Margin="5,0,0,0"
+              Foreground="{DynamicResource FamilyDataGridHeaderFontColor}" />
+                                <Thumb x:Name="PART_HeaderGripper" Style="{StaticResource ColumnGrip}" />
+                            </DockPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </UserControl.Resources>
     
     <Grid>
