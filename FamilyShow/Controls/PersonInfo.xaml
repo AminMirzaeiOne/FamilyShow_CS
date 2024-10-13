@@ -33,7 +33,13 @@
 
     <Border>
         <DockPanel x:Name="MainPanel">
-            
+            <!-- Header Panel-->
+            <DockPanel Margin="10,0,10,0" DockPanel.Dock="Top" Height="30" x:Name="HeaderPanel">
+                <!-- Star -->
+                <Path StrokeThickness="1.500000" Stroke="#ffffffff" StrokeMiterLimit="1.000000" Fill="#ff3952a3" Data="F1 M 9.816406,1.694336 L 12.351074,6.830078 L 18.018066,7.654297 L 13.918457,11.654297 L 14.886230,17.299805 L 9.816406,14.630859 L 4.746094,17.299805 L 5.713867,11.654297 L 1.611328,7.654297 L 7.281250,6.830078 L 9.816406,1.694336 Z" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                <TextBlock x:Name="NameHeader" Text="{Binding Path=Name, Mode=Default, FallbackValue=Name}" Style="{DynamicResource HeaderStyle}" FontWeight="Bold" Margin="5,0,0,0" VerticalAlignment="Center" Foreground="{DynamicResource HeaderFontColor}"/>
+                <Button Width="30" Content="_Back" Click="CloseButton_Click" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" DockPanel.Dock="Right" Height="15" x:Name="CloseButton" IsCancel="True" IsDefault="True" FontSize="10"/>
+            </DockPanel>
         </DockPanel>
     </Border>
 </UserControl>
