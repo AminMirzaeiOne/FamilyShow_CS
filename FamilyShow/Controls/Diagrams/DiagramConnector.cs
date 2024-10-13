@@ -163,6 +163,15 @@ namespace FamilyShow.Controls.Diagrams
             get { return start; }
         }
 
+        /// <summary>
+        /// Get the ending node.
+        /// </summary>
+        protected DiagramConnectorNode EndNode
+        {
+            get { return end; }
+        }
+
+
 
     }
 }
