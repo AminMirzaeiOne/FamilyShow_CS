@@ -44,6 +44,14 @@ namespace FamilyShow.Controls.FamilyDatas
             return (date != null && date.Value.ToShortDateString().Contains(this.filterText));
         }
 
+        /// <summary>
+        /// Return true if the filter contains the year in the specified date.
+        /// </summary>
+        public bool MatchesYear(DateTime? date)
+        {
+            return (date != null && date.Value.Year.ToString(CultureInfo.CurrentCulture).Contains(this.filterText));
+        }
+
     }
 
     public class FilterSortListView : SortListView
