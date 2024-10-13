@@ -180,6 +180,30 @@ namespace FamilyShow.Controls.Diagrams
             set { resourcePen = value; }
         }
 
+        /// <summary>
+        /// Create the connector line pen. The opacity is set based on
+        /// the current filtered state. The pen contains an animation
+        /// if the filtered state has changed.
+        /// </summary>
+        protected Pen Pen
+        {
+            get
+            {
+                // Make a copy of the resource pen so it can 
+                // be modified, the resource pen is frozen.
+                Pen connectorPen = this.ResourcePen.Clone();
+
+                // Set opacity based on the filtered state.
+                connectorPen.Brush.Opacity = (this.isFiltered) ? Const.OpacityFiltered : Const.OpacityNormal;
+
+                // Create animation if the filtered state has changed.
+                if (animation != null)
+                    connectorPen.Brush.BeginAnimation(Brush.OpacityProperty, animation);
+
+                return connectorPen;
+            }
+        }
+
 
 
     }
