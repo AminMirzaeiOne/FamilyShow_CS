@@ -85,4 +85,19 @@
     <SolidColorBrush x:Key="WelcomeBackgroundBrush" Color="#FF202020" />
     <SolidColorBrush x:Key="WelcomeHeaderFontColor" Color="#FFE6E6E6" />
 
+
+    <!-- This is a color setting for text -->
+    <SolidColorBrush x:Key="FontColor" Color="#FFE6E6E6" />
+    
+    <SolidColorBrush x:Key="HeaderFontColor" Color="#FFE6E6E6" />
+
+    <SolidColorBrush x:Key="InputFontColor" Color="#FFE6E6E6" />
+
+    <SolidColorBrush x:Key="GridHeaderFontColor" Color="#FF888888" />
+
+    <SolidColorBrush x:Key="AlternateFontColor" Color="#FF888888" />
+
+    <SolidColorBrush x:Key="SharedBirthdaysGroupHeaderColor" Color="#FFAAAAAA" />
+
+
 </ResourceDictionary>
