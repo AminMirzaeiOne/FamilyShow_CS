@@ -57,5 +57,10 @@
     <!-- Padding value for labels -->
     <Thickness x:Key="LabelPadding">5,8,5,2</Thickness>
 
+    <!-- SolidColorBrushes, LinearGradientBrushes, and DrawingBrushes-->
+
+    <!-- The Background Brush is used as the background for the Main Window -->
+    <SolidColorBrush x:Key="MainBackgroundBrush" Color="#FF202020" />
+
 
 </ResourceDictionary>
