@@ -8,6 +8,28 @@ using System.Windows.Interop;
 
 namespace FamilyShow
 {
+    public class FilterEntry
+    {
+        private string display;
+        private string extention;
+
+        public string Display
+        {
+            get { return display; }
+        }
+
+        public string Extention
+        {
+            get { return extention; }
+        }
+
+        public FilterEntry(string display, string extension)
+        {
+            this.display = display;
+            this.extention = extension;
+        }
+    }
+
     public class CommonDialog
     {
         #region fields
