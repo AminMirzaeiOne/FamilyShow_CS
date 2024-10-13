@@ -22,6 +22,14 @@
             <!-- Converter for disabling the death related textboxes -->
             <local:NotConverter x:Key="NotConverter"/>
 
+            <!-- Converter for showing/hiding the parents, spouses, and avatar section -->
+            <local:ComposingConverter x:Key="ComposingConverter">
+                <local:ComposingConverter.Converters>
+                    <local:NotConverter/>
+                    <local:BoolToVisibilityConverter/>
+                </local:ComposingConverter.Converters>
+            </local:ComposingConverter>
+
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
