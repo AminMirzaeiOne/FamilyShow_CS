@@ -31,7 +31,9 @@
 
     </UserControl.Resources>
 
-    <Grid>
+    <Border>
+        <DockPanel x:Name="MainPanel">
             
-    </Grid>
+        </DockPanel>
+    </Border>
 </UserControl>
