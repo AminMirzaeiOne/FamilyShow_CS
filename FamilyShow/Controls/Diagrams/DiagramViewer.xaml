@@ -119,5 +119,15 @@
                 <local:Diagram x:Name="Diagrams" />
             </Grid>
         </ScrollViewer>
+
+        <!-- zoom -->
+        <StackPanel Style="{StaticResource ZoomAreaStyle}" x:Name="ZoomSliderPanel">
+            <Border Style="{StaticResource SliderBorderStyle}">
+                <StackPanel>
+                    <Slider Style="{StaticResource ZoomSliderStyle}" x:Name="ZoomSlider" />
+                    <Label Style="{StaticResource ZoomLabelStyle}">Zoom</Label>
+                </StackPanel>
+            </Border>
+        </StackPanel>
     </Grid>
 </UserControl>
