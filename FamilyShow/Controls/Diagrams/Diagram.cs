@@ -273,5 +273,48 @@ namespace FamilyShow.Controls.Diagrams
             return size;
         }
 
+        /// <summary>
+        /// Draw the connector lines at a lower level (OnRender) instead
+        /// of creating visual tree objects.
+        /// </summary>
+        protected override void OnRender(DrawingContext drawingContext)
+        {
+#if DEBUG
+            if (displayBorder)
+            {
+                // Draws borders around the rows and groups.
+                foreach (DiagramRow row in rows)
+                {
+                    // Display row border.
+                    Rect bounds = new Rect(row.Location, row.DesiredSize);
+                    drawingContext.DrawRectangle(null, new Pen(Brushes.DarkKhaki, 1), bounds);
+
+                    foreach (DiagramGroup group in row.Groups)
+                    {
+                        // Display group border.
+                        bounds = new Rect(group.Location, group.DesiredSize);
+                        bounds.Offset(row.Location.X, row.Location.Y);
+                        bounds.Inflate(-1, -1);
+                        drawingContext.DrawRectangle(null, new Pen(Brushes.Gray, 1), bounds);
+                    }
+                }
+            }
+#endif
+
+            // Draw child connectors first, so marriage information appears on top.
+            foreach (DiagramConnector connector in logic.Connections)
+            {
+                if (connector.IsChildConnector)
+                    connector.Draw(drawingContext);
+            }
+
+            // Draw all other non-child connectors.
+            foreach (DiagramConnector connector in logic.Connections)
+            {
+                if (!connector.IsChildConnector)
+                    connector.Draw(drawingContext);
+            }
+        }
+
     }
 }
