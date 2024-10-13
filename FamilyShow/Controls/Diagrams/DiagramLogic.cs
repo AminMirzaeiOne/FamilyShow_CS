@@ -156,5 +156,29 @@ namespace FamilyShow.Controls.Diagrams
             return list;
         }
 
+        /// <summary>
+        /// Return a list of children for the people in the specified row.
+        /// </summary>
+        public static List<Person> GetChildren(DiagramRow row)
+        {
+            // List that is returned.
+            List<Person> list = new List<Person>();
+
+            // Get possible parents in the row.
+            List<Person> rowList = GetPrimaryAndRelatedPeople(row);
+
+            // Add each child to the list, make sure the child is only added once.
+            foreach (Person person in rowList)
+            {
+                foreach (Person child in person.Children)
+                {
+                    if (!list.Contains(child))
+                        list.Add(child);
+                }
+            }
+
+            return list;
+        }
+
     }
 }
