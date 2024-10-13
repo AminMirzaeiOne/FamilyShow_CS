@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 
 namespace FamilyShow.Controls.Diagrams
 {
@@ -65,6 +66,12 @@ namespace FamilyShow.Controls.Diagrams
         {
             // Return the number of nodes.
             get { return nodes.Count; }
+        }
+
+        protected override Visual GetVisualChild(int index)
+        {
+            // Return the requested node.
+            return nodes[index];
         }
 
     }
