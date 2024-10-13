@@ -217,4 +217,11 @@
     <SolidColorBrush x:Key="CategoryStrokeBrush" Color="#FFE6E6E6" />
     <SolidColorBrush x:Key="AxisBrush" Color="#FF979797" />
 
+    <!-- Family Data Brushes -->
+    <SolidColorBrush x:Key="FamilyDataFontColor" Color="#FFFFFFFF" />
+
+    <SolidColorBrush x:Key="FamilyEditListViewSelectedBrush" Color="#FFF16422" />
+
+    <SolidColorBrush x:Key="TextBlockForegroundBrush" Color="#FFFA6E15" />
+
 </ResourceDictionary>
