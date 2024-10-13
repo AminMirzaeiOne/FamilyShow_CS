@@ -856,4 +856,6 @@
     <Color x:Key="SiblingRightColor">#fff09822</Color>
     <Color x:Key="SiblingRightHoverColor">#ffffb842</Color>
 
+    <SolidColorBrush x:Key="PrimaryStarBrush" Color="{DynamicResource PrimaryStarColor}" />
+
 </ResourceDictionary>
