@@ -433,6 +433,12 @@
                 </DockPanel>
             </ControlTemplate>
 
+            <SolidColorBrush x:Key="WindowBackgroundBrush" Color="#FFF" />
+            <SolidColorBrush x:Key="SolidBorderBrush" Color="#888" />
+            <SolidColorBrush x:Key="DisabledForegroundBrush" Color="#888" />
+            <SolidColorBrush x:Key="DisabledBackgroundBrush" Color="#EEE" />
+            <SolidColorBrush x:Key="DisabledBorderBrush" Color="#AAA" />
+
 
 
         </ResourceDictionary>
