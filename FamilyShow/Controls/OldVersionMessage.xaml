@@ -12,5 +12,18 @@
         <Border Padding="5,0,5,0" x:Name="Header" Background="{DynamicResource BackgroundBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,1,1,0" CornerRadius="5,5,0,0" Height="35" >
             <TextBlock Padding="4,0,0,0" Text="Message" TextWrapping="Wrap" Foreground="{DynamicResource HeaderFontColor}" FontSize="18" FontWeight="Bold" x:Name="HeaderTextBlock" d:LayoutOverrides="Height" VerticalAlignment="Center"/>
         </Border>
+
+        <!-- Content -->
+        <Border BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,1,1,1" Background="{DynamicResource InputBackgroundBrush}">
+            <Grid Margin="0,10,0,10" x:Name="ContentGrid" Width="300">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="This file was created with an earlier version of Family.Show. It will be saved in a new format for use with this version. The new file’s name will end with .familyx and will bundle all your family photos, stories and tree into this single file!" TextWrapping="Wrap" Margin="10,0,10,0" Foreground="{DynamicResource InputFontColor}"/>
+                <CheckBox HorizontalAlignment="Left" VerticalAlignment="Top" Content="_Don't show me this message again" Grid.Row="1" Margin="10,10,10,0" x:Name="DontShowCheckBox" Foreground="{DynamicResource InputFontColor}"
+              IsChecked="{Binding Path=DontShowOldVersionMessage, ElementName=OldVersionMessageControl, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </Grid>
+        </Border>
     </StackPanel>
 </UserControl>
