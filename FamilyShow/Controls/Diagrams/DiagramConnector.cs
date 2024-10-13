@@ -155,6 +155,14 @@ namespace FamilyShow.Controls.Diagrams
             get { return null; }
         }
 
+        /// <summary>
+        /// Get the starting node.
+        /// </summary>
+        protected DiagramConnectorNode StartNode
+        {
+            get { return start; }
+        }
+
 
     }
 }
