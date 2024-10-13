@@ -330,6 +330,20 @@ namespace FamilyShow.Controls.Diagrams
         }
 #endif
 
+        /// <summary>
+        /// Reset all of the data associated with the diagram.
+        /// </summary>
+        private void Clear()
+        {
+            foreach (DiagramRow row in rows)
+            {
+                row.Clear();
+                this.RemoveVisualChild(row);
+            }
+
+            rows.Clear();
+            logic.Clear();
+        }
 
 
     }
