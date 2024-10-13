@@ -261,7 +261,11 @@
                 <TextBlock Text="Family Data" Style="{DynamicResource HeaderStyle}" FontWeight="Bold" Margin="5,0,0,0" VerticalAlignment="Center" Foreground="{DynamicResource HeaderFontColor}"/>
                 <Button Width="30" Content="_Back" Click="CloseButton_Click" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" DockPanel.Dock="Right" Height="15" x:Name="CloseButton" FontSize="10"/>
             </DockPanel>
-            
+
+            <!-- filter, list and chart area -->
+            <Border  CornerRadius="0,0,10,10" x:Name="BodyBorder" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,1,0,0" Background="{DynamicResource PanelGradientBrush}">
+                
+            </Border>
             
         </DockPanel> 
     </Border>
