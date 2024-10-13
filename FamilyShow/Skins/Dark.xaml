@@ -245,6 +245,7 @@
 
 
     <SolidColorBrush x:Key="StatisticsHeaderBackgroundBrush" Color="#004B536D" />
+    <SolidColorBrush x:Key="StatisticsHeaderBorderBrush" Color="#FFAAAAAA" />
 
 
 
