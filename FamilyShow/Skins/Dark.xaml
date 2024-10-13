@@ -99,5 +99,7 @@
 
     <SolidColorBrush x:Key="SharedBirthdaysGroupHeaderColor" Color="#FFAAAAAA" />
 
+    <!-- The Border Brush is used as the color for most borders -->
+    <SolidColorBrush x:Key="BorderBrush" Color="#FF747474" />
 
 </ResourceDictionary>
