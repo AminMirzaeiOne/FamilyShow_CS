@@ -1041,4 +1041,7 @@
         <GradientStop Color="#00000000" Offset="0.519" />
     </LinearGradientBrush>
 
+    <SolidColorBrush x:Key="DiagramToolTipBackgroundBrush" Color="#FF202020" />
+
+
 </ResourceDictionary>
