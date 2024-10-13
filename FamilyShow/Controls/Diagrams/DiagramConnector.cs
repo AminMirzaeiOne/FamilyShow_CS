@@ -139,6 +139,14 @@ namespace FamilyShow.Controls.Diagrams
             get { return true; }
         }
 
+        /// <summary>
+        /// Gets the married date for the connector. Can be null.
+        /// </summary>
+        virtual public DateTime? MarriedDate
+        {
+            get { return null; }
+        }
+
 
     }
 }
