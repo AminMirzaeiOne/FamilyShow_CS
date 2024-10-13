@@ -399,5 +399,22 @@ namespace FamilyShow.Controls.Diagrams
             this.Template = (ControlTemplate)FindResource(template);
         }
 
+        /// <summary>
+        /// Hide or show the group indicator for this node.
+        /// </summary>
+        private void UpdateGroupIndicator()
+        {
+            // Primary templates don't have the group xaml section.
+            if (this.type == NodeType.Primary)
+                return;
+
+            // Determine if the group indicator should be displayed.
+            bool isGrouping = ShouldDisplayGroupIndicator();
+
+            FrameworkElement element = this.Template.FindName("Group", this) as FrameworkElement;
+            if (element != null)
+                element.Visibility = isGrouping ? Visibility.Visible : Visibility.Collapsed;
+        }
+
     }
 }
