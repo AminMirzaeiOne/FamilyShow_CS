@@ -82,6 +82,7 @@
     <Compile Include="Controls\FamilyDatas\SharedBirthdays.xaml.cs">
       <DependentUpon>SharedBirthdays.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\FamilyDatas\SortListView.cs" />
     <Compile Include="Controls\NewUserControl.xaml.cs">
       <DependentUpon>NewUserControl.xaml</DependentUpon>
     </Compile>
