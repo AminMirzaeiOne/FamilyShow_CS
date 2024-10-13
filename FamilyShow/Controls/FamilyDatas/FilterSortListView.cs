@@ -52,6 +52,15 @@ namespace FamilyShow.Controls.FamilyDatas
             return (date != null && date.Value.Year.ToString(CultureInfo.CurrentCulture).Contains(this.filterText));
         }
 
+        /// <summary>
+        /// Return true if the filter contains the month in the specified date.
+        /// </summary>
+        public bool MatchesMonth(DateTime? date)
+        {
+            return (date != null && this.filterDate != null &&
+                date.Value.Month == this.filterDate.Value.Month);
+        }
+
     }
 
     public class FilterSortListView : SortListView
