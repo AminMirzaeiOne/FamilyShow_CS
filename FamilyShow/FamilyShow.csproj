@@ -201,7 +201,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="SampleFiles\Images\" />
     <Folder Include="Skins\" />
   </ItemGroup>
   <ItemGroup>
@@ -220,6 +219,18 @@
     <Resource Include="Images\ParagraphIncreaseIndentation.png" />
     <Resource Include="Images\ParagraphLeftJustify.png" />
     <Resource Include="Images\ParagraphRightJustify.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="SampleFiles\Images\Edward VII.jpg" />
+    <Resource Include="SampleFiles\Images\Edward VIII.jpg" />
+    <Resource Include="SampleFiles\Images\Elizabeth II.jpg" />
+    <Resource Include="SampleFiles\Images\George V.jpg" />
+    <Resource Include="SampleFiles\Images\George VI.jpg" />
+    <Resource Include="SampleFiles\Images\Margaret Rose.jpg" />
+    <Resource Include="SampleFiles\Images\Prince Charles.jpg" />
+    <Resource Include="SampleFiles\Images\Prince Henry.jpg" />
+    <Resource Include="SampleFiles\Images\Prince William.jpg" />
+    <Resource Include="SampleFiles\Images\Princess Diana.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
