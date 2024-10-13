@@ -248,5 +248,7 @@
     <SolidColorBrush x:Key="StatisticsHeaderBorderBrush" Color="#FFAAAAAA" />
 
 
+    <SolidColorBrush x:Key="FlowDocumentFontColor" Color="#FFFFFF" />
+
 
 </ResourceDictionary>
