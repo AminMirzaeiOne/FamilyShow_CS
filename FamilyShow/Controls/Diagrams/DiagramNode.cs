@@ -8,6 +8,7 @@ using System.Windows;
 using System.Globalization;
 using System.Windows.Media.Animation;
 using System.Windows.Media;
+using System.Windows.Controls;
 
 namespace FamilyShow.Controls.Diagrams
 {
@@ -25,7 +26,7 @@ namespace FamilyShow.Controls.Diagrams
         SiblingRight
     }
 
-    public class DiagramNode
+    public class DiagramNode : Button
     {
         private static class Const
         {
@@ -356,6 +357,22 @@ namespace FamilyShow.Controls.Diagrams
             UpdateGroupIndicator();
 
             base.OnApplyTemplate();
+        }
+
+        /// <summary>
+        /// Return the brush resouse based on the node type.
+        /// </summary>
+        private Brush GetBrushResource(string part)
+        {
+            // Format string, the resource is in the XAML file.
+            string resourceName = string.Format(
+                CultureInfo.InvariantCulture, "{0}{1}{2}{3}",
+                (person.Gender == Gender.Female) ? "Female" : "Male",
+                this.type.ToString(),
+                this.person.IsLiving ? "Living" : "Deceased",
+                part);
+
+            return (Brush)TryFindResource(resourceName);
         }
     }
 }
