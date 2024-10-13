@@ -28,6 +28,14 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+
+
+        <!-- style for read-only cells (age) -->
+        <Style x:Key="AgeTextBlockStyle" TargetType="{x:Type TextBlock}" >
+            <Setter Property="Background" Value="#00ffffff" />
+            <Setter Property="Foreground" Value="{DynamicResource FamilyDataFontColor}"/>
+        </Style>
+
     </UserControl.Resources>
     
     <Grid>
