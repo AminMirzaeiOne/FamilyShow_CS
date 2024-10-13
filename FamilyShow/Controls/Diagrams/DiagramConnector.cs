@@ -171,6 +171,15 @@ namespace FamilyShow.Controls.Diagrams
             get { return end; }
         }
 
+        /// <summary>
+        /// Get or set the pen that specifies the connector line.
+        /// </summary>
+        protected Pen ResourcePen
+        {
+            get { return resourcePen; }
+            set { resourcePen = value; }
+        }
+
 
 
     }
