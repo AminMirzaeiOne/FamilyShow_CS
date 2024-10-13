@@ -199,5 +199,11 @@ namespace FamilyShow.Controls.Diagrams
             base.OnInitialized(e);
         }
 
+        protected override int VisualChildrenCount
+        {
+            // Return the number of rows.
+            get { return rows.Count; }
+        }
+
     }
 }
