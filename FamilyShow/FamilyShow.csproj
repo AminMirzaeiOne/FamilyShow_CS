@@ -71,6 +71,7 @@
       <DependentUpon>FamilyData.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\FamilyDatas\FamilyDisplayListView.cs" />
+    <Compile Include="Controls\FamilyDatas\FamilyEditListView.cs" />
     <Compile Include="Controls\NewUserControl.xaml.cs">
       <DependentUpon>NewUserControl.xaml</DependentUpon>
     </Compile>
