@@ -77,4 +77,7 @@
         <GradientStop Color="#FF545454" Offset="1" />
     </LinearGradientBrush>
 
+    <SolidColorBrush x:Key="PersonInfoBackgroundBrush" Color="#FF282828" />
+
+
 </ResourceDictionary>
