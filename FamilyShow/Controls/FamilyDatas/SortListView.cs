@@ -10,6 +10,37 @@ using System.Windows.Data;
 
 namespace FamilyShow.Controls.FamilyDatas
 {
+
+    /// <summary>
+    /// A column in the SortListView object that allows the SortProperty and 
+    /// SortStyle to be specified in XAML. The SortProperty specifies the 
+    /// underlying bound property that is used when sorting and SortStyle
+    /// specifies the resource that is used for the column header.
+    /// </summary>
+    public class SortListViewColumn : GridViewColumn
+    {
+        public string SortProperty
+        {
+            get { return (string)GetValue(SortPropertyProperty); }
+            set { SetValue(SortPropertyProperty, value); }
+        }
+
+        public static readonly DependencyProperty SortPropertyProperty =
+            DependencyProperty.Register("SortProperty",
+            typeof(string), typeof(SortListViewColumn));
+
+        public string SortStyle
+        {
+            get { return (string)GetValue(SortStyleProperty); }
+            set { SetValue(SortStyleProperty, value); }
+        }
+
+        public static readonly DependencyProperty SortStyleProperty =
+            DependencyProperty.Register("SortStyle",
+            typeof(string), typeof(SortListViewColumn));
+    }
+
+
     public class SortListView : ListView
     {
         // The current column that is sorted.
