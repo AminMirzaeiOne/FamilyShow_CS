@@ -302,6 +302,32 @@ namespace FamilyShow.Controls.Diagrams
             }
         }
 
+        /// <summary>
+        /// Connector between a parent and child.
+        /// </summary>
+        public class ChildDiagramConnector : DiagramConnector
+        {
+            public ChildDiagramConnector(DiagramConnectorNode startConnector,
+                DiagramConnectorNode endConnector) : base(startConnector, endConnector)
+            {
+                // Get the pen that is used to draw the connection line.
+                this.ResourcePen = (Pen)Application.Current.TryFindResource("ChildConnectionPen");
+            }
+
+            /// <summary>
+            /// Draw the connection between the two nodes.
+            /// </summary>
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:ValidateArgumentsOfPublicMethods")]
+            override public bool Draw(DrawingContext drawingContext)
+            {
+                if (!base.Draw(drawingContext))
+                    return false;
+
+                drawingContext.DrawLine(this.Pen, this.StartNode.Center, this.EndNode.Center);
+                return true;
+            }
+        }
+
 
 
     }
