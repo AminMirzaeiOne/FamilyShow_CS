@@ -230,4 +230,10 @@
         <GradientStop Color="#D409242A" Offset="1" />
     </LinearGradientBrush>
 
+    <LinearGradientBrush x:Key="SelectedHeaderBackgroundBrush" StartPoint="0.499999,0.00908135" EndPoint="0.499999,1.17275">
+        <GradientStop Color="#D44F5E8E" Offset="0" />
+        <GradientStop Color="#D44F5E8E" Offset="0.0236486" />
+        <GradientStop Color="#D44B5378" Offset="1" />
+    </LinearGradientBrush>
+
 </ResourceDictionary>
