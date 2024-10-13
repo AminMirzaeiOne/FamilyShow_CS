@@ -192,9 +192,25 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Images\" />
     <Folder Include="SampleFiles\" />
     <Folder Include="Skins\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\CharacterGrowFont.png" />
+    <Resource Include="Images\CharacterShrinkFont.png" />
+    <Resource Include="Images\EditCopy.png" />
+    <Resource Include="Images\EditCut.png" />
+    <Resource Include="Images\EditPaste.png" />
+    <Resource Include="Images\EditRedo.png" />
+    <Resource Include="Images\EditUndo.png" />
+    <Resource Include="Images\ListBullets.png" />
+    <Resource Include="Images\ListNumbering.png" />
+    <Resource Include="Images\ParagraphCenterJustify.png" />
+    <Resource Include="Images\ParagraphDecreaseIndentation.png" />
+    <Resource Include="Images\ParagraphFullJustify.png" />
+    <Resource Include="Images\ParagraphIncreaseIndentation.png" />
+    <Resource Include="Images\ParagraphLeftJustify.png" />
+    <Resource Include="Images\ParagraphRightJustify.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
