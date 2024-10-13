@@ -68,6 +68,9 @@
             </Grid>
         </Border>
 
+        <!-- Footer -->
+        <Border Background="{DynamicResource BackgroundBrush}" Height="35" x:Name="Footer" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,0,1,1" CornerRadius="0,0,5,5"/>
+
 
     </StackPanel>
 </UserControl>
