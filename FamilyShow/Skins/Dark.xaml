@@ -238,5 +238,7 @@
 
     <SolidColorBrush x:Key="HeaderBorderBrush" Color="#FF979797" />
 
+    <SolidColorBrush x:Key="FamilyDataGridHeaderFontColor" Color="#FFFFFFFF" />
+    <SolidColorBrush x:Key="FamilyDataGridSelectedHeaderFontColor" Color="#FFFFFFFF" />
 
 </ResourceDictionary>
