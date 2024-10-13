@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 
 namespace FamilyShow.Controls.Diagrams
 {
@@ -63,5 +64,39 @@ namespace FamilyShow.Controls.Diagrams
         }
 
         #endregion
+
+        #region overrides
+
+        protected override Size MeasureOverride(Size availableSize)
+        {
+            // Let each group determine how large they want to be.
+            Size size = new Size(double.PositiveInfinity, double.PositiveInfinity);
+            foreach (DiagramGroup group in groups)
+                group.Measure(size);
+
+            // Return the total size of the row.
+            return ArrangeGroups(false);
+        }
+
+        protected override Size ArrangeOverride(Size finalSize)
+        {
+            // Arrange the groups in the row, return the total size.
+            return ArrangeGroups(true);
+        }
+
+        protected override int VisualChildrenCount
+        {
+            // Return the number of groups.
+            get { return groups.Count; }
+        }
+
+        protected override Visual GetVisualChild(int index)
+        {
+            // Return the requested group.
+            return groups[index];
+        }
+
+        #endregion
+
     }
 }
