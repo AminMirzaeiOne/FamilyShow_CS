@@ -1009,4 +1009,12 @@
         <GradientStop Color="#ffffb842" Offset="0.5" />
     </LinearGradientBrush>
 
+    <!-- Spouse group indicator spouse -->
+    <SolidColorBrush x:Key="SpouseGroupFill" Color="{DynamicResource SpouseColor}" />
+    <LinearGradientBrush x:Key="SpouseGroupStroke" EndPoint="1,0.5" StartPoint="0,0.5">
+        <GradientStop Color="#00000000" Offset="0.043" />
+        <GradientStop Color="{DynamicResource SpouseColor}" Offset="0.524" />
+        <GradientStop Color="#00000000" Offset="0.519" />
+    </LinearGradientBrush>
+
 </ResourceDictionary>
