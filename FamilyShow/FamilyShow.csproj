@@ -67,6 +67,9 @@
     <Compile Include="Controls\Diagrams\DiagramViewer.xaml.cs">
       <DependentUpon>DiagramViewer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\FamilyDatas\FamilyData.xaml.cs">
+      <DependentUpon>FamilyData.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\NewUserControl.xaml.cs">
       <DependentUpon>NewUserControl.xaml</DependentUpon>
     </Compile>
@@ -86,6 +89,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Diagrams\DiagramViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\FamilyDatas\FamilyData.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -153,7 +160,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controls\FamilyData\" />
     <Folder Include="Images\" />
     <Folder Include="SampleFiles\" />
     <Folder Include="Skins\" />
