@@ -71,6 +71,11 @@
     Text="{Binding Path=BirthDate, Converter={StaticResource DateFormattingConverter}}" />
         </DataTemplate>
 
+        <!-- birth place column -->
+        <DataTemplate x:Key="BirthPlaceColumnTemplate">
+            <TextBox Style="{StaticResource TextBoxStyle}" Text="{Binding Path=BirthPlace}" />
+        </DataTemplate>
+
     </UserControl.Resources>
     
     <Grid>
