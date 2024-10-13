@@ -167,5 +167,19 @@ namespace FamilyShow.Controls.Diagrams
 
         #endregion
 
+        public Diagram()
+        {
+            // Init the diagram logic, which handles all of the layout logic.
+            logic = new DiagramLogic();
+            logic.NodeClickHandler = new RoutedEventHandler(OnNodeClick);
+
+            // Can have an empty People collection when in design tools such as Blend.
+            if (logic.Family != null)
+            {
+                logic.Family.ContentChanged += new EventHandler<ContentChangedEventArgs>(OnFamilyContentChanged);
+                logic.Family.CurrentChanged += new EventHandler(OnFamilyCurrentChanged);
+            }
+        }
+
     }
 }
