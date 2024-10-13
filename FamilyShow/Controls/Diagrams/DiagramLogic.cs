@@ -364,6 +364,71 @@ namespace FamilyShow.Controls.Diagrams
             return row;
         }
 
+        /// <summary>
+        /// Create the parent row. The row contains a group for each parent. 
+        /// Each groups contains the parent, spouses and siblings.
+        /// </summary>
+        public DiagramRow CreateParentRow(Collection<Person> parents, double scale, double scaleRelated)
+        {
+            // Set up the row.
+            DiagramRow row = new DiagramRow();
+
+            int groupCount = 0;
+
+            foreach (Person person in parents)
+            {
+                // Each parent is in their group, the group contains the parent,
+                // spouses and siblings.
+                DiagramGroup group = new DiagramGroup();
+                row.Add(group);
+
+                // Determine if this is a left or right oriented group.
+                bool left = (groupCount++ % 2 == 0) ? true : false;
+
+                // Parent.
+                if (!personLookup.ContainsKey(person))
+                {
+                    DiagramNode node = CreateNode(person, NodeType.Related, true, scale);
+                    group.Add(node);
+                    personLookup.Add(node.Person, new DiagramConnectorNode(node, group, row));
+                }
+
+                // Current spouses.
+                Collection<Person> currentSpouses = person.CurrentSpouses;
+                RemoveDuplicates(currentSpouses, parents);
+                AddSpouseNodes(person, row, group, currentSpouses,
+                    NodeType.Spouse, scaleRelated, true);
+
+                // Previous spouses.
+                Collection<Person> previousSpouses = person.PreviousSpouses;
+                RemoveDuplicates(previousSpouses, parents);
+                AddSpouseNodes(person, row, group, previousSpouses,
+                    NodeType.Spouse, scaleRelated, false);
+
+                // Siblings.
+                Collection<Person> siblings = person.Siblings;
+                AddSiblingNodes(row, group, siblings, NodeType.Sibling, scaleRelated);
+
+                // Half siblings.
+                Collection<Person> halfSiblings = person.HalfSiblings;
+                AddSiblingNodes(row, group, halfSiblings, left ?
+                    NodeType.SiblingLeft : NodeType.SiblingRight, scaleRelated);
+
+                // Connections.
+                AddChildConnections(person);
+                AddChildConnections(currentSpouses);
+                AddChildConnections(previousSpouses);
+
+                if (left)
+                    group.Reverse();
+            }
+
+            // Add connections that span across groups.
+            AddSpouseConnections(parents);
+
+            return row;
+        }
+
 
 
 
