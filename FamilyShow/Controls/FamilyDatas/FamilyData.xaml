@@ -60,6 +60,11 @@
             <TextBox Style="{StaticResource TextBoxStyle}" Text="{Binding Path=LastName}" />
         </DataTemplate>
 
+        <!-- age column -->
+        <DataTemplate x:Key="AgeColumnTemplate">
+            <TextBlock Style="{StaticResource AgeTextBlockStyle}" Text="{Binding Path=Age}"/>
+        </DataTemplate>
+
     </UserControl.Resources>
     
     <Grid>
