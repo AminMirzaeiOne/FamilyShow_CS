@@ -901,4 +901,10 @@
         <GradientStop Color="#fff09822" Offset="0.514" />
     </LinearGradientBrush>
 
+    <LinearGradientBrush x:Key="FemaleSiblingLeftDeceasedHoverFill" EndPoint="1,0.5" StartPoint="0,0.5" Opacity="0.50">
+        <GradientStop Color="#ff87b7e8" Offset="0.019" />
+        <GradientStop Color="#ffffb842" Offset="0.51" />
+        <GradientStop Color="#ff87b7e8" Offset="0.5" />
+    </LinearGradientBrush>
+
 </ResourceDictionary>
