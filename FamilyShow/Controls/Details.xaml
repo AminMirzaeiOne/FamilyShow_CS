@@ -58,6 +58,52 @@
                 <TextBlock Text="{Binding Path=Name, Mode=Default}"/>
             </DataTemplate>
 
+            <!-- Animation for expanding the Details Add section -->
+            <Storyboard x:Key="ExpandDetailsAdd" Completed="ExpandDetailsAdd_StoryboardCompleted">
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="DetailsAdd" Storyboard.TargetProperty="(FrameworkElement.Height)">
+                    <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                    <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="300"/>
+                </DoubleAnimationUsingKeyFrames>
+                <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="DetailsAdd" Storyboard.TargetProperty="(UIElement.Visibility)">
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00.3000000" Value="{x:Static Visibility.Visible}"/>
+                </ObjectAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="DetailsInfo" Storyboard.TargetProperty="(FrameworkElement.Height)">
+                    <SplineDoubleKeyFrame KeyTime="00:00:00" Value="300"/>
+                    <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="225"/>
+                </DoubleAnimationUsingKeyFrames>
+                <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="DetailsEdit" Storyboard.TargetProperty="(UIElement.Visibility)">
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Collapsed}"/>
+                </ObjectAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="DetailsInfo" Storyboard.TargetProperty="(UIElement.Opacity)">
+                    <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+                    <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0.2"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="DetailsList" Storyboard.TargetProperty="(UIElement.Opacity)">
+                    <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+                    <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0.2"/>
+                </DoubleAnimationUsingKeyFrames>
+                <BooleanAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="EditButton" Storyboard.TargetProperty="(UIElement.IsEnabled)">
+                    <DiscreteBooleanKeyFrame KeyTime="00:00:00" Value="False"/>
+                </BooleanAnimationUsingKeyFrames>
+                <BooleanAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="FamilyMemberAddButton" Storyboard.TargetProperty="(UIElement.IsEnabled)">
+                    <DiscreteBooleanKeyFrame KeyTime="00:00:00" Value="False"/>
+                </BooleanAnimationUsingKeyFrames>
+                <BooleanAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="AddButton" Storyboard.TargetProperty="(Button.IsDefault)">
+                    <DiscreteBooleanKeyFrame KeyTime="00:00:00.3000000" Value="True"/>
+                </BooleanAnimationUsingKeyFrames>
+                <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="DetailsEditRelationship" Storyboard.TargetProperty="(UIElement.Visibility)">
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Collapsed}"/>
+                </ObjectAnimationUsingKeyFrames>
+                <BooleanAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="EditRelationshipsButton" Storyboard.TargetProperty="(UIElement.IsEnabled)">
+                    <DiscreteBooleanKeyFrame KeyTime="00:00:00" Value="False"/>
+                </BooleanAnimationUsingKeyFrames>
+                <BooleanAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="InfoButton" Storyboard.TargetProperty="(UIElement.IsEnabled)">
+                    <DiscreteBooleanKeyFrame KeyTime="00:00:00" Value="False"/>
+                </BooleanAnimationUsingKeyFrames>
+            </Storyboard>
+
+
 
 
         </ResourceDictionary>
