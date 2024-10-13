@@ -25,5 +25,11 @@
               IsChecked="{Binding Path=DontShowOldVersionMessage, ElementName=OldVersionMessageControl, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
         </Border>
+
+        <!-- Footer -->
+        <Border Background="{DynamicResource BackgroundBrush}" Height="35" x:Name="Footer" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,0,1,1" CornerRadius="0,0,5,5">
+            <Button Content="Continue" x:Name="ContinueButton" Click="ContinueButton_Click"/>
+        </Border>
+
     </StackPanel>
 </UserControl>
