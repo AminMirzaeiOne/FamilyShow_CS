@@ -54,7 +54,22 @@
         </DataTemplate>
     </UserControl.Resources>
 
-    <Grid>
-            
-    </Grid>
+
+    <DockPanel>
+        <ListBox x:Name="GroupedItemsControl"
+           DockPanel.Dock="Top"
+           Background="{x:Null}"
+           BorderThickness="0,0,0,0"
+           ItemContainerStyle="{StaticResource GroupedListBoxItem}"
+           ItemTemplate="{StaticResource ItemDataTemplate}"
+           ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+           ScrollViewer.VerticalScrollBarVisibility="Auto"
+           VerticalAlignment="Top"
+           SelectionChanged="GroupedListBox_SelectionChanged">
+            <ListBox.GroupStyle>
+                <GroupStyle  HeaderTemplate="{StaticResource HeaderTemplate}" />
+            </ListBox.GroupStyle>
+        </ListBox>
+    </DockPanel>
+
 </UserControl>
