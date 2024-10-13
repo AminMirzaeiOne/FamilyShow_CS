@@ -19,6 +19,9 @@
             <!-- Converter for showing/hiding features based on boolean property -->
             <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
 
+            <!-- Converter for disabling the death related textboxes -->
+            <local:NotConverter x:Key="NotConverter"/>
+
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
