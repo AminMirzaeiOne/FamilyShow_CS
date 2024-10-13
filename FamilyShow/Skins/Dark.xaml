@@ -49,4 +49,7 @@
         <GradientStop Color="#00FFFFFF" Offset="0.98" />
     </LinearGradientBrush>
 
+    <SolidColorBrush x:Key="SolidBorderBrush" Color="#888" />
+
+
 </ResourceDictionary>
