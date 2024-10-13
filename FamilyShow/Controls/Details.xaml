@@ -487,6 +487,46 @@
                 </Setter>
             </Style>
 
+            <DataTemplate x:Key="ExistPersonTemplate">
+                <DataTemplate.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="#FF1F3066" />
+                    </Style>
+                </DataTemplate.Resources>
+                <HeaderedItemsControl Header="{Binding Path=FullName}" Foreground="#FF1F3066" Margin="5,5,5,5" Style="{DynamicResource HeaderedItemsControlStyle}">
+                    <TextBlock x:Name="BirthDatePanel" Text="{Binding Path=BirthDateAndPlace}" TextWrapping="Wrap" Margin="0,0,0,5" />
+                    <TextBlock TextWrapping="Wrap" x:Name="ParentsDatePanel" Margin="0,0,0,5">
+      <Run local:BindableExtender.BindableText="{Binding Path=ParentRelationshipText}" /><Run Text=" of " /><Run local:BindableExtender.BindableText="{Binding Path=ParentsText}" />
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" x:Name="SiblingsDatePanel" Margin="0,0,0,5">
+      <Run local:BindableExtender.BindableText="{Binding Path=SiblingRelationshipText}" /><Run Text=" to " /><Run local:BindableExtender.BindableText="{Binding Path=SiblingsText}" />
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" x:Name="SpousesDatePanel" Margin="0,0,0,5">
+      <Run local:BindableExtender.BindableText="{Binding Path=SpouseRelationshipText}" /><Run Text=" to " /><Run local:BindableExtender.BindableText="{Binding Path=SpousesText}" />
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" x:Name="ChildrenDatePanel" Margin="0,0,0,5">
+      <Run local:BindableExtender.BindableText="{Binding Path=ChildRelationshipText}" /><Run Text=" to " /><Run local:BindableExtender.BindableText="{Binding Path=ChildrenText}" />
+                    </TextBlock>
+                </HeaderedItemsControl>
+                <DataTemplate.Triggers>
+                    <DataTrigger Binding="{Binding Path=BirthDate}" Value="{x:Null}">
+                        <Setter TargetName="BirthDatePanel" Property="Visibility" Value="Collapsed" />
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding Path=Parents.Count}" Value="0">
+                        <Setter TargetName="ParentsDatePanel" Property="Visibility" Value="Collapsed" />
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding Path=Siblings.Count}" Value="0">
+                        <Setter TargetName="SiblingsDatePanel" Property="Visibility" Value="Collapsed" />
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding Path=Spouses.Count}" Value="0">
+                        <Setter TargetName="SpousesDatePanel" Property="Visibility" Value="Collapsed" />
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding Path=Children.Count}" Value="0">
+                        <Setter TargetName="ChildrenDatePanel" Property="Visibility" Value="Collapsed" />
+                    </DataTrigger>
+                </DataTemplate.Triggers>
+            </DataTemplate>
+
 
 
         </ResourceDictionary>
