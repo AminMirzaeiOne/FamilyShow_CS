@@ -62,5 +62,7 @@
     <!-- The Background Brush is used as the background for the Main Window -->
     <SolidColorBrush x:Key="MainBackgroundBrush" Color="#FF202020" />
 
+    <!-- The Background Brush is used as the background for the Headers and Footers -->
+    <SolidColorBrush x:Key="BackgroundBrush" Color="#FF202020" />
 
 </ResourceDictionary>
