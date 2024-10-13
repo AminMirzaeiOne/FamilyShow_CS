@@ -1402,5 +1402,8 @@
         </GradientBrush.GradientStops>
     </LinearGradientBrush>
 
+    <SolidColorBrush x:Key="GlyphBrush" Color="#444" />
+
+
 
 </ResourceDictionary>
