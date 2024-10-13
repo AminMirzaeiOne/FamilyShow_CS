@@ -8,6 +8,7 @@ using FamilyShowLib;
 using System.Windows.Threading;
 using System.Windows.Media;
 using System.Windows.Controls;
+using System.Windows.Media.Animation;
 
 namespace FamilyShow.Controls.Diagrams
 {
@@ -376,6 +377,32 @@ namespace FamilyShow.Controls.Diagrams
 
             // Let other controls know the diagram has been repopulated.
             OnDiagramPopulated();
+        }
+
+        /// <summary>
+        /// The animation pause timer is complete, finish populating the diagram.
+        /// </summary>
+        void OnAnimationTimer(object sender, EventArgs e)
+        {
+            // Turn off the timer.
+            animationTimer.IsEnabled = false;
+
+            // Fade each node into view.
+            foreach (DiagramConnectorNode connector in logic.PersonLookup.Values)
+            {
+                if (connector.Node.Visibility != Visibility.Visible)
+                {
+                    connector.Node.Visibility = Visibility.Visible;
+                    connector.Node.BeginAnimation(Diagram.OpacityProperty,
+                        new DoubleAnimation(0, 1,
+                        App.GetAnimationDuration(Const.NodeFadeInDuration)));
+                }
+            }
+
+            // Redraw connector lines.
+            this.InvalidateVisual();
+
+            populating = false;
         }
 
 
