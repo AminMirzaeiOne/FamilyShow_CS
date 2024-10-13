@@ -9,6 +9,7 @@ namespace FamilyShow.Controls.FamilyDatas
     public class FilterSortListView : SortListView
     {
         private delegate void FilterDelegate();
+        private Filter filter = new Filter();
 
     }
 }
