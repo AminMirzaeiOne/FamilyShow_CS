@@ -14,6 +14,11 @@
 
             <!-- Converter for displaying the the first name with an apostrophe. -->
             <local:FirstNamePossessiveFormConverter x:Key="FirstNamePossessiveFormConverter"/>
+
+
+            <!-- Converter for showing/hiding features based on boolean property -->
+            <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
