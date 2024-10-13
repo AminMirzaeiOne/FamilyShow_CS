@@ -454,6 +454,22 @@ namespace FamilyShow.Controls.Diagrams
             }
         }
 
+        /// <summary>
+        /// Add connections between the parent and parent’s children.
+        /// </summary>
+        private void AddChildConnections(Person parent)
+        {
+            foreach (Person child in parent.Children)
+            {
+                if (personLookup.ContainsKey(parent) &&
+                    personLookup.ContainsKey(child))
+                {
+                    connections.Add(new ChildDiagramConnector(
+                        personLookup[parent], personLookup[child]));
+                }
+            }
+        }
+
 
 
     }
