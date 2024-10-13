@@ -330,6 +330,19 @@
         </Setter>
     </Style>
 
+    <ControlTemplate x:Key="FamilyListViewItemTemplate" TargetType='{x:Type ListViewItem}'>
+        <Grid SnapsToDevicePixels="True" Margin="0,3,0,0">
+            <Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" />
+            <GridViewRowPresenter TextBlock.Foreground="{DynamicResource ListViewFontColor}" TextBlock.FontSize="11" Content="{TemplateBinding Content}" Columns="{TemplateBinding GridView.ColumnCollection}" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <!-- Change IsSelected SelectedListBoxBrush to set the selection color for the items -->
+            <Trigger Property="IsSelected" Value="true">
+                <Setter Property="Background" Value="{DynamicResource SelectedListBoxBrush}" TargetName="Border" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
 
 
 
