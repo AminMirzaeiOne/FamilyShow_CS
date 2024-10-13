@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\Diagrams\Diagram.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="ValueConverters.cs" />
     <Page Include="MainWindow.xaml">
@@ -105,7 +106,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controls\Diagram\" />
     <Folder Include="Images\" />
     <Folder Include="SampleFiles\" />
     <Folder Include="Skins\" />
