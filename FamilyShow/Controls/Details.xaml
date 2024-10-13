@@ -39,6 +39,13 @@
                 </ObjectDataProvider.MethodParameters>
             </ObjectDataProvider>
 
+            <!-- Data provider for binding to the spouse modifier enum values -->
+            <ObjectDataProvider x:Key="SpouseStatusEnumDS" ObjectType="{x:Type sys:Enum}" MethodName="GetValues">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="Microsoft.FamilyShowLib:SpouseModifier" />
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+
 
 
         </ResourceDictionary>
