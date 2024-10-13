@@ -955,4 +955,12 @@
     <SolidColorBrush x:Key="MaleSiblingDeceasedStroke" Color="{DynamicResource SiblingColor}" />
     <SolidColorBrush x:Key="MaleSiblingDeceasedHoverFill" Color="{DynamicResource SiblingHoverColor}" Opacity="0.50" />
 
+    <!-- Male sibling left brushes -->
+    <LinearGradientBrush x:Key="MaleSiblingLeftLivingFill" EndPoint="1,0.5" StartPoint="0,0.5">
+        <GradientStop Color="#ff6797c8" Offset="0" />
+        <GradientStop Color="#fff09822" Offset="1" />
+        <GradientStop Color="#fff09822" Offset="0.505" />
+        <GradientStop Color="#ff6797c8" Offset="0.5" />
+    </LinearGradientBrush>
+
 </ResourceDictionary>
