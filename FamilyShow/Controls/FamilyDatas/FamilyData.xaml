@@ -6,6 +6,12 @@
              xmlns:local="clr-namespace:FamilyShow.Controls.FamilyDatas"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    
+    <UserControl.Resources>
+        <!-- used when editing a date cell -->
+        <local:DateFormattingConverter x:Key="DateFormattingConverter"/>
+    </UserControl.Resources>
+    
     <Grid>
             
     </Grid>
