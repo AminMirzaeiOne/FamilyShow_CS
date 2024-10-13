@@ -824,5 +824,10 @@
         </Grid>
     </DataTemplate>
 
+    <!-- TagsList ItemTemplate-->
+    <DataTemplate x:Key="TagsItemTemplate">
+        <TextBlock Text="{Binding}" Foreground="{StaticResource FontColor}" />
+    </DataTemplate>
+
 
 </ResourceDictionary>
