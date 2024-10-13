@@ -416,5 +416,45 @@ namespace FamilyShow.Controls.Diagrams
                 element.Visibility = isGrouping ? Visibility.Visible : Visibility.Collapsed;
         }
 
+        /// <summary>
+        /// Return true if the group indicator should be displayed.
+        /// </summary>
+        private bool ShouldDisplayGroupIndicator()
+        {
+            // Primary and related nodes never display the group indicator.
+            if (this.type == NodeType.Primary || this.type == NodeType.Related)
+                return false;
+
+            bool show = false;
+            switch (this.type)
+            {
+                // Spouse - if have parents, siblings, or ex spouses.
+                case NodeType.Spouse:
+                    if (this.person.Parents.Count > 0 ||
+                        this.person.Siblings.Count > 0 ||
+                        this.person.PreviousSpouses.Count > 0)
+                        show = true;
+                    break;
+
+                // Sibling - if have spouse, or children.
+                case NodeType.Sibling:
+                    if (this.person.Spouses.Count > 0 ||
+                        this.person.Children.Count > 0)
+                        show = true;
+                    break;
+
+                // Half sibling - like sibling, but also inherits the 
+                // group status from all parents.
+                case NodeType.SiblingLeft:
+                case NodeType.SiblingRight:
+                    if (this.person.Spouses.Count > 0 ||
+                        this.person.Children.Count > 0)
+                        show = true;
+                    break;
+            }
+
+            return show;
+        }
+
     }
 }
