@@ -205,6 +205,23 @@
             </Setter>
         </Style>
 
+        <Style x:Key="FirstColumnGridViewColumnHeader" BasedOn="{StaticResource FamilyDataGridViewColumnHeader}" TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="GridViewColumnHeader.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border x:Name="Bd" Style="{DynamicResource FirstColumnHeaderStyle}">
+                            <TextBlock
+            Text="{TemplateBinding GridViewColumnHeader.Content}"
+            TextAlignment="Left"
+            VerticalAlignment="Center"
+            Foreground="{DynamicResource FamilyDataGridHeaderFontColor}"
+            FontWeight="Bold"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </UserControl.Resources>
     
     <Grid>
