@@ -70,6 +70,31 @@ namespace FamilyShow.Controls.FamilyDatas
                 date.Value.Day == this.filterDate.Value.Day);
         }
 
+        /// <summary>
+        /// Return true if the filter contains the specified age. The filter can 
+        /// represent a single age (10), a range (10-20), or an ending (10+).
+        /// </summary>
+        public bool Matches(int? age)
+        {
+            if (age == null)
+                return false;
+
+            // Check single age.
+            if (this.minimumAge != null && age.Value == this.minimumAge.Value)
+                return true;
+
+            // Check for a range.
+            if (this.minimumAge != null && this.maximumAge != null &&
+                age.Value >= this.minimumAge && age <= this.maximumAge)
+                return true;
+
+            // Check for an ending age.
+            if (this.minimumAge == null && this.maximumAge != null && age.Value >= this.maximumAge)
+                return true;
+
+            return false;
+        }
+
     }
 
     public class FilterSortListView : SortListView
