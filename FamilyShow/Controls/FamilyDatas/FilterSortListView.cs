@@ -95,6 +95,25 @@ namespace FamilyShow.Controls.FamilyDatas
             return false;
         }
 
+        /// <summary>
+        /// Parse the specified filter text.
+        /// </summary>
+        public void Parse(string text)
+        {
+            // Initialize fields.
+            this.filterText = "";
+            this.filterDate = null;
+            this.minimumAge = null;
+            this.maximumAge = null;
+
+            // Store the filter text.
+            this.filterText = string.IsNullOrEmpty(text) ? "" : text.ToLower(CultureInfo.CurrentCulture).Trim();
+
+            // Parse date and age.
+            ParseDate();
+            ParseAge();
+        }
+
     }
 
     public class FilterSortListView : SortListView
