@@ -30,6 +30,17 @@
                 </local:ComposingConverter.Converters>
             </local:ComposingConverter>
 
+            <local:ImageConverter x:Key="ImageConverter"/>
+
+            <!-- Data provider for binding to the relationship types enum values -->
+            <ObjectDataProvider x:Key="RelationshipValuesEnumDS" ObjectType="{x:Type sys:Enum}" MethodName="GetValues">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="local:FamilyMemberComboBoxValue" />
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+
+
+
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
