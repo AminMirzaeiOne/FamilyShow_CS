@@ -316,5 +316,21 @@ namespace FamilyShow.Controls.Diagrams
             }
         }
 
+#if DEBUG
+        void OnToggleBorderClick(object sender, RoutedEventArgs e)
+        {
+            // Display or hide the row and group borders.
+            displayBorder = !displayBorder;
+
+            // Update check on menu.
+            MenuItem menuItem = this.ContextMenu.Items[0] as MenuItem;
+            menuItem.IsChecked = displayBorder;
+
+            this.InvalidateVisual();
+        }
+#endif
+
+
+
     }
 }
