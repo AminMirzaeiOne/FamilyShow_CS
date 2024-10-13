@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FamilyShowLib;
 using System.Windows;
+using System.Collections.ObjectModel;
 
 namespace FamilyShow.Controls.Diagrams
 {
@@ -127,6 +128,32 @@ namespace FamilyShow.Controls.Diagrams
             family = App.Family;
 
             Clear();
+        }
+
+        /// <summary>
+        /// Return a list of parents for the people in the specified row.
+        /// </summary>
+        /// <param name="row"></param>
+        /// <returns></returns>
+        public static Collection<Person> GetParents(DiagramRow row)
+        {
+            // List that is returned.
+            Collection<Person> list = new Collection<Person>();
+
+            // Get possible children in the row.
+            List<Person> rowList = GetPrimaryAndRelatedPeople(row);
+
+            // Add each parent to the list, make sure the parent is only added once.
+            foreach (Person person in rowList)
+            {
+                foreach (Person parent in person.Parents)
+                {
+                    if (!list.Contains(parent))
+                        list.Add(parent);
+                }
+            }
+
+            return list;
         }
 
     }
