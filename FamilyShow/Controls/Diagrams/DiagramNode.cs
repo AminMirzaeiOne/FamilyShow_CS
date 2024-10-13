@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using FamilyShowLib;
 using System.Windows;
+using System.Globalization;
+using System.Windows.Media.Animation;
+using System.Windows.Media;
 
 namespace FamilyShow.Controls.Diagrams
 {
@@ -51,6 +54,274 @@ namespace FamilyShow.Controls.Diagrams
         // Flag, true if this node is currently filtered. This means
         // its still displayed but in a dim state.
         private bool isFiltered;
+
+        #endregion
+
+        #region properties
+
+        /// <summary>
+        /// Get the fill brush for the node based on the node type.
+        /// </summary>
+        public Brush NodeFill
+        {
+            get { return GetBrushResource("Fill"); }
+        }
+
+        /// <summary>
+        /// Get the hover fill brush for the node based on the node type.
+        /// </summary>
+        public Brush NodeHoverFill
+        {
+            get { return GetBrushResource("HoverFill"); }
+        }
+
+        /// <summary>
+        /// Get the stroke brush for the node based on the node type.
+        /// </summary>
+        public Brush NodeStroke
+        {
+            get { return GetBrushResource("Stroke"); }
+        }
+
+        /// <summary>
+        /// Get the fill brush for the group indicator.
+        /// </summary>
+        public Brush GroupFill
+        {
+            get { return GetGroupBrushResource("GroupFill"); }
+        }
+
+        /// <summary>
+        /// Get the stroke brush for the group indicator.
+        /// </summary>
+        public Brush GroupStroke
+        {
+            get { return GetGroupBrushResource("GroupStroke"); }
+        }
+
+        /// <summary>
+        /// Get or set the display year. This filters the node based on date information.
+        /// </summary>
+        public double DisplayYear
+        {
+            get { return displayYear; }
+            set
+            {
+                displayYear = value;
+
+                // Update the filtered state based on the birth date.
+                this.IsFiltered = (person != null && person.BirthDate != null &&
+                    person.BirthDate.Value.Year > displayYear);
+
+                // Recompuate the bottom label which contains the age,
+                // the new age is relative to the new display year
+                UpdateBottomLabel();
+            }
+        }
+
+        /// <summary>
+        /// Get or set if the node is filtered.
+        /// </summary>
+        public bool IsFiltered
+        {
+            get { return isFiltered; }
+            set
+            {
+                if (isFiltered != value)
+                {
+                    // The filtered state changed, create a new animation.
+                    isFiltered = value;
+                    double newOpacity = isFiltered ? Const.OpacityFiltered : Const.OpacityNormal;
+                    this.BeginAnimation(DiagramNode.OpacityProperty,
+                        new DoubleAnimation(this.Opacity, newOpacity,
+                        App.GetAnimationDuration(Const.AnimationDuration)));
+                }
+            }
+        }
+
+        /// <summary>
+        /// Born, died and age information. 
+        /// </summary>
+        private string DateInformation
+        {
+            get
+            {
+                // Living, example: 1900 | 107
+                if (person.IsLiving)
+                {
+                    if (person.BirthDate == null)
+                        return string.Empty;
+
+                    if (!person.Age.HasValue)
+                        return string.Empty;
+
+                    int age = person.Age.Value - (DateTime.Now.Year - (int)this.displayYear);
+                    return string.Format(CultureInfo.CurrentUICulture,
+                        "{0} | {1}", person.BirthDate.Value.Year, Math.Max(0, age));
+                }
+
+                // Deceased, example: 1900 - 1950 | 50                    
+                if (person.BirthDate != null && person.DeathDate != null)
+                {
+                    if (!person.Age.HasValue)
+                        return string.Empty;
+
+                    int age = (this.displayYear >= person.DeathDate.Value.Year) ?
+                        person.Age.Value : person.Age.Value - (person.DeathDate.Value.Year - (int)this.displayYear);
+
+                    return string.Format(CultureInfo.CurrentUICulture,
+                        "{0} - {1} | {2}", person.BirthDate.Value.Year,
+                        person.DeathDate.Value.Year, Math.Max(0, age));
+                }
+
+                // Deceased, example: ? - 1950 | ?
+                if (person.BirthDate == null && person.DeathDate != null)
+                {
+                    return string.Format(CultureInfo.CurrentUICulture,
+                        "? - {0} | ?", person.DeathDate.Value.Year);
+                }
+
+                // Deceased, example: 1900 - ? | ?
+                if (person.BirthDate != null && person.DeathDate == null)
+                {
+                    return string.Format(CultureInfo.CurrentUICulture,
+                        "{0} - ? | ?", person.BirthDate.Value.Year);
+                }
+
+                return string.Empty;
+            }
+        }
+
+        /// <summary>
+        /// Person object associated with the node.
+        /// </summary>
+        public Person Person
+        {
+            get { return person; }
+            set
+            {
+                person = value;
+                this.DataContext = this;
+
+                // Update the template to reflect the gender.
+                UpdateTemplate();
+
+                UpdateBottomLabel();
+            }
+        }
+
+        /// <summary>
+        /// Set the scale value of the node.
+        /// </summary>
+        public double Scale
+        {
+            get { return scale; }
+            set
+            {
+                // Save the scale value, used later after apply the node template.
+                scale = value;
+            }
+        }
+
+        /// <summary>
+        /// Location of the node relative to the parent group.
+        /// </summary>
+        public Point Location
+        {
+            get { return location; }
+            set { location = value; }
+        }
+
+        /// <summary>
+        /// Get the center of the node.
+        /// </summary>
+        public Point Center
+        {
+            get
+            {
+                return new Point(
+                    location.X + (DesiredSize.Width / 2),
+                    location.Y + (DesiredSize.Height / 2));
+            }
+        }
+
+        /// <summary>
+        /// Get the top center of the node. The center is shifted to the left since the 
+        /// person drawing is not located in the true center of the node, it's shifted
+        /// to the left due to the shadow.
+        /// </summary>
+        public Point TopCenter
+        {
+            get
+            {
+                // The real center of the node.
+                Point point = new Point(location.X + (this.DesiredSize.Width / 2), location.Y);
+
+                // Shift the center to the left. This is an estimate since we don't 
+                // know the exact position of the person drawing within the node.
+                FrameworkElement personElement = this.Template.FindName("Person", this) as FrameworkElement;
+                double offset = (this.type == NodeType.Primary) ? 12 : 5;
+                point.X -= (personElement.ActualWidth / offset);
+                return point;
+            }
+        }
+
+        /// <summary>
+        /// Get the top right of the node.
+        /// </summary>
+        public Point TopRight
+        {
+            get { return new Point(location.X + DesiredSize.Width, location.Y); }
+        }
+
+        /// <summary>
+        /// Get the top left of the node.
+        /// </summary>
+        public Point TopLeft
+        {
+            get { return new Point(location.X, location.Y); }
+        }
+
+        /// <summary>
+        /// Get the bottom center of the node.
+        /// </summary>
+        public Point BottomCenter
+        {
+            get
+            {
+                return new Point(location.X + (DesiredSize.Width / 2),
+                  location.Y + DesiredSize.Height);
+            }
+        }
+
+        /// <summary>
+        /// Get the left center of the node.
+        /// </summary>
+        public Point LeftCenter
+        {
+            get { return new Point(location.X, location.Y + (DesiredSize.Height / 2)); }
+        }
+
+        /// <summary>
+        /// Get the right center of the node.
+        /// </summary>
+        public Point RightCenter
+        {
+            get { return new Point(location.X + DesiredSize.Width, location.Y + (DesiredSize.Height / 2)); }
+        }
+
+        /// <summary>
+        /// The type of node.
+        /// </summary>
+        public NodeType Type
+        {
+            get { return this.type; }
+            set
+            {
+                this.type = value;
+                UpdateTemplate();
+            }
+        }
 
         #endregion
     }
