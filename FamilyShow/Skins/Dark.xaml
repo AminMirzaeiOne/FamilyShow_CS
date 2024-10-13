@@ -182,5 +182,7 @@
         <GradientStop Color="#FF221E1F" Offset="1" />
     </LinearGradientBrush>
 
+    <SolidColorBrush x:Key="PopupMenuBackgroundBrush" Color="#FF000000" />
+
 
 </ResourceDictionary>
