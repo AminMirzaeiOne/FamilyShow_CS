@@ -107,6 +107,20 @@ namespace FamilyShow.Controls.Diagrams
             this.AddVisualChild(group);
         }
 
+        /// <summary>
+        /// Remove all groups from the row.
+        /// </summary>
+        public void Clear()
+        {
+            foreach (DiagramGroup group in groups)
+            {
+                group.Clear();
+                this.RemoveVisualChild(group);
+            }
+
+            groups.Clear();
+        }
+
 
 
     }
