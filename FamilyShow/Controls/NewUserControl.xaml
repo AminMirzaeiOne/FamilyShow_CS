@@ -13,7 +13,13 @@
     </UserControl.Resources>
     
     
-    <Grid>
+    <StackPanel>
         
-    </Grid>
+        <!-- Header -->
+        <Border x:Name="Header" Background="{DynamicResource BackgroundBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,1,1,0" CornerRadius="5,5,0,0">
+            <TextBlock Text="Add a family member" TextWrapping="Wrap" Margin="15,5,10,5" Foreground="{DynamicResource HeaderFontColor}" FontSize="18" VerticalAlignment="Center" FontWeight="Bold" x:Name="HeaderTextBlock"/>
+        </Border>
+        
+        
+    </StackPanel>
 </UserControl>
