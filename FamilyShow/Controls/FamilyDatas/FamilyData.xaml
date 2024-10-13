@@ -10,6 +10,24 @@
     <UserControl.Resources>
         <!-- used when editing a date cell -->
         <local:DateFormattingConverter x:Key="DateFormattingConverter"/>
+
+        <!-- styles that are used when the cells are in edit mode -->
+
+        <!-- style for all cells when in edit mode -->
+        <Style x:Key="TextBoxStyle" TargetType="{x:Type TextBox}" >
+            <Setter Property="Background" Value="#00ffffff" />
+            <Setter Property="BorderBrush" Value="#00ffffff" />
+            <Setter Property="AcceptsReturn" Value="False" />
+            <Setter Property="AcceptsTab" Value="False" />
+            <Setter Property="Foreground" Value="{DynamicResource FamilyDataFontColor}" />
+            <Style.Triggers>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="Foreground" Value="#ff000000" />
+                    <Setter Property="BorderBrush" Value="#ff000000" />
+                    <Setter Property="Background" Value="#a0ffffff" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </UserControl.Resources>
     
     <Grid>
