@@ -80,5 +80,25 @@ namespace FamilyShow.Controls.Diagrams
 #endif
 
         #endregion
+
+        #region events
+
+        public event EventHandler DiagramUpdated;
+        private void OnDiagramUpdated()
+        {
+            if (DiagramUpdated != null)
+                DiagramUpdated(this, EventArgs.Empty);
+        }
+
+        public event EventHandler DiagramPopulated;
+        private void OnDiagramPopulated()
+        {
+            if (DiagramPopulated != null)
+                DiagramPopulated(this, EventArgs.Empty);
+        }
+
+        #endregion
+
+
     }
 }
