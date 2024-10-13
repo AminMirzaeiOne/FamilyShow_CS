@@ -102,4 +102,10 @@
     <!-- The Border Brush is used as the color for most borders -->
     <SolidColorBrush x:Key="BorderBrush" Color="#FF747474" />
 
+    <!-- The Input Background Brush is used as the background for Input areas -->
+    <LinearGradientBrush x:Key="InputBackgroundBrush" EndPoint="0.504,0.351" StartPoint="0.504,-0.319">
+        <GradientStop Color="#FF000000" Offset="0.416" />
+        <GradientStop Color="#FF4A5790" Offset="0.54" />
+    </LinearGradientBrush>
+
 </ResourceDictionary>
