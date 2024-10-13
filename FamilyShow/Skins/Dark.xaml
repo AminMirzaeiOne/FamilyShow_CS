@@ -236,4 +236,7 @@
         <GradientStop Color="#D44B5378" Offset="1" />
     </LinearGradientBrush>
 
+    <SolidColorBrush x:Key="HeaderBorderBrush" Color="#FF979797" />
+
+
 </ResourceDictionary>
