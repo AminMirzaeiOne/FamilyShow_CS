@@ -114,6 +114,10 @@
     </UserControl.Resources>
 
     <Grid>
-            
+        <ScrollViewer x:Name="ScrollViewer" Style="{StaticResource ScrollViewerStyle}">
+            <Grid x:Name="Grid">
+                <local:Diagram x:Name="Diagrams" />
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </UserControl>
