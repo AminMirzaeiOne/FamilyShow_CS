@@ -46,6 +46,13 @@
                 </ObjectDataProvider.MethodParameters>
             </ObjectDataProvider>
 
+            <!-- Data provider for binding to the gender types enum values -->
+            <ObjectDataProvider x:Key="GenderEnumDS" ObjectType="{x:Type sys:Enum}" MethodName="GetValues">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="Microsoft.FamilyShowLib:Gender" />
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+
 
 
         </ResourceDictionary>
