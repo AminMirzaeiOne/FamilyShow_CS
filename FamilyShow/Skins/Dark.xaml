@@ -273,6 +273,11 @@
         <Setter Property="FontFamily" Value="Calibri" />
     </Style>
 
+    <!-- This is the default style for all radio buttons -->
+    <Style TargetType="{x:Type RadioButton}">
+        <Setter Property="Foreground" Value="{DynamicResource FontColor}" />
+    </Style>
+
 
 
 
