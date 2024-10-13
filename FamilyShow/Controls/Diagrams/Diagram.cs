@@ -465,6 +465,26 @@ namespace FamilyShow.Controls.Diagrams
             AnimateNewPerson();
         }
 
+        /// <summary>
+        /// Add a child row to the diagram.
+        /// </summary>
+        private DiagramRow AddChildRow(DiagramRow row)
+        {
+            // Get list of children for the current row.
+            List<Person> children = DiagramLogic.GetChildren(row);
+            if (children.Count == 0)
+                return null;
+
+            // Add bottom space to existing row.
+            row.Margin = new Thickness(0, 0, 0, Const.RowSpace);
+
+            // Add another row.
+            DiagramRow childRow = logic.CreateChildrenRow(children, 1.0, Const.RelatedMultiplier);
+            childRow.GroupSpace = Const.ChildRowGroupSpace;
+            AddRow(childRow);
+            return childRow;
+        }
+
 
     }
 }
