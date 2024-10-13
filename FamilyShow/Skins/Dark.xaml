@@ -175,5 +175,12 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
+    <!-- MenuPressedBrush - This brush is used for the Main Menu pressed and focused state-->
+    <LinearGradientBrush x:Key="MenuPressedBrush" StartPoint="0.500023,0.999996" EndPoint="0.500023,4.37507e-006">
+        <GradientStop Color="#FF875225" Offset="0" />
+        <GradientStop Color="#FF221E1F" Offset="0.960674" />
+        <GradientStop Color="#FF221E1F" Offset="1" />
+    </LinearGradientBrush>
+
 
 </ResourceDictionary>
