@@ -12,6 +12,12 @@ namespace FamilyShow.Controls.FamilyDatas
 
     public class Filter
     {
+        // Parsed data from the filter string.
+        private string filterText;
+        private int? maximumAge;
+        private int? minimumAge;
+        private DateTime? filterDate;
+
 
     }
 
