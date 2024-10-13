@@ -361,6 +361,16 @@
         </Setter>
     </Style>
 
+    <Style TargetType="{x:Type GridViewColumnHeader}">
+        <Setter Property="GridViewColumnHeader.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <TextBlock Margin="2,0,0,2" Text="{TemplateBinding GridViewColumnHeader.Content}" TextAlignment="Left" VerticalAlignment="Center" Foreground="{DynamicResource GridHeaderFontColor}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 
 
 
