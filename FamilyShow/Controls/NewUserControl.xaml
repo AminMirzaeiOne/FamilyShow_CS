@@ -7,6 +7,12 @@
              mc:Ignorable="d" 
              Width="350"
              AllowDrop="True" Drop="AvatarPhoto_Drop">
+
+    <UserControl.Resources>
+        <local:ImageConverter x:Key="ImageConverter"/>
+    </UserControl.Resources>
+    
+    
     <Grid>
         
     </Grid>
