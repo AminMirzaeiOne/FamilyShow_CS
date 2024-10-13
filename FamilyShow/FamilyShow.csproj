@@ -61,8 +61,15 @@
     <Compile Include="Controls\Diagrams\DiagramLogic.cs" />
     <Compile Include="Controls\Diagrams\DiagramNode.cs" />
     <Compile Include="Controls\Diagrams\DiagramRow.cs" />
+    <Compile Include="Controls\Diagrams\DiagramViewer.xaml.cs">
+      <DependentUpon>DiagramViewer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="ValueConverters.cs" />
+    <Page Include="Controls\Diagrams\DiagramViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
