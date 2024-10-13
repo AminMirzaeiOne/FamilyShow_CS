@@ -10,4 +10,10 @@
         <GradientStop Color="#CCC" Offset="1.0" />
     </LinearGradientBrush>
 
+    <!-- LightBrush is used for content areas such as Menu, Tab Control background -->
+    <LinearGradientBrush x:Key="LightBrush" EndPoint="0,1" StartPoint="0,0">
+        <GradientStop Color="#FFF" Offset="0.0" />
+        <GradientStop Color="#EEE" Offset="1.0" />
+    </LinearGradientBrush>
+
 </ResourceDictionary>
