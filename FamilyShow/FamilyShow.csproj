@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\Details.xaml.cs">
+      <DependentUpon>Details.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Diagrams\Diagram.cs" />
     <Compile Include="Controls\Diagrams\DiagramConnector.cs" />
     <Compile Include="Controls\Diagrams\DiagramGroup.cs" />
@@ -66,6 +69,10 @@
     </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="ValueConverters.cs" />
+    <Page Include="Controls\Details.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Diagrams\DiagramViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
