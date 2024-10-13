@@ -217,6 +217,20 @@ namespace FamilyShow.Controls.Diagrams
             return node;
         }
 
+        /// <summary>
+        /// Create a DiagramNode.
+        /// </summary>
+        private DiagramNode CreateNode(Person person, NodeType type, bool clickEvent)
+        {
+            DiagramNode node = new DiagramNode();
+            node.Person = person;
+            node.Type = type;
+            if (clickEvent)
+                node.Click += nodeClickHandler;
+
+            return node;
+        }
+
 
 
     }
