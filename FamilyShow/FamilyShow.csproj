@@ -60,6 +60,7 @@
     <Compile Include="Controls\Diagrams\DiagramGroup.cs" />
     <Compile Include="Controls\Diagrams\DiagramLogic.cs" />
     <Compile Include="Controls\Diagrams\DiagramNode.cs" />
+    <Compile Include="Controls\Diagrams\DiagramRow.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="ValueConverters.cs" />
     <Page Include="MainWindow.xaml">
