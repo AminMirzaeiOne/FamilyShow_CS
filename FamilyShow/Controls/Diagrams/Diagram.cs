@@ -211,5 +211,16 @@ namespace FamilyShow.Controls.Diagrams
             return rows[index];
         }
 
+        protected override Size MeasureOverride(Size availableSize)
+        {
+            // Let each row determine how large they want to be.
+            Size size = new Size(double.PositiveInfinity, double.PositiveInfinity);
+            foreach (DiagramRow row in rows)
+                row.Measure(size);
+
+            // Return the total size of the diagram.
+            return ArrangeRows(false);
+        }
+
     }
 }
