@@ -324,5 +324,8 @@ namespace FamilyShow.Controls.Diagrams
         }
 
         #endregion
+
+        public static readonly DependencyProperty BottomLabelProperty =
+            DependencyProperty.Register("BottomLabel", typeof(string), typeof(DiagramNode));
     }
 }
