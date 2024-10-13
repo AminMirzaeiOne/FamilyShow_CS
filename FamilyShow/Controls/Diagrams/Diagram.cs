@@ -9,6 +9,7 @@ using System.Windows.Threading;
 using System.Windows.Media;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
+using System.Collections.ObjectModel;
 
 namespace FamilyShow.Controls.Diagrams
 {
@@ -483,6 +484,24 @@ namespace FamilyShow.Controls.Diagrams
             childRow.GroupSpace = Const.ChildRowGroupSpace;
             AddRow(childRow);
             return childRow;
+        }
+
+        /// <summary>
+        /// Add a parent row to the diagram.
+        /// </summary>
+        private DiagramRow AddParentRow(DiagramRow row, double nodeScale)
+        {
+            // Get list of parents for the current row.
+            Collection<Person> parents = DiagramLogic.GetParents(row);
+            if (parents.Count == 0)
+                return null;
+
+            // Add another row.
+            DiagramRow parentRow = logic.CreateParentRow(parents, nodeScale, nodeScale * Const.RelatedMultiplier);
+            parentRow.Margin = new Thickness(0, 0, 0, Const.RowSpace);
+            parentRow.GroupSpace = Const.ParentRowGroupSpace;
+            InsertRow(parentRow);
+            return parentRow;
         }
 
 
