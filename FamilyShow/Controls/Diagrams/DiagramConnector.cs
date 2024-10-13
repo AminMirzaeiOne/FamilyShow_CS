@@ -258,6 +258,26 @@ namespace FamilyShow.Controls.Diagrams
             return true;
         }
 
+        /// <summary>
+        /// Create the specified brush. The opacity is set based on the 
+        /// current filtered state. The brush contains an animation if 
+        /// the filtered state has changed.
+        /// </summary>
+        protected SolidColorBrush GetBrush(Color color)
+        {
+            // Create the brush.
+            SolidColorBrush brush = new SolidColorBrush(color);
+
+            // Set the opacity based on the filtered state.
+            brush.Opacity = (this.isFiltered) ? Const.OpacityFiltered : Const.OpacityNormal;
+
+            // Create animation if the filtered state has changed.
+            if (animation != null)
+                brush.BeginAnimation(Brush.OpacityProperty, animation);
+
+            return brush;
+        }
+
 
 
     }
