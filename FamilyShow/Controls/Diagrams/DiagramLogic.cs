@@ -120,5 +120,14 @@ namespace FamilyShow.Controls.Diagrams
         }
 
         #endregion
+
+        public DiagramLogic()
+        {
+            // The list of people, this is a global list shared by the application.
+            family = App.Family;
+
+            Clear();
+        }
+
     }
 }
