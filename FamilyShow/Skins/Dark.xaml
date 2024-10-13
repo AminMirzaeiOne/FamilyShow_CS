@@ -224,4 +224,10 @@
 
     <SolidColorBrush x:Key="TextBlockForegroundBrush" Color="#FFFA6E15" />
 
+    <LinearGradientBrush x:Key="HeaderBackgroundBrush" StartPoint="0.499999,0.00908135" EndPoint="0.499999,1.17275">
+        <GradientStop Color="#D43B4A87" Offset="0" />
+        <GradientStop Color="#D43B4A87" Offset="0.0236486" />
+        <GradientStop Color="#D409242A" Offset="1" />
+    </LinearGradientBrush>
+
 </ResourceDictionary>
