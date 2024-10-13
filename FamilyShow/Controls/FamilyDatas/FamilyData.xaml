@@ -184,6 +184,27 @@
             </Setter>
         </Style>
 
+        <!-- header used to sort descending -->
+        <Style x:Key="FamilyDataGridViewColumnHeaderDescending" TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="GridViewColumnHeader.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border x:Name="Bd" Style="{DynamicResource ColumnSelectedHeaderStyle}">
+                            <DockPanel>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <TextBlock Text="{TemplateBinding GridViewColumnHeader.Content}" TextAlignment="Left" 
+                VerticalAlignment="Center" FontWeight="Bold" Margin="5,0,0,0"
+                Foreground="{DynamicResource FamilyDataGridSelectedHeaderFontColor}" />
+                                    <Path StrokeThickness="1" Fill="{DynamicResource FamilyDataGridSelectedHeaderFontColor}" Data="M 5,5 L 10,10 L 15,5 L 5,5" />
+                                </StackPanel>
+                                <Thumb x:Name="PART_HeaderGripper" Style="{StaticResource ColumnGrip}" />
+                            </DockPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </UserControl.Resources>
     
     <Grid>
