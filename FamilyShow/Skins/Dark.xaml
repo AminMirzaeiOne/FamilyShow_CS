@@ -529,6 +529,9 @@
         </Setter>
     </Style>
 
+    <!--This sets the default style for all buttons-->
+    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource NormalButtonStyle}" />
+
 
 
 
