@@ -41,4 +41,12 @@
         <GradientStop Color="#000" Offset="1.0" />
     </LinearGradientBrush>
 
+    <!-- Style and Template pairs are used to define each control Part -->
+    <!-- The Style provides default values on the control; the Template gives the elements for each control -->
+
+    <LinearGradientBrush x:Key="SelectedListBoxBrush" EndPoint="1,0.5" StartPoint="0,0.5">
+        <GradientStop Color="#33F7F7F7" Offset="0" />
+        <GradientStop Color="#00FFFFFF" Offset="0.98" />
+    </LinearGradientBrush>
+
 </ResourceDictionary>
