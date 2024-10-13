@@ -153,6 +153,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Controls\FamilyData\" />
     <Folder Include="Images\" />
     <Folder Include="SampleFiles\" />
     <Folder Include="Skins\" />
