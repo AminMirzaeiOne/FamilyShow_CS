@@ -345,6 +345,39 @@ namespace FamilyShow.Controls.Diagrams
             logic.Clear();
         }
 
+        /// <summary>
+        /// Populate the diagram. Update the diagram and hide all non-primary nodes.
+        /// Then pause, and finish the populate by fading in the new nodes.
+        /// </summary>
+        private void Populate()
+        {
+            // Set flag to ignore future updates until complete.
+            populating = true;
+
+            // Update the nodes in the diagram.
+            UpdateDiagram();
+
+            // First hide all of the nodes except the primary node.
+            foreach (DiagramConnectorNode connector in logic.PersonLookup.Values)
+            {
+                if (connector.Node.Person != logic.Family.Current)
+                    connector.Node.Visibility = Visibility.Hidden;
+            }
+
+            // Required to update (hide) the connector lines.            
+            this.InvalidateVisual();
+            this.InvalidateArrange();
+            this.InvalidateMeasure();
+
+            // Pause before displaying the new nodes.
+            animationTimer.Interval = App.GetAnimationDuration(Const.AnimationPauseDuration);
+            animationTimer.Tick += new EventHandler(OnAnimationTimer);
+            animationTimer.IsEnabled = true;
+
+            // Let other controls know the diagram has been repopulated.
+            OnDiagramPopulated();
+        }
+
 
     }
 }
