@@ -193,6 +193,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="SampleFiles\Images\" />
+    <Folder Include="SampleFiles\Stories\" />
     <Folder Include="Skins\" />
   </ItemGroup>
   <ItemGroup>
