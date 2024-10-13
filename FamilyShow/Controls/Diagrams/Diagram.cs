@@ -205,5 +205,11 @@ namespace FamilyShow.Controls.Diagrams
             get { return rows.Count; }
         }
 
+        protected override Visual GetVisualChild(int index)
+        {
+            // Return the requested row.
+            return rows[index];
+        }
+
     }
 }
