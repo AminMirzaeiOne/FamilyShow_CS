@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,15 @@ namespace FamilyShow.Controls.FamilyDatas
         public bool IsEmpty
         {
             get { return string.IsNullOrEmpty(this.filterText); }
+        }
+
+        /// <summary>
+        /// Return true if the filter contains the specified text.
+        /// </summary>
+        public bool Matches(string text)
+        {
+            return (this.filterText != null && text != null &&
+                text.ToLower(CultureInfo.CurrentCulture).Contains(this.filterText));
         }
 
     }
