@@ -321,6 +321,49 @@ namespace FamilyShow.Controls.Diagrams
             return row;
         }
 
+        /// <summary>
+        /// Create the child row. The row contains a group for each child. 
+        /// Each group contains the child and spouses.
+        /// </summary>
+        public DiagramRow CreateChildrenRow(List<Person> children, double scale, double scaleRelated)
+        {
+            // Setup the row.
+            DiagramRow row = new DiagramRow();
+
+            foreach (Person child in children)
+            {
+                // Each child is in their group, the group contains the child 
+                // and any spouses. The groups does not contain siblings.
+                DiagramGroup group = new DiagramGroup();
+                row.Add(group);
+
+                // Child.
+                if (!personLookup.ContainsKey(child))
+                {
+                    DiagramNode node = CreateNode(child, NodeType.Related, true, scale);
+                    group.Add(node);
+                    personLookup.Add(node.Person, new DiagramConnectorNode(node, group, row));
+                }
+
+                // Current spouses.
+                Collection<Person> currentSpouses = child.CurrentSpouses;
+                AddSpouseNodes(child, row, group, currentSpouses,
+                    NodeType.Spouse, scaleRelated, true);
+
+                // Previous spouses.
+                Collection<Person> previousSpouses = child.PreviousSpouses;
+                AddSpouseNodes(child, row, group, previousSpouses,
+                    NodeType.Spouse, scaleRelated, false);
+
+                // Connections.
+                AddParentConnections(child);
+
+                group.Reverse();
+            }
+
+            return row;
+        }
+
 
 
 
