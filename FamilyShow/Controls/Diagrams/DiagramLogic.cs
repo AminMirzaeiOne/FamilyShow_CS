@@ -513,6 +513,25 @@ namespace FamilyShow.Controls.Diagrams
             }
         }
 
+        /// <summary>
+        /// Clear 
+        /// </summary>
+        public void Clear()
+        {
+            // Remove any event handlers from the nodes. Otherwise 
+            // the delegate maintains a reference to the object 
+            // which can hinder garbage collection. 
+            foreach (DiagramConnectorNode node in personLookup.Values)
+                node.Node.Click -= nodeClickHandler;
+
+            // Clear the connection info.
+            connections.Clear();
+            personLookup.Clear();
+
+            // Time filter.
+            displayYear = DateTime.Now.Year;
+        }
+
 
 
     }
