@@ -83,6 +83,9 @@
       <DependentUpon>SharedBirthdays.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\FamilyDatas\SortListView.cs" />
+    <Compile Include="Controls\FamilyDatas\TagCloud.xaml.cs">
+      <DependentUpon>TagCloud.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\NewUserControl.xaml.cs">
       <DependentUpon>NewUserControl.xaml</DependentUpon>
     </Compile>
@@ -118,6 +121,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\FamilyDatas\SharedBirthdays.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\FamilyDatas\TagCloud.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
