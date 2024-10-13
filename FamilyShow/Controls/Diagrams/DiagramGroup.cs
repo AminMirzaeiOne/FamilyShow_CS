@@ -94,5 +94,13 @@ namespace FamilyShow.Controls.Diagrams
             nodes.Clear();
         }
 
+        /// <summary>
+        /// Reverse the order of the nodes.
+        /// </summary>
+        public void Reverse()
+        {
+            nodes.Reverse();
+        }
+
     }
 }
