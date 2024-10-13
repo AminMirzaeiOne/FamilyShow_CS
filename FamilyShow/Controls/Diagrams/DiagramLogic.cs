@@ -429,6 +429,14 @@ namespace FamilyShow.Controls.Diagrams
             return row;
         }
 
+        /// <summary>
+        /// Add connections for each person and the person's children in the list.
+        /// </summary>
+        private void AddChildConnections(Collection<Person> parents)
+        {
+            foreach (Person person in parents)
+                AddChildConnections(person);
+        }
 
 
 
