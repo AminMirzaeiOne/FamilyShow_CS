@@ -694,5 +694,108 @@
         </Setter>
     </Style>
 
+    <!-- MenuItem - The template uses triggers to provide four different arrangements of menu item which are set via the Role property -->
+    <Style x:Key="MenuItemStyle" TargetType="{x:Type MenuItem}">
+        <Setter Property="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource FontColor}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type MenuItem}">
+                    <Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="{x:Null}" BorderThickness="1,1,1,1" CornerRadius="3,3,3,3" Margin="0,0,10,0">
+                        <Grid>
+
+                            <!-- The Grid is used to hold together columns for an Content and Arrow to show the next level
+					 Size sharing is used in Grid so that the Icon, Content, Arrow for each MenuItem align together -->
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="14" />
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Content for the menu text etc -->
+                            <ContentPresenter Margin="{TemplateBinding Padding}" x:Name="HeaderHost" RecognizesAccessKey="True" ContentSource="Header" />
+
+                            <!-- Arrow drawn path which points to the next level of the menu -->
+                            <Grid Grid.Column="1" Margin="0,0,6,0" x:Name="ArrowPanel" VerticalAlignment="Center">
+                                <Path x:Name="ArrowPanelPath" Fill="{TemplateBinding Foreground}" VerticalAlignment="Center" Data="M-1.0089707E-11,0.0050000012 L8.03125,-3.5155176E-24 3.9995833,4.095 z" Height="4.095" />
+                            </Grid>
+
+                            <!-- The Popup is the body of the menu which expands down or across depending on the level of the item -->
+                            <Popup IsOpen="{Binding Path=IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}" Placement="Bottom" x:Name="SubMenuPopup" Focusable="false" AllowsTransparency="true" VerticalOffset="0" PopupAnimation="Slide">
+                                <Grid x:Name="SubMenu">
+                                    <Border x:Name="SubMenuBorder" Background="{DynamicResource PopupMenuBackgroundBrush}" BorderBrush="{DynamicResource SolidBorderBrush}" BorderThickness="1" />
+                                    <!-- StackPanel holds children of the menu. This is set bu IsItemsHost=True -->
+                                    <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
+                                </Grid>
+                            </Popup>
+
+                        </Grid>
+                    </Border>
+
+                    <!-- These triggers re-configure the four arrangements of MenuItem to show different levels of menu via Role -->
+                    <ControlTemplate.Triggers>
+
+                        <!-- Role = TopLevelHeader : this is the root menu item in a menu; the Popup expands down -->
+                        <Trigger Property="Role" Value="TopLevelHeader">
+                            <Setter Property="Margin" Value="0,1,0,1" />
+                            <Setter Property="Padding" Value="6,3,6,3" />
+                            <Setter Property="Placement" Value="Bottom" TargetName="SubMenuPopup" />
+                        </Trigger>
+
+                        <!-- Role = TopLevelItem :  this is a child menu item from the top level without any child items-->
+                        <Trigger Property="Role" Value="TopLevelItem">
+                            <Setter Property="Margin" Value="0,1,0,1" />
+                            <Setter Property="Padding" Value="6,3,6,3" />
+                            <Setter Property="Visibility" Value="Collapsed" TargetName="ArrowPanel" />
+                        </Trigger>
+
+                        <!-- Role = SubMenuHeader : this is a child menu item which does not have children -->
+                        <Trigger Property="Role" Value="SubmenuHeader">
+                            <Setter Property="DockPanel.Dock" Value="Top" />
+                            <Setter Property="Padding" Value="0,2,0,2" />
+                            <Setter Property="Grid.IsSharedSizeScope" Value="true" />
+                        </Trigger>
+
+                        <!-- Role = SubMenuItem : this is a child menu item which has children-->
+                        <Trigger Property="Role" Value="SubmenuItem">
+                            <Setter Property="DockPanel.Dock" Value="Top" />
+                            <Setter Property="Padding" Value="0,2,0,2" />
+                            <Setter Property="Visibility" Value="Collapsed" TargetName="ArrowPanel" />
+                        </Trigger>
+                        <Trigger Property="IsSuspendingPopupAnimation" Value="true">
+                            <Setter Property="PopupAnimation" Value="None" TargetName="SubMenuPopup" />
+                        </Trigger>
+
+                        <Trigger Property="AllowsTransparency" SourceName="SubMenuPopup" Value="true">
+                            <Setter Property="Margin" Value="0,0,3,3" TargetName="SubMenu" />
+                            <Setter Property="SnapsToDevicePixels" Value="true" TargetName="SubMenu" />
+                            <Setter Property="BitmapEffect" Value="{DynamicResource PopupDropShadow}" TargetName="SubMenuBorder" />
+                        </Trigger>
+
+                        <!-- Using the system colors for the Menu Highlight and IsEnabled-->
+                        <Trigger Property="IsHighlighted" Value="true">
+                            <Setter Property="Background" TargetName="Border" Value="{DynamicResource MenuIsHighlightedBrush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
+                            <Setter Property="BorderBrush" TargetName="Border" Value="#FF000000" />
+                        </Trigger>
+
+                        <Trigger Property="IsKeyboardFocused" Value="true">
+                            <Setter Property="Background" TargetName="Border" Value="{DynamicResource MenuPressedBrush}" />
+                        </Trigger>
+
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" TargetName="Border" Value="{DynamicResource MenuPressedBrush}" />
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="{DynamicResource DisabledMenuForegroundBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 
 </ResourceDictionary>
