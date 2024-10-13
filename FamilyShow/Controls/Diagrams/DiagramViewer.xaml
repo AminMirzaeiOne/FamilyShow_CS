@@ -129,5 +129,16 @@
                 </StackPanel>
             </Border>
         </StackPanel>
+
+        <!-- time -->
+        <StackPanel Style="{StaticResource TimeAreaStyle}" d:IsHidden="True">
+            <Border Style="{StaticResource SliderBorderStyle}">
+                <StackPanel>
+                    <Label Style="{StaticResource TimeLabelStyle}" Content="{Binding ElementName=TimeSlider, Path=Value}" />
+                    <Slider Style="{StaticResource TimeSliderStyle}" x:Name="TimeSlider" />
+                    <Label Style="{StaticResource TimeLabelStyle}">Time</Label>
+                </StackPanel>
+            </Border>
+        </StackPanel>
     </Grid>
 </UserControl>
