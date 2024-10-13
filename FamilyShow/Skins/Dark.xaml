@@ -250,5 +250,14 @@
 
     <SolidColorBrush x:Key="FlowDocumentFontColor" Color="#FFFFFF" />
 
+    <!-- Control Resources-->
+
+    <!-- This is the style for most borders -->
+    <Style x:Key="BorderStyle" TargetType="{x:Type Border}">
+        <Setter Property="BorderThickness" Value="{DynamicResource BorderThickness}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
+        <Setter Property="CornerRadius" Value="10,10,10,10" />
+    </Style>
+
 
 </ResourceDictionary>
