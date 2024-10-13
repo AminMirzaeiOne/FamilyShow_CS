@@ -126,6 +126,11 @@
             <Setter Property="BorderThickness" Value="0,1,0,1"/>
         </Style>
 
+        <!-- style applied to selected column headers -->
+        <Style x:Key="ColumnSelectedHeaderStyle" BasedOn="{StaticResource ColumnHeaderStyle}"  TargetType="{x:Type Border}">
+            <Setter Property="Background" Value="{DynamicResource SelectedHeaderBackgroundBrush}"/>
+        </Style>
+
     </UserControl.Resources>
     
     <Grid>
