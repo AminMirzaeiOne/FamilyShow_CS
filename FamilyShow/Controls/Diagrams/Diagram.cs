@@ -405,6 +405,66 @@ namespace FamilyShow.Controls.Diagrams
             populating = false;
         }
 
+        /// <summary>
+        /// Reset the diagram with the nodes. This is accomplished by creating a series of rows.
+        /// Each row contains a series of groups, and each group contains the nodes. The elements 
+        /// are not laid out at this time. Also creates the connections between the nodes.
+        /// </summary>
+        private void UpdateDiagram()
+        {
+            // Necessary for Blend.
+            if (logic.Family == null)
+                return;
+
+            // First reset everything.
+            Clear();
+
+            // Nothing to draw if there is not a primary person.
+            if (logic.Family.Current == null)
+                return;
+
+            // Primary row.
+            Person primaryPerson = logic.Family.Current;
+            DiagramRow primaryRow = logic.CreatePrimaryRow(primaryPerson, 1.0, Const.RelatedMultiplier);
+            primaryRow.GroupSpace = Const.PrimaryRowGroupSpace;
+            AddRow(primaryRow);
+
+            // Create as many rows as possible until exceed the max node limit.
+            // Switch between child and parent rows to prevent only creating
+            // child or parents rows (want to create as many of each as possible).
+            int nodeCount = this.NodeCount;
+
+            // The scale values of future generations, this makes the nodes
+            // in each row slightly smaller.
+            double nodeScale = 1.0;
+
+            DiagramRow childRow = primaryRow;
+            DiagramRow parentRow = primaryRow;
+
+            while (nodeCount < Const.MaximumNodes && (childRow != null || parentRow != null))
+            {
+                // Child Row.
+                if (childRow != null)
+                    childRow = AddChildRow(childRow);
+
+                // Parent row.
+                if (parentRow != null)
+                {
+                    nodeScale *= Const.GenerationMultiplier;
+                    parentRow = AddParentRow(parentRow, nodeScale);
+                }
+
+                // See if reached node limit yet.                                       
+                nodeCount = this.NodeCount;
+            }
+
+            // Raise event so others know the diagram was updated.
+            OnDiagramUpdated();
+
+            // Animate the new person (optional, might not be any new people).
+            AnimateNewPerson();
+        }
+
 
     }
 }
