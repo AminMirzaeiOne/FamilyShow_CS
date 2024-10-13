@@ -4,6 +4,11 @@
              xmlns:local="clr-namespace:FamilyShow"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Use the Black skin by default -->
+                <ResourceDictionary Source="Skins\Black\BlackResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
