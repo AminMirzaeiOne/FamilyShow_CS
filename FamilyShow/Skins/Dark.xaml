@@ -876,4 +876,10 @@
     <SolidColorBrush x:Key="FemaleSpouseDeceasedStroke" Color="{DynamicResource SpouseColor}" />
     <SolidColorBrush x:Key="FemaleSpouseDeceasedHoverFill" Color="{DynamicResource SpouseHoverColor}" Opacity="0.50" />
 
+    <!-- Female sibling brushes -->
+    <SolidColorBrush x:Key="FemaleSiblingLivingFill" Color="{DynamicResource SiblingColor}" />
+    <SolidColorBrush x:Key="FemaleSiblingLivingHoverFill" Color="{DynamicResource SiblingHoverColor}" />
+    <SolidColorBrush x:Key="FemaleSiblingDeceasedStroke" Color="{DynamicResource SiblingColor}" />
+    <SolidColorBrush x:Key="FemaleSiblingDeceasedHoverFill" Color="{DynamicResource SiblingHoverColor}" Opacity="0.50" />
+
 </ResourceDictionary>
