@@ -181,6 +181,15 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="SampleFiles\Stories\Camilla Shand {cb2c1f69-5311-403a-948f-eaf74dd8e72d}.rtf" />
+    <None Include="SampleFiles\Stories\Charles Philip Arthur Windsor {I11}.rtf" />
+    <None Include="SampleFiles\Stories\Diana Frances Spencer {I12}.rtf" />
+    <None Include="SampleFiles\Stories\Edward VII Wettin {I1}.rtf" />
+    <None Include="SampleFiles\Stories\Edward VIII Windsor {I5}.rtf" />
+    <None Include="SampleFiles\Stories\Elizabeth II Alexandra Mary Windsor {I9}.rtf" />
+    <None Include="SampleFiles\Stories\George V Windsor {I3}.rtf" />
+    <None Include="SampleFiles\Stories\George VI Windsor {I7}.rtf" />
+    <None Include="SampleFiles\Stories\Margaret Rose Windsor {I24}.rtf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -193,7 +202,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="SampleFiles\Images\" />
-    <Folder Include="SampleFiles\Stories\" />
     <Folder Include="Skins\" />
   </ItemGroup>
   <ItemGroup>
