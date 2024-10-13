@@ -18,6 +18,13 @@ namespace FamilyShow.Controls.FamilyDatas
         private int? minimumAge;
         private DateTime? filterDate;
 
+        /// <summary>
+        /// Indicates if the filter is empty.
+        /// </summary>
+        public bool IsEmpty
+        {
+            get { return string.IsNullOrEmpty(this.filterText); }
+        }
 
     }
 
