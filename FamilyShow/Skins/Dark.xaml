@@ -599,5 +599,72 @@
         </Setter>
     </Style>
 
+    <!-- ScrollBar  This makes use of Thumb, RepeatButton and ScrollRepeatButton -->
+    <Style TargetType="{x:Type ScrollBar}">
+        <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ScrollBar}">
+                    <Grid x:Name="GridRoot" Width="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition MaxHeight="18" />
+                            <RowDefinition Height="0.00001*" />
+                            <RowDefinition MaxHeight="18" />
+                        </Grid.RowDefinitions>
+
+                        <RepeatButton x:Name="DecreaseRepeat" Style="{DynamicResource RepeatButtonStyle}" Command="ScrollBar.LineUpCommand" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0,0,0,0">
+                            <Grid>
+                                <Path x:Name="DecreaseArrow" StrokeThickness="1" Data="M 0 4 L 8 4 L 4 0 Z" RenderTransformOrigin="0.5,0.5" Stroke="#FFFFFFFF" Margin="0.75,0,-0.757,0" />
+                            </Grid>
+                        </RepeatButton>
+
+                        <!-- Track is a special layout container which sizes the thumb and the repeat button which do jump scrolling either side of it -->
+                        <Track Grid.Row="1" x:Name="PART_Track" Orientation="Vertical" IsDirectionReversed="true">
+                            <Track.Thumb>
+                                <Thumb Style="{DynamicResource ThumbStyle}" Width="10" />
+                            </Track.Thumb>
+                            <Track.IncreaseRepeatButton>
+                                <RepeatButton x:Name="PageUp" Style="{DynamicResource ScrollRepeatButtonStyle}" Command="ScrollBar.PageDownCommand" />
+                            </Track.IncreaseRepeatButton>
+                            <Track.DecreaseRepeatButton>
+                                <RepeatButton x:Name="PageDown" Style="{DynamicResource ScrollRepeatButtonStyle}" Command="ScrollBar.PageUpCommand" />
+                            </Track.DecreaseRepeatButton>
+                        </Track>
+
+                        <RepeatButton Grid.Row="2" x:Name="IncreaseRepeat" Style="{DynamicResource RepeatButtonStyle}" Command="ScrollBar.LineDownCommand" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0,0,0,0">
+                            <Grid>
+                                <Path x:Name="IncreaseArrow" StrokeThickness="1" Data="M 0 0 L 4 4 L 8 0 Z" RenderTransformOrigin="0.5,0.5" Stroke="#FFFFFFFF" Margin="0.75,0,-0.757,0" />
+                            </Grid>
+                        </RepeatButton>
+                    </Grid>
+
+                    <!-- This uses a single template for ScrollBar and rotate it to be Horizontal
+			It also changes the commands so that the it does Left and Right instead of Up and Down Commands -->
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Orientation" Value="Horizontal">
+
+                            <!-- Rotate the ScrollBar from Vertical to Horizontal -->
+                            <Setter Property="LayoutTransform" TargetName="GridRoot">
+                                <Setter.Value>
+                                    <RotateTransform Angle="-90" />
+                                </Setter.Value>
+                            </Setter>
+
+                            <!-- Track is bound to Orientation internally, so we need to rotate it back to Vertical -->
+                            <Setter TargetName="PART_Track" Property="Orientation" Value="Vertical" />
+
+                            <!-- Change the commands to do Horizontal commands -->
+                            <Setter Property="Command" Value="ScrollBar.LineLeftCommand" TargetName="DecreaseRepeat" />
+                            <Setter Property="Command" Value="ScrollBar.LineRightCommand" TargetName="IncreaseRepeat" />
+                            <Setter Property="Command" Value="ScrollBar.PageLeftCommand" TargetName="PageDown" />
+                            <Setter Property="Command" Value="ScrollBar.PageRightCommand" TargetName="PageUp" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 
 </ResourceDictionary>
