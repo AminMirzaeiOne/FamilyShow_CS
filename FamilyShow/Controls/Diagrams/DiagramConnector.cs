@@ -240,6 +240,24 @@ namespace FamilyShow.Controls.Diagrams
             this.end = endConnector;
         }
 
+        /// <summary>
+        /// Return true if should continue drawing, otherwise false.
+        /// </summary>
+        virtual public bool Draw(DrawingContext drawingContext)
+        {
+            // Don't draw if either of the nodes are filtered.
+            if (start.Node.Visibility != Visibility.Visible ||
+                end.Node.Visibility != Visibility.Visible)
+                return false;
+
+            // First check if the filtered state has changed, an animation
+            // if created if the state has changed which is used for all 
+            // connection drawing.
+            CheckIfFilteredChanged();
+
+            return true;
+        }
+
 
 
     }
