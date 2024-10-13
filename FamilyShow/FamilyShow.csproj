@@ -73,6 +73,9 @@
     <Compile Include="Controls\OldVersionMessage.xaml.cs">
       <DependentUpon>OldVersionMessage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\PersonInfo.xaml.cs">
+      <DependentUpon>PersonInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="ValueConverters.cs" />
     <Page Include="Controls\Details.xaml">
@@ -88,6 +91,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\OldVersionMessage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PersonInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
