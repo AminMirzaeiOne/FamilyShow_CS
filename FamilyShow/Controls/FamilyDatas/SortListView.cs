@@ -81,5 +81,32 @@ namespace FamilyShow.Controls.FamilyDatas
             dataView.Refresh();
         }
 
+        /// <summary>
+        /// Update the column header based on the sort column and order.
+        /// </summary>
+        private void UpdateHeaderTemplate()
+        {
+            Style headerStyle;
+
+            // Restore the previous header.
+            if (previousSortColumn != null && previousSortColumn.SortStyle != null)
+            {
+                headerStyle = this.TryFindResource(previousSortColumn.SortStyle) as Style;
+                if (headerStyle != null)
+                    previousSortColumn.HeaderContainerStyle = headerStyle;
+            }
+
+            // Update the current header.
+            if (sortColumn.SortStyle != null)
+            {
+                // The name of the resource to use for the header.
+                string resourceName = sortColumn.SortStyle + sortDirection.ToString();
+
+                headerStyle = this.TryFindResource(resourceName) as Style;
+                if (headerStyle != null)
+                    sortColumn.HeaderContainerStyle = headerStyle;
+            }
+        }
+
     }
 }
