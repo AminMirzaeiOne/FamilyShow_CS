@@ -150,5 +150,30 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
+    <!-- This brush is used when the person does not have a primary photo -->
+    <DrawingBrush x:Key="NoPhotoBrush">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <GeometryDrawing Geometry="M 126.889,143.333L 250.889,143.333L 250.889,267.333L 126.889,267.333L 126.889,143.333 Z ">
+                    <GeometryDrawing.Brush>
+                        <LinearGradientBrush StartPoint="0,0.0215053" EndPoint="1,1">
+                            <GradientStop Color="#FFFFFFFF" Offset="0.00847458" />
+                            <GradientStop Color="#FF949063" Offset="0.800847" />
+                        </LinearGradientBrush>
+                    </GeometryDrawing.Brush>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="#FF85825F" Geometry="F1 M 162.428,200.167C 162.428,184.671 175.003,172.085 190.509,172.085C 206.005,172.085 218.591,184.671 218.591,200.167C 218.591,215.683 206.005,228.249 190.509,228.249C 175.003,228.249 162.428,215.683 162.428,200.167 Z " />
+                <GeometryDrawing Brush="#FF524F40" Geometry="F1 M 160.598,199.025C 160.598,183.529 173.174,170.943 188.68,170.943C 204.176,170.943 216.762,183.529 216.762,199.025C 216.762,214.541 204.176,227.107 188.68,227.107C 173.174,227.107 160.598,214.541 160.598,199.025 Z " />
+                <GeometryDrawing Brush="#FF6D6B51" Geometry="F1 M 253.277,270.359C 250.065,261.438 253.089,268.956 244.895,249.789C 242.347,243.406 234.03,235.753 223.176,235.753L 163.176,235.753C 152.342,235.753 144.025,243.406 141.488,249.789C 138.94,256.153 135.803,261.438 132.631,270.359" />
+                <GeometryDrawing Brush="#FF524F40" Geometry="F1 M 249.41,266.847C 246.198,257.926 249.222,265.444 241.028,246.278C 238.48,239.894 230.163,232.241 219.309,232.241L 159.309,232.241C 148.475,232.241 140.158,239.894 137.621,246.278C 135.074,252.641 131.936,257.926 128.764,266.847" />
+                <GeometryDrawing Brush="#FFFFFFFF" Geometry="M 115.999,132.639L 260.777,132.639L 260.777,301.028L 115.999,301.028L 115.999,132.639 Z M 126.208,142.884L 250.208,142.884L 250.208,266.884L 126.208,266.884L 126.208,142.884 Z ">
+                    <GeometryDrawing.Pen>
+                        <Pen LineJoin="Round" Brush="#FFC0C1C3" />
+                    </GeometryDrawing.Pen>
+                </GeometryDrawing>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
 
 </ResourceDictionary>
