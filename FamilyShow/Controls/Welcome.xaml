@@ -62,7 +62,13 @@
     </UserControl.Resources>
     
     
-    <Grid>
-            
-    </Grid>
+    <StackPanel>
+        <!-- Header -->
+        <Border Width="300" Padding="5,0,5,0" Opacity="0.8" x:Name="Header" Background="{DynamicResource WelcomeBackgroundBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,1,1,0" CornerRadius="5,5,0,0" HorizontalAlignment="Center" >
+            <Grid>
+                <Rectangle Fill="{DynamicResource WelcomeHeaderBg}" Height="69"/>
+                <TextBlock Padding="4,0,0,0" Text="Welcome" TextWrapping="Wrap" Foreground="{DynamicResource WelcomeHeaderFontColor}" FontSize="18" FontWeight="Bold" x:Name="HeaderTextBlock" d:LayoutOverrides="Height" HorizontalAlignment="Left" Margin="3.5,0,0,2" VerticalAlignment="Bottom"/>
+            </Grid>
+        </Border>
+    </StackPanel>
 </UserControl>
