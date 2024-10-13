@@ -532,6 +532,20 @@ namespace FamilyShow.Controls.Diagrams
             displayYear = DateTime.Now.Year;
         }
 
+        /// <summary>
+        /// Return the DiagramNode for the specified Person.
+        /// </summary>
+        public DiagramNode GetDiagramNode(Person person)
+        {
+            if (person == null)
+                return null;
+
+            if (!personLookup.ContainsKey(person))
+                return null;
+
+            return personLookup[person].Node;
+        }
+
 
 
     }
