@@ -274,8 +274,18 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    
-                    
+
+                    <!-- filter area -->
+                    <Border Grid.Row="0" Grid.Column="0" Background="#90ffffff" Margin="5,5,0,20" Padding="6" CornerRadius="4">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <Label Foreground="#FF1F3066" Content="Filter" Margin="0,0,10,0"/>
+                            <local:FilterText x:Name="FilterTextBox" TextBox.TextChanged="FilterTextBox_TextChanged" ResetFilter="FilterTextBox_ResetFilter" Width="200" VerticalAlignment="Center" />
+                            <Label Margin="10,-4,0,0" Foreground="#FFCCCCCC" FontSize="16" VerticalAlignment="Center"
+       Content="{Binding Path=Items.Count, ElementName=FamilyEditor}"  />
+                        </StackPanel>
+                    </Border>
+
+
             </Border>
             
         </DockPanel> 
