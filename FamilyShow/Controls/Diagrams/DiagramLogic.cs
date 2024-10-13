@@ -273,6 +273,54 @@ namespace FamilyShow.Controls.Diagrams
             }
         }
 
+        /// <summary>
+        /// Creates the primary row. The row contains groups: 1) The primary-group 
+        /// that only contains the primary node, and 2) The optional left-group 
+        /// that contains spouses and siblings.
+        /// </summary>
+        public DiagramRow CreatePrimaryRow(Person person, double scale, double scaleRelated)
+        {
+            // The primary node contains two groups, 
+            DiagramGroup primaryGroup = new DiagramGroup();
+            DiagramGroup leftGroup = new DiagramGroup();
+
+            // Set up the row.
+            DiagramRow row = new DiagramRow();
+
+            // Add primary node.
+            DiagramNode node = CreateNode(person, NodeType.Primary, false, scale);
+            primaryGroup.Add(node);
+            personLookup.Add(node.Person, new DiagramConnectorNode(node, primaryGroup, row));
+
+            // Current spouses.
+            Collection<Person> currentSpouses = person.CurrentSpouses;
+            AddSpouseNodes(person, row, leftGroup, currentSpouses,
+                NodeType.Spouse, scaleRelated, true);
+
+            // Previous spouses.
+            Collection<Person> previousSpouses = person.PreviousSpouses;
+            AddSpouseNodes(person, row, leftGroup, previousSpouses,
+                NodeType.Spouse, scaleRelated, false);
+
+            // Siblings.
+            Collection<Person> siblings = person.Siblings;
+            AddSiblingNodes(row, leftGroup, siblings, NodeType.Sibling, scaleRelated);
+
+            // Half siblings.
+            Collection<Person> halfSiblings = person.HalfSiblings;
+            AddSiblingNodes(row, leftGroup, halfSiblings, NodeType.SiblingLeft, scaleRelated);
+
+            if (leftGroup.Nodes.Count > 0)
+            {
+                leftGroup.Reverse();
+                row.Add(leftGroup);
+            }
+
+            row.Add(primaryGroup);
+
+            return row;
+        }
+
 
 
 
