@@ -55,5 +55,11 @@ namespace FamilyShow.Controls.Diagrams
             return this.ArrangeNodes(false);
         }
 
+        protected override Size ArrangeOverride(Size finalSize)
+        {
+            // Arrange the nodes in the group, return the total size.
+            return ArrangeNodes(true);
+        }
+
     }
 }
