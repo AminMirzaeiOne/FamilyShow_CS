@@ -317,6 +317,19 @@
         </Setter>
     </Style>
 
+    <!-- This is the style for the list of tags on the Person Info control -->
+    <Style x:Key="TagsListStyle" TargetType="{x:Type ListBox}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBox}">
+                    <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled" Margin="5,5,5,5">
+                        <WrapPanel IsItemsHost="True" />
+                    </ScrollViewer>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 
 
 
