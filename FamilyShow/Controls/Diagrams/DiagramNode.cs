@@ -384,5 +384,20 @@ namespace FamilyShow.Controls.Diagrams
             return (Brush)TryFindResource(resourceName);
         }
 
+        /// <summary>
+        /// Update the node template based on the node type.
+        /// </summary>
+        private void UpdateTemplate()
+        {
+            // Determine the node template based on node properties.
+            string template = string.Format(
+                CultureInfo.InvariantCulture, "{0}{1}NodeTemplate",
+                (person.Gender == Gender.Female) ? "Female" : "Male",
+                (this.type == NodeType.Primary) ? "Primary" : "");
+
+            // Assign the node template.                
+            this.Template = (ControlTemplate)FindResource(template);
+        }
+
     }
 }
