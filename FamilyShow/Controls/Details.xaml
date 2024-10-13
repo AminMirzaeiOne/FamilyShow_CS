@@ -333,6 +333,17 @@
                 </BooleanAnimationUsingKeyFrames>
             </Storyboard>
 
+            <ControlTemplate x:Key="LabelControlTemplate" TargetType="{x:Type Label}">
+                <Border SnapsToDevicePixels="True" Margin="0,0,0,3" Background="{TemplateBinding Background}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,0,1" Padding="{TemplateBinding Padding}">
+                    <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" RecognizesAccessKey="True"/>
+                </Border>
+                <ControlTemplate.Triggers>
+                    <Trigger Property="IsEnabled" Value="False">
+                        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+
 
         </ResourceDictionary>
     </UserControl.Resources>
