@@ -205,5 +205,9 @@
         <GradientStop Color="#444" Offset="1.0" />
     </LinearGradientBrush>
 
+    <!-- Disabled Brushes are used for the Disabled look of each control -->
+
+    <SolidColorBrush x:Key="DisabledMenuForegroundBrush" Color="#888" />
+
 
 </ResourceDictionary>
