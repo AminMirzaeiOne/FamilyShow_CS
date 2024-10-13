@@ -102,5 +102,46 @@ namespace FamilyShow.Controls.Diagrams
             nodes.Reverse();
         }
 
+        /// <summary>
+        /// Arrange the nodes in the group, return the total size.
+        /// </summary>
+        private Size ArrangeNodes(bool arrange)
+        {
+            // Position of the next node.
+            double pos = 0;
+
+            // Bounding area of the node.
+            Rect bounds = new Rect();
+
+            // Total size of the group.
+            Size totalSize = new Size(0, 0);
+
+            foreach (DiagramNode node in nodes)
+            {
+                // Node location.
+                bounds.X = pos;
+                bounds.Y = 0;
+
+                // Node size.
+                bounds.Width = node.DesiredSize.Width;
+                bounds.Height = node.DesiredSize.Height;
+
+                // Arrange the node, save the location.
+                if (arrange)
+                {
+                    node.Arrange(bounds);
+                    node.Location = bounds.TopLeft;
+                }
+
+                // Update the size of the group.
+                totalSize.Width = pos + node.DesiredSize.Width;
+                totalSize.Height = Math.Max(totalSize.Height, node.DesiredSize.Height);
+
+                pos += (bounds.Width + DiagramGroup.NodeSpace);
+            }
+
+            return totalSize;
+        }
+
     }
 }
