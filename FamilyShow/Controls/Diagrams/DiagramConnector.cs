@@ -278,6 +278,30 @@ namespace FamilyShow.Controls.Diagrams
             return brush;
         }
 
+        /// <summary>
+        /// Determine if the filtered state has changed, and create
+        /// the animation that is used to draw the connection.
+        /// </summary>
+        protected void CheckIfFilteredChanged()
+        {
+            // See if the filtered state has changed.
+            bool newFiltered = this.NewFilteredState;
+            if (newFiltered != this.IsFiltered)
+            {
+                // Filtered state did change, create the animation.
+                this.IsFiltered = newFiltered;
+                animation = new DoubleAnimation();
+                animation.From = isFiltered ? Const.OpacityNormal : Const.OpacityFiltered;
+                animation.To = isFiltered ? Const.OpacityFiltered : Const.OpacityNormal;
+                animation.Duration = App.GetAnimationDuration(Const.AnimationDuration);
+            }
+            else
+            {
+                // Filtered state did not change, clear the animation.
+                animation = null;
+            }
+        }
+
 
 
     }
