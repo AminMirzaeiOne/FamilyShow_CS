@@ -16,4 +16,13 @@
         <GradientStop Color="#EEE" Offset="1.0" />
     </LinearGradientBrush>
 
+    <!-- PressedBrush is used for Pressed in Button, Radio Button, CheckBox -->
+    <LinearGradientBrush x:Key="PressedBrush" EndPoint="0,1" StartPoint="0,0">
+        <GradientStop Color="#FFB3C1D4" Offset="0" />
+        <GradientStop Color="#FF8A9AA9" Offset="1" />
+        <GradientStop Color="#FFC1D1E5" Offset="0.465" />
+        <GradientStop Color="#FF91A2B2" Offset="0.485" />
+        <GradientStop Color="#FFC0D0E4" Offset="0.48" />
+    </LinearGradientBrush>
+
 </ResourceDictionary>
