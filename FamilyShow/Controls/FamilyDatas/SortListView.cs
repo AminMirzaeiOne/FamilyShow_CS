@@ -27,5 +27,42 @@ namespace FamilyShow.Controls.FamilyDatas
             base.OnInitialized(e);
         }
 
+        /// <summary>
+        /// A header was clicked. Sort the associated column.
+        /// </summary>
+        private void OnHeaderClicked(object sender, RoutedEventArgs e)
+        {
+            // Make sure the column is really being sorted.
+            GridViewColumnHeader header = e.OriginalSource as GridViewColumnHeader;
+            if (header == null || header.Role == GridViewColumnHeaderRole.Padding)
+                return;
+
+            SortListViewColumn column = header.Column as SortListViewColumn;
+            if (column == null)
+                return;
+
+            // See if a new column was clicked, or the same column was clicked.
+            if (sortColumn != column)
+            {
+                // A new column was clicked.
+                previousSortColumn = sortColumn;
+                sortColumn = column;
+                sortDirection = ListSortDirection.Ascending;
+            }
+            else
+            {
+                // The same column was clicked, change the sort order.
+                previousSortColumn = null;
+                sortDirection = (sortDirection == ListSortDirection.Ascending) ?
+                    ListSortDirection.Descending : ListSortDirection.Ascending;
+            }
+
+            // Sort the data.
+            SortList(column.SortProperty);
+
+            // Update the column header based on the sort column and order.
+            UpdateHeaderTemplate();
+        }
+
     }
 }
