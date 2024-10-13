@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using FamilyShowLib;
 using System.Windows.Threading;
+using System.Windows.Media;
 
 namespace FamilyShow.Controls.Diagrams
 {
@@ -99,6 +100,72 @@ namespace FamilyShow.Controls.Diagrams
 
         #endregion
 
+        #region properties
+
+        /// <summary>
+        /// Gets or sets the zoom level of the diagram.
+        /// </summary>
+        public double Scale
+        {
+            get { return this.scale; }
+            set
+            {
+                if (this.scale != value)
+                {
+                    scale = value;
+                    this.LayoutTransform = new ScaleTransform(scale, scale);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Sets the display year filter.
+        /// </summary>
+        public double DisplayYear
+        {
+            set
+            {
+                // Filter nodes and connections based on the year.
+                logic.DisplayYear = value;
+                this.InvalidateVisual();
+            }
+        }
+
+        /// <summary>
+        /// Gets the minimum year specified in the nodes and connections.
+        /// </summary>
+        public double MinimumYear
+        {
+            get { return logic.MinimumYear; }
+        }
+
+        /// <summary>
+        /// Gets the bounding area (relative to the diagram) of the primary node.
+        /// </summary>
+        public Rect PrimaryNodeBounds
+        {
+            get { return logic.GetNodeBounds(logic.Family.Current); }
+        }
+
+        /// <summary>
+        /// Gets the bounding area (relative to the diagram) of the selected node.
+        /// The selected node is the non-primary node that was previously selected
+        /// to be the primary node.
+        /// </summary>
+        public Rect SelectedNodeBounds
+        {
+            get { return selectedNodeBounds; }
+        }
+
+        /// <summary>
+        /// Gets the number of nodes in the diagram.
+        /// </summary>
+        public int NodeCount
+        {
+            get { return logic.PersonLookup.Count; }
+        }
+
+        #endregion
 
     }
 }
