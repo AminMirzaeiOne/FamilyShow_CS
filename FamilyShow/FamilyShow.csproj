@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>FamilyShow.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -231,6 +234,9 @@
     <Resource Include="SampleFiles\Images\Prince Henry.jpg" />
     <Resource Include="SampleFiles\Images\Prince William.jpg" />
     <Resource Include="SampleFiles\Images\Princess Diana.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="FamilyShow.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
