@@ -11,5 +11,14 @@ namespace FamilyShow.Controls.FamilyDatas
         private delegate void FilterDelegate();
         private Filter filter = new Filter();
 
+        /// <summary>
+        /// Get the filter for this control.
+        /// </summary>
+        protected Filter Filter
+        {
+            get { return this.filter; }
+        }
+
+
     }
 }
