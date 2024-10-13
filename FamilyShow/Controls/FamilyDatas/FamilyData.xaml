@@ -138,6 +138,13 @@
             <Setter Property="CornerRadius" Value="5,0,0,5"/>
         </Style>
 
+        <!-- style applied to column headers -->
+        <Style x:Key="LastColumnHeaderStyle" BasedOn="{StaticResource ColumnHeaderStyle}" TargetType="{x:Type Border}">
+            <Setter Property="BorderThickness" Value="0,1,1,1"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="CornerRadius" Value="0,5,5,0"/>
+        </Style>
+
     </UserControl.Resources>
     
     <Grid>
