@@ -204,6 +204,15 @@ namespace FamilyShow.Controls.Diagrams
             }
         }
 
+        /// <summary>
+        /// Return true if the connection is currently filtered.
+        /// </summary>
+        private bool IsFiltered
+        {
+            set { isFiltered = value; }
+            get { return isFiltered; }
+        }
+
 
 
     }
