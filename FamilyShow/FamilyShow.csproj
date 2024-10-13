@@ -73,6 +73,9 @@
     <Compile Include="Controls\FamilyDatas\FamilyDisplayListView.cs" />
     <Compile Include="Controls\FamilyDatas\FamilyEditListView.cs" />
     <Compile Include="Controls\FamilyDatas\FilterSortListView.cs" />
+    <Compile Include="Controls\FamilyDatas\FilterText.xaml.cs">
+      <DependentUpon>FilterText.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\NewUserControl.xaml.cs">
       <DependentUpon>NewUserControl.xaml</DependentUpon>
     </Compile>
@@ -96,6 +99,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\FamilyDatas\FamilyData.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\FamilyDatas\FilterText.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
