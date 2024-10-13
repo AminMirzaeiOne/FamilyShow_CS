@@ -25,4 +25,9 @@
         <GradientStop Color="#FFC0D0E4" Offset="0.48" />
     </LinearGradientBrush>
 
+    <LinearGradientBrush x:Key="PressedBorderBrush" EndPoint="0,1" StartPoint="0,0">
+        <GradientStop Color="#444" Offset="0.0" />
+        <GradientStop Color="#888" Offset="1.0" />
+    </LinearGradientBrush>
+
 </ResourceDictionary>
