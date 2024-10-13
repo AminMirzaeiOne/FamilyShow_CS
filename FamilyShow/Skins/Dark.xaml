@@ -212,4 +212,9 @@
     <!-- This BitmapEffect is used by the Simple MenuItem -->
     <DropShadowBitmapEffect x:Key="PopupDropShadow" ShadowDepth="1.5" Softness="0.15" />
 
+    <!-- Histogram Brushes -->
+    <SolidColorBrush x:Key="CategoryFillBrush" Color="#FFE6E6E6" />
+    <SolidColorBrush x:Key="CategoryStrokeBrush" Color="#FFE6E6E6" />
+    <SolidColorBrush x:Key="AxisBrush" Color="#FF979797" />
+
 </ResourceDictionary>
