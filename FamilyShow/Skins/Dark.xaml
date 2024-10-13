@@ -278,6 +278,11 @@
         <Setter Property="Foreground" Value="{DynamicResource FontColor}" />
     </Style>
 
+    <!-- This is the style for the avatar textblock text -->
+    <Style x:Key="AvatarTextBlockStyle" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{DynamicResource FontColor}" />
+    </Style>
+
 
 
 
