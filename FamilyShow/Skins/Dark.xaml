@@ -30,4 +30,9 @@
         <GradientStop Color="#888" Offset="1.0" />
     </LinearGradientBrush>
 
+    <!-- Disabled Brushes are used for the Disabled look of each control -->
+    <SolidColorBrush x:Key="DisabledForegroundBrush" Color="#888" />
+    <SolidColorBrush x:Key="DisabledBackgroundBrush" Color="#EEE" />
+    <SolidColorBrush x:Key="DisabledBorderBrush" Color="#AAA" />
+
 </ResourceDictionary>
