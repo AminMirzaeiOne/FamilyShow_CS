@@ -44,6 +44,12 @@
             <Setter Property="DockPanel.Dock" Value="Right" />
         </Style>
 
+        <!-- templates that are used to display the cells in the columns -->
+
+        <!-- first, empty column -->
+        <DataTemplate x:Key="EmptyColumnTemplate">
+        </DataTemplate>
+
     </UserControl.Resources>
     
     <Grid>
