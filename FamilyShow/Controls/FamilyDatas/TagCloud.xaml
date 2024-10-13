@@ -73,5 +73,13 @@
         </Style>
     </UserControl.Resources>
 
-    
+    <ListBox x:Name="TagCloudListBox" ItemContainerStyle="{DynamicResource TagCloudListBoxItem}" 
+ItemTemplate="{DynamicResource TagCloudTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+IsSynchronizedWithCurrentItem="True" Style="{DynamicResource TagsListBox}" HorizontalAlignment="Stretch" 
+SelectionChanged="TagCloudListBox_SelectionChanged" BorderThickness="0,0,0,0">
+
+    </ListBox>
+
+
+
 </UserControl>
