@@ -982,4 +982,12 @@
         <GradientStop Color="#ff87b7e8" Offset="0.5" />
     </LinearGradientBrush>
 
+    <!-- Male sibling right brushes -->
+    <LinearGradientBrush x:Key="MaleSiblingRightLivingFill" EndPoint="1,0.5" StartPoint="0,0.5">
+        <GradientStop Color="#fff09822" Offset="0" />
+        <GradientStop Color="#ff6797c8" Offset="1" />
+        <GradientStop Color="#ff6797c8" Offset="0.505" />
+        <GradientStop Color="#fff09822" Offset="0.5" />
+    </LinearGradientBrush>
+
 </ResourceDictionary>
