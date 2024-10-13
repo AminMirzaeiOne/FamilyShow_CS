@@ -802,5 +802,8 @@
     <!-- Converter for displaying the "primary" photo text -->
     <local:PrimaryAvatarConverter x:Key="PrimaryAvatarConverter" />
 
+    <!-- Converter for formatting dates to short date format -->
+    <local:DateFormattingConverter x:Key="DateFormattingConverter" />
+
 
 </ResourceDictionary>
