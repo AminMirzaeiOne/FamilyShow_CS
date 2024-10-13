@@ -82,6 +82,11 @@
     Text="{Binding Path=DeathDate, Converter={StaticResource DateFormattingConverter}}" />
         </DataTemplate>
 
+        <!-- death place column -->
+        <DataTemplate x:Key="DeathPlaceColumnTemplate">
+            <TextBox Style="{StaticResource TextBoxStyle}" Text="{Binding Path=DeathPlace}" />
+        </DataTemplate>
+
     </UserControl.Resources>
     
     <Grid>
