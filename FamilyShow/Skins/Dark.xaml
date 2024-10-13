@@ -896,5 +896,9 @@
         <GradientStop Color="#ff87b7e8" Offset="0.5" />
     </LinearGradientBrush>
 
+    <LinearGradientBrush x:Key="FemaleSiblingLeftDeceasedStroke" EndPoint="1,0.5" StartPoint="0,0.5">
+        <GradientStop Color="#ff6797c8" Offset="0.486" />
+        <GradientStop Color="#fff09822" Offset="0.514" />
+    </LinearGradientBrush>
 
 </ResourceDictionary>
