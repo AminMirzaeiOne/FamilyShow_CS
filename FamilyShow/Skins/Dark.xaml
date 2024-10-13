@@ -193,5 +193,11 @@
 
     <SolidColorBrush x:Key="ListViewFontColor" Color="#FFFA6E15" />
 
+    <!-- ButtonBorderBrush is used as the Border for buttons  -->
+    <LinearGradientBrush x:Key="ButtonBorderBrush" EndPoint="0,1" StartPoint="0,0">
+        <GradientStop Color="#CCC" Offset="0.0" />
+        <GradientStop Color="#444" Offset="1.0" />
+    </LinearGradientBrush>
+
 
 </ResourceDictionary>
