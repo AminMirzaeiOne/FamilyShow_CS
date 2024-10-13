@@ -94,6 +94,11 @@
             </Grid>
         </Border>
 
+        <!-- Footer -->
+        <Border Background="{DynamicResource BackgroundBrush}" Height="35" x:Name="Footer" Opacity="0.8" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,0,1,1" CornerRadius="0,0,5,5">
+            <Label x:Name="VersionLabel" Margin="10,0,0,0" Foreground="#FFB5C8D8" Content="Version "/>
+        </Border>
+
 
     </StackPanel>
 </UserControl>
