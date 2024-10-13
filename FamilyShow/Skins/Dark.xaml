@@ -259,5 +259,14 @@
         <Setter Property="CornerRadius" Value="10,10,10,10" />
     </Style>
 
+    <!-- This is the default style for all labels -->
+    <Style TargetType="{x:Type Label}">
+        <Setter Property="Foreground" Value="{DynamicResource FontColor}" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="Padding" Value="{DynamicResource LabelPadding}" />
+        <Setter Property="FontFamily" Value="Calibri" />
+        <Setter Property="FontSize" Value="13" />
+    </Style>
+
 
 </ResourceDictionary>
