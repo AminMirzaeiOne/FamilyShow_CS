@@ -83,5 +83,16 @@ namespace FamilyShow.Controls.Diagrams
             this.AddVisualChild(node);
         }
 
+        /// <summary>
+        /// Remove all nodes from the group.
+        /// </summary>
+        public void Clear()
+        {
+            foreach (DiagramNode node in nodes)
+                this.RemoveVisualChild(node);
+
+            nodes.Clear();
+        }
+
     }
 }
