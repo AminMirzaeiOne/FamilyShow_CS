@@ -858,4 +858,10 @@
 
     <SolidColorBrush x:Key="PrimaryStarBrush" Color="{DynamicResource PrimaryStarColor}" />
 
+    <!-- Female primary brushes -->
+    <SolidColorBrush x:Key="FemalePrimaryLivingFill" Color="{DynamicResource PrimaryColor}" />
+    <SolidColorBrush x:Key="FemalePrimaryLivingHoverFill" Color="{DynamicResource PrimaryHoverColor}" />
+    <SolidColorBrush x:Key="FemalePrimaryDeceasedStroke" Color="{DynamicResource PrimaryColor}" />
+    <SolidColorBrush x:Key="FemalePrimaryDeceasedHoverFill" Color="{DynamicResource PrimaryHoverColor}" Opacity="0.50" />
+
 </ResourceDictionary>
