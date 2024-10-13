@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Windows.Media.Animation;
 using System.Windows.Media;
 using System.Windows;
+using FamilyShowLib;
+using System.Globalization;
 
 namespace FamilyShow.Controls.Diagrams
 {
@@ -325,6 +327,203 @@ namespace FamilyShow.Controls.Diagrams
 
                 drawingContext.DrawLine(this.Pen, this.StartNode.Center, this.EndNode.Center);
                 return true;
+            }
+        }
+
+        /// <summary>
+        /// Connector between spouses. Handles current and former spouses.
+        /// </summary>
+        public class MarriedDiagramConnector : DiagramConnector
+        {
+            #region fields
+
+            // Connector line text.
+            private double connectionTextSize;
+            private Color connectionTextColor;
+            private FontFamily connectionTextFont;
+
+            // Flag if currently married or former.
+            private bool married;
+
+            #endregion
+
+            #region properties
+
+            /// <summary>
+            /// Return true if this is a child connector.
+            /// </summary>
+            override public bool IsChildConnector
+            {
+                get { return false; }
+            }
+
+            /// <summary>
+            /// Gets the married date for the connector. Can be null.
+            /// </summary>
+            override public DateTime? MarriedDate
+            {
+                get
+                {
+                    if (married)
+                    {
+                        SpouseRelationship rel = this.StartNode.Node.Person.GetSpouseRelationship(this.EndNode.Node.Person);
+                        if (rel != null)
+                            return rel.MarriageDate;
+                    }
+                    return null;
+                }
+            }
+
+            /// <summary>
+            /// Get the previous married date for the connector. Can be null.
+            /// </summary>
+            override public DateTime? PreviousMarriedDate
+            {
+                get
+                {
+                    if (!married)
+                    {
+                        SpouseRelationship rel = this.StartNode.Node.Person.GetSpouseRelationship(this.EndNode.Node.Person);
+                        if (rel != null)
+                            return rel.DivorceDate;
+                    }
+                    return null;
+                }
+            }
+
+            /// <summary>
+            /// Get the new filtered state of the connection. This depends
+            /// on the connection nodes, marriage date and previous marriage date.
+            /// Return true if the connection should be filtered.
+            /// </summary>
+            override protected bool NewFilteredState
+            {
+                get
+                {
+                    // Check the two connected nodes.
+                    if (base.NewFilteredState)
+                        return true;
+
+                    // Check the married date for current and former spouses.
+                    SpouseRelationship rel = this.StartNode.Node.Person.GetSpouseRelationship(this.EndNode.Node.Person);
+                    if (rel != null && rel.MarriageDate != null &&
+                        (this.StartNode.Node.DisplayYear < rel.MarriageDate.Value.Year))
+                    {
+                        return true;
+                    }
+
+                    // Check the divorce date for former spouses.
+                    if (!married && rel != null && rel.DivorceDate != null &&
+                        (this.StartNode.Node.DisplayYear < rel.DivorceDate.Value.Year))
+                    {
+                        return true;
+                    }
+
+                    // Connection is not filtered.
+                    return false;
+                }
+            }
+
+            #endregion
+
+            public MarriedDiagramConnector(bool isMarried,
+                DiagramConnectorNode startConnector, DiagramConnectorNode endConnector) :
+                base(startConnector, endConnector)
+            {
+                // Store if curretnly married or former.
+                married = isMarried;
+
+                // Get resources used to draw text.
+                connectionTextSize = (double)Application.Current.TryFindResource("ConnectionTextSize");
+                connectionTextColor = (Color)Application.Current.TryFindResource("ConnectionTextColor");
+                connectionTextFont = (FontFamily)Application.Current.TryFindResource("ConnectionTextFont");
+
+                // Get resourced used to draw the connection line.
+                this.ResourcePen = (Pen)Application.Current.TryFindResource(
+                    married ? "MarriedConnectionPen" : "FormerConnectionPen");
+            }
+
+            /// <summary>
+            /// Draw the connection between the two nodes.
+            /// </summary>
+            override public bool Draw(DrawingContext drawingContext)
+            {
+                if (!base.Draw(drawingContext))
+                    return false;
+
+                DrawMarried(drawingContext);
+                return true;
+            }
+
+            /// <summary>
+            /// Draw married or previous married connector between nodes.
+            /// </summary>
+            private void DrawMarried(DrawingContext drawingContext)
+            {
+                const double TextSpace = 3;
+
+                // Determine the start and ending points based on what node is on the left / right.
+                Point startPoint = (this.StartNode.TopCenter.X < this.EndNode.TopCenter.X) ? this.StartNode.TopCenter : this.EndNode.TopCenter;
+                Point endPoint = (this.StartNode.TopCenter.X < this.EndNode.TopCenter.X) ? this.EndNode.TopCenter : this.StartNode.TopCenter;
+
+                // Use a higher arc when the nodes are further apart.
+                double arcHeight = (endPoint.X - startPoint.X) / 4;
+                Point middlePoint = new Point(startPoint.X + ((endPoint.X - startPoint.X) / 2), startPoint.Y - arcHeight);
+
+                // Draw the arc, get the bounds so can draw connection text.
+                Rect bounds = DrawArc(drawingContext, this.Pen, startPoint, middlePoint, endPoint);
+
+                // Get the relationship info so the dates can be displayed.
+                SpouseRelationship rel = this.StartNode.Node.Person.GetSpouseRelationship(this.EndNode.Node.Person);
+                if (rel != null)
+                {
+                    // Marriage date.
+                    if (rel.MarriageDate != null)
+                    {
+                        string text = rel.MarriageDate.Value.Year.ToString(CultureInfo.CurrentCulture);
+
+                        FormattedText format = new FormattedText(text,
+                            System.Globalization.CultureInfo.CurrentUICulture,
+                            FlowDirection.LeftToRight, new Typeface(connectionTextFont,
+                            FontStyles.Normal, FontWeights.Normal, FontStretches.Normal,
+                            connectionTextFont), connectionTextSize, GetBrush(connectionTextColor));
+
+                        drawingContext.DrawText(format, new Point(
+                            bounds.Left + ((bounds.Width / 2) - (format.Width / 2)),
+                            bounds.Top - format.Height - TextSpace));
+                    }
+
+                    // Previous marriage date.
+                    if (!married && rel.DivorceDate != null)
+                    {
+                        string text = rel.DivorceDate.Value.Year.ToString(CultureInfo.CurrentCulture);
+
+                        FormattedText format = new FormattedText(text,
+                            System.Globalization.CultureInfo.CurrentUICulture,
+                            FlowDirection.LeftToRight, new Typeface(connectionTextFont,
+                            FontStyles.Normal, FontWeights.Normal, FontStretches.Normal,
+                            connectionTextFont), connectionTextSize, GetBrush(connectionTextColor));
+
+                        drawingContext.DrawText(format, new Point(
+                            bounds.Left + ((bounds.Width / 2) - (format.Width / 2)),
+                            bounds.Top + TextSpace));
+                    }
+                }
+            }
+
+            /// <summary>
+            /// Draw an arc connecting the two nodes.
+            /// </summary>
+            private static Rect DrawArc(DrawingContext drawingContext, Pen pen,
+                Point startPoint, Point middlePoint, Point endPoint)
+            {
+                PathGeometry geometry = new PathGeometry();
+                PathFigure figure = new PathFigure();
+                figure.StartPoint = startPoint;
+                figure.Segments.Add(new QuadraticBezierSegment(middlePoint, endPoint, true));
+                geometry.Figures.Add(figure);
+                drawingContext.DrawGeometry(null, pen, geometry);
+                return geometry.Bounds;
             }
         }
 
