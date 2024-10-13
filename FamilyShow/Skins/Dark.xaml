@@ -1496,4 +1496,28 @@
         </Setter>
     </Style>
 
+    <DrawingBrush x:Key="ErrorIcon">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="#FFFFE9E9" Geometry="F1 M 18.864,1179.45L 2.50133,1179.45C 1.496,1179.45 0.682667,1180.27 0.682667,1181.29L 0.682667,1192.28C 0.682667,1193.29 1.496,1194.12 2.50133,1194.12L 11.78,1194.12L 16.8827,1199.22L 16.8827,1194.12L 18.864,1194.12C 19.8667,1194.12 20.6827,1193.29 20.6827,1192.28L 20.6827,1181.29C 20.6827,1180.27 19.8667,1179.45 18.864,1179.45 Z ">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="1.33333" LineJoin="Round" Brush="#FF8E0E0E" />
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Geometry="F1 M 4.344,1184.77L 16.7987,1184.77">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="1.33333" LineJoin="Round" Brush="#FF8E0E0E" />
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Geometry="F1 M 4.34667,1187.98L 16.7933,1187.98">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="1.33333" LineJoin="Round" Brush="#FF8E0E0E" />
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
 </ResourceDictionary>
