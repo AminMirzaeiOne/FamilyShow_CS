@@ -184,5 +184,11 @@
 
     <SolidColorBrush x:Key="PopupMenuBackgroundBrush" Color="#FF000000" />
 
+    <LinearGradientBrush x:Key="MenuIsHighlightedBrush" StartPoint="0.5,0.999996" EndPoint="0.5,4.37507e-006">
+        <GradientStop Color="#FF4C4D4F" Offset="0" />
+        <GradientStop Color="#FF4C4D4F" Offset="0.0280899" />
+        <GradientStop Color="#FF221E1F" Offset="0.775281" />
+        <GradientStop Color="#FF221E1F" Offset="1" />
+    </LinearGradientBrush>
 
 </ResourceDictionary>
