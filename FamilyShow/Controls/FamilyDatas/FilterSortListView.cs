@@ -61,6 +61,15 @@ namespace FamilyShow.Controls.FamilyDatas
                 date.Value.Month == this.filterDate.Value.Month);
         }
 
+        /// <summary>
+        /// Return true if the filter contains the day in the specified date.
+        /// </summary>
+        public bool MatchesDay(DateTime? date)
+        {
+            return (date != null && this.filterDate != null &&
+                date.Value.Day == this.filterDate.Value.Day);
+        }
+
     }
 
     public class FilterSortListView : SortListView
