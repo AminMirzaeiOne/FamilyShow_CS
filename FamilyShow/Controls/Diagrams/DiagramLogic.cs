@@ -470,6 +470,49 @@ namespace FamilyShow.Controls.Diagrams
             }
         }
 
+        /// <summary>
+        /// Add marriage connections for the people specified in the 
+        /// list. Each marriage connection is only specified once.
+        /// </summary>
+        private void AddSpouseConnections(Collection<Person> list)
+        {
+            // Iterate through the list. 
+            for (int current = 0; current < list.Count; current++)
+            {
+                // The person to check for marriages.
+                Person person = list[current];
+
+                // Check for current / former marriages in the rest of the list.                    
+                for (int i = current + 1; i < list.Count; i++)
+                {
+                    Person spouse = list[i];
+                    SpouseRelationship rel = person.GetSpouseRelationship(spouse);
+
+                    // Current marriage.
+                    if (rel != null && rel.SpouseModifier == SpouseModifier.Current)
+                    {
+                        if (personLookup.ContainsKey(person) &&
+                            personLookup.ContainsKey(spouse))
+                        {
+                            connections.Add(new MarriedDiagramConnector(true,
+                                personLookup[person], personLookup[spouse]));
+                        }
+                    }
+
+                    // Former marriage
+                    if (rel != null && rel.SpouseModifier == SpouseModifier.Former)
+                    {
+                        if (personLookup.ContainsKey(person) &&
+                            personLookup.ContainsKey(spouse))
+                        {
+                            connections.Add(new MarriedDiagramConnector(false,
+                                personLookup[person], personLookup[spouse]));
+                        }
+                    }
+                }
+            }
+        }
+
 
 
     }
