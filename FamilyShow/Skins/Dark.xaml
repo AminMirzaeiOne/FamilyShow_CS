@@ -4,4 +4,10 @@
     <local:ImageConverter x:Key="ImageConverter" />
 
 
+    <!-- NormalBrush is used as the Background for SimpleButton, SimpleRepeatButton -->
+    <LinearGradientBrush x:Key="NormalBrush" EndPoint="0,1" StartPoint="0,0">
+        <GradientStop Color="#EEE" Offset="0.0" />
+        <GradientStop Color="#CCC" Offset="1.0" />
+    </LinearGradientBrush>
+
 </ResourceDictionary>
