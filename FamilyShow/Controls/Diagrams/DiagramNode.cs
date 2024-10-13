@@ -336,5 +336,26 @@ namespace FamilyShow.Controls.Diagrams
             get { return (String)this.GetValue(DiagramNode.BottomLabelProperty); }
             set { SetValue(DiagramNode.BottomLabelProperty, value); }
         }
+
+        public override void OnApplyTemplate()
+        {
+            // The template has been applied to the node. See if the person drawing needs to be scaled.
+            if (this.scale != 1)
+            {
+                // Scale the person drawing part of the node, not the entire node.
+                FrameworkElement personElement = this.Template.FindName("Person", this) as FrameworkElement;
+                if (personElement != null)
+                {
+                    ScaleTransform transform = new ScaleTransform(this.scale, this.scale);
+                    personElement.LayoutTransform = transform;
+                }
+            }
+
+            // The template changed, determine if the group
+            // indicator should be displayed.
+            UpdateGroupIndicator();
+
+            base.OnApplyTemplate();
+        }
     }
 }
