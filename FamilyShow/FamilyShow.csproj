@@ -70,6 +70,7 @@
     <Compile Include="Controls\FamilyDatas\FamilyData.xaml.cs">
       <DependentUpon>FamilyData.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\FamilyDatas\FamilyDisplayListView.cs" />
     <Compile Include="Controls\NewUserControl.xaml.cs">
       <DependentUpon>NewUserControl.xaml</DependentUpon>
     </Compile>
