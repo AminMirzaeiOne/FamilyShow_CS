@@ -233,6 +233,11 @@
             </Setter>
         </Style>
 
+        <Style x:Key="FamilyEditListViewItemStyle" TargetType="{x:Type ListViewItem}" >
+            <Setter Property="Template" Value="{DynamicResource FamilyEditListViewItemTemplate}"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        </Style>
+
     </UserControl.Resources>
     
     <Grid>
