@@ -79,5 +79,7 @@
 
     <SolidColorBrush x:Key="PersonInfoBackgroundBrush" Color="#FF282828" />
 
+    <SolidColorBrush x:Key="PhotosBackgroundBrush" Color="#FF000000" />
+
 
 </ResourceDictionary>
