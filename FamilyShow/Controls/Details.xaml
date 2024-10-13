@@ -647,6 +647,40 @@
 
         </ResourceDictionary>
     </UserControl.Resources>
+
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="FamilyMemberAddButton">
+            <BeginStoryboard Storyboard="{StaticResource ExpandDetailsAdd}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="CloseButton">
+            <BeginStoryboard Storyboard="{StaticResource CollapseDetailsAdd}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="CancelAddExistingButton">
+            <BeginStoryboard Storyboard="{StaticResource CollapseAddExisting}" />
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="EditButton">
+            <BeginStoryboard Storyboard="{StaticResource ExpandDetailsEdit}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="DoneEditButton">
+            <BeginStoryboard x:Name="CollapseDetailsEdit_BeginStoryboard" Storyboard="{StaticResource CollapseDetailsEdit}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="EditRelationshipsButton">
+            <BeginStoryboard x:Name="ExpandDetailsEditRelationship_BeginStoryboard1" Storyboard="{StaticResource ExpandDetailsEditRelationship}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="DoneEditRelationshipButton">
+            <BeginStoryboard x:Name="CollapseDetailsEditRelationship_BeginStoryboard1" Storyboard="{StaticResource CollapseDetailsEditRelationship}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="IntermediateCloseButton">
+            <BeginStoryboard x:Name="CollapseDetailsAddIntermediate_BeginStoryboard" Storyboard="{StaticResource CollapseDetailsAddIntermediate}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="NoPhotoBorder">
+            <BeginStoryboard Storyboard="{StaticResource NoPhoto_MouseEnter}" x:Name="NoPhoto_MouseEnter_BeginStoryboard"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseLeave" SourceName="NoPhotoBorder">
+            <BeginStoryboard Storyboard="{StaticResource NoPhoto_MouseLeave}" x:Name="NoPhoto_MouseLeave_BeginStoryboard"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+
     <Grid>
             
     </Grid>
