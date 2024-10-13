@@ -228,5 +228,50 @@ namespace FamilyShow.Controls.Diagrams
             return ArrangeRows(true);
         }
 
+        /// <summary>
+        /// Arrange the rows in the diagram, return the total size.
+        /// </summary>
+        private Size ArrangeRows(bool arrange)
+        {
+            // Location of the row.
+            double pos = 0;
+
+            // Bounding area of the row.
+            Rect bounds = new Rect();
+
+            // Total size of the diagram.
+            Size size = new Size(0, 0);
+
+            foreach (DiagramRow row in rows)
+            {
+                // Row location, center the row horizontaly.
+                bounds.Y = pos;
+                bounds.X = (totalSize.Width == 0) ? 0 :
+                    bounds.X = (totalSize.Width - row.DesiredSize.Width) / 2;
+
+                // Row Size.
+                bounds.Width = row.DesiredSize.Width;
+                bounds.Height = row.DesiredSize.Height;
+
+                // Arrange the row, save the location.
+                if (arrange)
+                {
+                    row.Arrange(bounds);
+                    row.Location = bounds.TopLeft;
+                }
+
+                // Update the size of the diagram.
+                size.Width = Math.Max(size.Width, bounds.Width);
+                size.Height = pos + row.DesiredSize.Height;
+
+                pos += bounds.Height;
+            }
+
+            // Store the size, this is necessary so the diagram
+            // can be laid out without a valid Width property.
+            totalSize = size;
+            return size;
+        }
+
     }
 }
