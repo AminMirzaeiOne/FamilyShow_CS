@@ -516,6 +516,18 @@ namespace FamilyShow.Controls.Diagrams
             }
         }
 
+        /// <summary>
+        /// Insert a row in the visual tree.
+        /// </summary>
+        private void InsertRow(DiagramRow row)
+        {
+            if (row != null && row.NodeCount > 0)
+            {
+                this.AddVisualChild(row);
+                rows.Insert(0, row);
+            }
+        }
+
 
     }
 }
