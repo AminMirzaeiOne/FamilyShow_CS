@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="Controls\Diagrams\Diagram.cs" />
     <Compile Include="Controls\Diagrams\DiagramConnector.cs" />
+    <Compile Include="Controls\Diagrams\DiagramGroup.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="ValueConverters.cs" />
     <Page Include="MainWindow.xaml">
