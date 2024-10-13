@@ -53,6 +53,11 @@
                 </ObjectDataProvider.MethodParameters>
             </ObjectDataProvider>
 
+            <!-- Data Template for displaying the parent set -->
+            <DataTemplate x:Key="ParentSetTemplate">
+                <TextBlock Text="{Binding Path=Name, Mode=Default}"/>
+            </DataTemplate>
+
 
 
         </ResourceDictionary>
