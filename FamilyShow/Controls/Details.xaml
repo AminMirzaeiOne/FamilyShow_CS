@@ -229,6 +229,27 @@
                 </DoubleAnimationUsingKeyFrames>
             </Storyboard>
 
+            <!-- Animation for collapsing the Details Edit Relationship section -->
+            <Storyboard x:Key="CollapseDetailsEditRelationship" Completed="CollapseDetailsEditRelationship_StoryboardCompleted">
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="DetailsEditRelationship" Storyboard.TargetProperty="(FrameworkElement.Height)">
+                    <SplineDoubleKeyFrame KeyTime="00:00:00" Value="300"/>
+                    <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+                <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="DetailsEdit" Storyboard.TargetProperty="(UIElement.Visibility)">
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Collapsed}"/>
+                </ObjectAnimationUsingKeyFrames>
+                <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="DetailsAdd" Storyboard.TargetProperty="(UIElement.Visibility)">
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Collapsed}"/>
+                </ObjectAnimationUsingKeyFrames>
+                <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="DetailsAddIntermediate" Storyboard.TargetProperty="(UIElement.Visibility)">
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Collapsed}"/>
+                </ObjectAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="DetailsInfo">
+                    <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                    <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="300"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+
 
         </ResourceDictionary>
     </UserControl.Resources>
