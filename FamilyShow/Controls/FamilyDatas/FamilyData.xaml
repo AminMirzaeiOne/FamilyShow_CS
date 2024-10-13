@@ -87,6 +87,21 @@
             <TextBox Style="{StaticResource TextBoxStyle}" Text="{Binding Path=DeathPlace}" />
         </DataTemplate>
 
+        <!-- list view details -->
+
+        <ControlTemplate x:Key="FamilyEditListViewItemTemplate" TargetType='{x:Type ListViewItem}'>
+            <Grid SnapsToDevicePixels="True" Margin="0,3,0,0">
+                <Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5,5,5,5"/>
+                <GridViewRowPresenter TextBlock.Foreground="{TemplateBinding Foreground}" TextBlock.FontSize="11" Content="{TemplateBinding Content}" Columns="{TemplateBinding GridView.ColumnCollection}"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <!-- Change IsSelected SelectedListBoxBrush to set the selection color for the items -->
+                <Trigger Property="IsSelected" Value="true">
+                    <Setter Property="Background" Value="{DynamicResource FamilyEditListViewSelectedBrush}" TargetName="Border"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
     </UserControl.Resources>
     
     <Grid>
