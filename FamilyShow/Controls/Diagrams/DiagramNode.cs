@@ -374,5 +374,15 @@ namespace FamilyShow.Controls.Diagrams
 
             return (Brush)TryFindResource(resourceName);
         }
+
+        private Brush GetGroupBrushResource(string part)
+        {
+            // Format string, the resource is in the XAML file.
+            string resourceName = string.Format(CultureInfo.InvariantCulture,
+                "{0}{1}", this.type.ToString(), part);
+
+            return (Brush)TryFindResource(resourceName);
+        }
+
     }
 }
