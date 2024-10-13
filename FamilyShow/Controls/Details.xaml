@@ -474,6 +474,19 @@
                 </Setter>
             </Style>
 
+            <Style x:Key="DetailsSeparatorStyle" TargetType="{x:Type Separator}">
+                <Setter Property="Background" Value="#FF6573A0"/>
+                <Setter Property="Margin" Value="10,5,10,5"/>
+                <Setter Property="Focusable" Value="false"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Separator}">
+                            <Border SnapsToDevicePixels="true" Height="2" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"/>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
 
 
         </ResourceDictionary>
