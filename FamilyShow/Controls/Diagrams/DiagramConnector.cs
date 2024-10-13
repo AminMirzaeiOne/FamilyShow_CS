@@ -230,6 +230,16 @@ namespace FamilyShow.Controls.Diagrams
             }
         }
 
+        /// <summary>
+        /// Consturctor that specifies the two nodes that are connected.
+        /// </summary>
+        protected DiagramConnector(DiagramConnectorNode startConnector,
+            DiagramConnectorNode endConnector)
+        {
+            this.start = startConnector;
+            this.end = endConnector;
+        }
+
 
 
     }
