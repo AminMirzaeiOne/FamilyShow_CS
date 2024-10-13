@@ -344,6 +344,52 @@
                         </local:FamilyEditListView>
                     </Border>
 
+                    <!-- chart area -->
+                    <Border Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" Margin="5"
+  Style="{DynamicResource BorderStyle}" Background="{DynamicResource PanelGradientBrush}" Width="250">
+                        <StackPanel>
+                            <Label Margin="5,0,0,0" FontSize="18" FontWeight="Bold" Padding="8,8,5,2" Content="Family Statistics"/>
+
+                            <!-- tag cloud chart -->
+                            <Border Style="{DynamicResource StatisticsHeaderStyle}">
+                                <TextBlock Text="Last Names" Foreground="{DynamicResource FontColor}"/>
+                            </Border>
+                            <Border Style="{DynamicResource StatisticsControlStyle}">
+                                <local:TagCloud x:Name="TagCloudControl" Padding="5,0,5,0"
+        ListBorderBrush="{DynamicResource SolidBorderBrush}"
+        SelectedBrush="{DynamicResource FamilyEditListViewSelectedBrush}"
+        DisabledForegroundBrush="{DynamicResource DisabledForegroundBrush}"
+        Foreground="{DynamicResource FontColor}"
+        TagSelectionChanged="TagCloudControl_TagSelectionChanged" MaxHeight="130" />
+                            </Border>
+
+                            <!-- age chart -->
+                            <Border Style="{DynamicResource StatisticsHeaderStyle}">
+                                <TextBlock Text="Age Distributions" Foreground="{DynamicResource FontColor}"/>
+                            </Border>
+                            <Border Style="{DynamicResource StatisticsControlStyle}">
+                                <local:Histogram x:Name="AgeDistributionControl"
+		Foreground="{DynamicResource FontColor}"
+		CategoryStroke="{DynamicResource CategoryStrokeBrush}"
+		CategoryFill="{DynamicResource CategoryFillBrush}"
+		SelectedBrush="{DynamicResource FamilyEditListViewSelectedBrush}"
+		DisabledForegroundBrush="{DynamicResource DisabledForegroundBrush}"
+		AxisBrush="{DynamicResource AxisBrush}" 
+        CategorySelectionChanged="AgeDistributionControl_CategorySelectionChanged" MaxHeight="130" />
+                            </Border>
+
+                            <!-- birthdays chart -->
+                            <Border Style="{DynamicResource StatisticsHeaderStyle}">
+                                <TextBlock Text="Birthdays" Foreground="{DynamicResource FontColor}"/>
+                            </Border>
+                            <Border Style="{DynamicResource StatisticsControlStyle}" MaxHeight="130">
+                                <local:SharedBirthdays x:Name="BirthdaysControl"
+        SharedBirthdaysSelectionChanged="BirthdaysControl_SelectionChanged" />
+                            </Border>
+
+                        </StackPanel>
+                    </Border>
+
 
             </Border>
             
