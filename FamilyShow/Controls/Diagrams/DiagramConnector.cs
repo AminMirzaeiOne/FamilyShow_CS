@@ -36,6 +36,14 @@ namespace FamilyShow.Controls.Diagrams
 
         #endregion
 
+        /// <summary>
+        /// Return true if this is a child connector.
+        /// </summary>
+        virtual public bool IsChildConnector
+        {
+            get { return true; }
+        }
+
 
     }
 }
