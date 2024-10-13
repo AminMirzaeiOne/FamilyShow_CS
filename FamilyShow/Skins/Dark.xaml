@@ -268,5 +268,12 @@
         <Setter Property="FontSize" Value="13" />
     </Style>
 
+    <!-- This is the default style for all textblocks -->
+    <Style TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="Calibri" />
+    </Style>
+
+
+
 
 </ResourceDictionary>
