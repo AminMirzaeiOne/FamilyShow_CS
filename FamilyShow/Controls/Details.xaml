@@ -546,6 +546,41 @@
                 </Setter>
             </Style>
 
+            <DataTemplate x:Key="FamilyMemberDataTemplate">
+                <StackPanel x:Name="panel" RenderTransformOrigin="0.5,0.5">
+                    <StackPanel.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                            <SkewTransform AngleX="0" AngleY="0" />
+                            <RotateTransform Angle="0" />
+                            <TranslateTransform X="15" Y="0" />
+                        </TransformGroup>
+                    </StackPanel.RenderTransform>
+                    <Separator x:Name="separator" Visibility="Collapsed" />
+                    <DockPanel>
+                        <TextBlock x:Name="text" Text="{Binding}" TextWrapping="Wrap" />
+                        <TextBlock Text="..." TextWrapping="Wrap" />
+                    </DockPanel>
+                </StackPanel>
+                <DataTemplate.Triggers>
+                    <DataTrigger Binding="{Binding}" Value="Existing">
+                        <Setter Property="Visibility" Value="Visible" TargetName="separator" />
+                        <Setter Property="Text" Value="Connect Family Member" TargetName="text" />
+                        <Setter Property="StackPanel.RenderTransform" TargetName="panel">
+                            <Setter.Value>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="1" ScaleY="1" />
+                                    <SkewTransform AngleX="0" AngleY="0" />
+                                    <RotateTransform Angle="0" />
+                                    <TranslateTransform X="0" Y="0" />
+                                </TransformGroup>
+                            </Setter.Value>
+                        </Setter>
+                    </DataTrigger>
+                </DataTemplate.Triggers>
+            </DataTemplate>
+
+
 
         </ResourceDictionary>
     </UserControl.Resources>
