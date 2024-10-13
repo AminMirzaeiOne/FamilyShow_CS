@@ -191,4 +191,7 @@
         <GradientStop Color="#FF221E1F" Offset="1" />
     </LinearGradientBrush>
 
+    <SolidColorBrush x:Key="ListViewFontColor" Color="#FFFA6E15" />
+
+
 </ResourceDictionary>
