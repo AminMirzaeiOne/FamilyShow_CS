@@ -50,6 +50,11 @@
         <DataTemplate x:Key="EmptyColumnTemplate">
         </DataTemplate>
 
+        <!-- first name column -->
+        <DataTemplate x:Key="FirstNameColumnTemplate">
+            <TextBox Style="{StaticResource TextBoxStyle}" Text="{Binding Path=FirstName}" />
+        </DataTemplate>
+
     </UserControl.Resources>
     
     <Grid>
