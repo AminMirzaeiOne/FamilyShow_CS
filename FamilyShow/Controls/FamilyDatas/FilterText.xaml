@@ -35,8 +35,14 @@
             <Setter Property="BorderThickness" Value="0" />
         </Style>
     </UserControl.Resources>
-    
-    <Grid>
-            
-    </Grid>
+
+    <!-- filter control -->
+    <Border Style="{StaticResource BorderStyle}">
+        <DockPanel>
+            <Button x:Name="FilterButton" DockPanel.Dock="Right" Content="X" ToolTip="Clear Filter Text" 
+      Style="{StaticResource ButtonStyle}" Click="FilterButton_Click" />
+            <TextBox x:Name="FilterTextBox" DockPanel.Dock="Left" 
+      Style="{StaticResource TextStyle}" TextChanged="FilterTextBox_TextChanged" />
+        </DockPanel>
+    </Border>
 </UserControl>
