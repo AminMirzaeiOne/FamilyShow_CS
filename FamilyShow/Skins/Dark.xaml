@@ -563,5 +563,24 @@
         </Setter>
     </Style>
 
+    <!-- Thumb Style - The Thumb is the draggable part of the Scrollbar -->
+    <Style x:Key="ThumbStyle" TargetType="{x:Type Thumb}" BasedOn="{x:Null}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Grid Margin="0,0,0,0" x:Name="Grid">
+                        <Rectangle HorizontalAlignment="Stretch" x:Name="Rectangle" VerticalAlignment="Stretch" Width="Auto" Height="Auto" RadiusX="2" RadiusY="2" Fill="#FF414C6F" Stroke="#FFFFFFFF" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True" />
+                        <Trigger Property="IsMouseOver" Value="True" />
+                        <Trigger Property="IsEnabled" Value="False" />
+                        <Trigger Property="IsDragging" Value="True" />
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 
 </ResourceDictionary>
