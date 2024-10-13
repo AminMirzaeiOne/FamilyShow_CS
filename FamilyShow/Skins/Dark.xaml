@@ -81,5 +81,8 @@
 
     <SolidColorBrush x:Key="PhotosBackgroundBrush" Color="#FF000000" />
 
+    <!-- Colors used for the Welcome Header -->
+    <SolidColorBrush x:Key="WelcomeBackgroundBrush" Color="#FF202020" />
+    <SolidColorBrush x:Key="WelcomeHeaderFontColor" Color="#FFE6E6E6" />
 
 </ResourceDictionary>
