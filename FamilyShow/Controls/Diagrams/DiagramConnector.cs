@@ -213,6 +213,23 @@ namespace FamilyShow.Controls.Diagrams
             get { return isFiltered; }
         }
 
+        /// <summary>
+        /// Get the new filtered state of the connection. This depends
+        /// on the connection nodes, marriage date and previous marriage date.
+        /// </summary>
+        virtual protected bool NewFilteredState
+        {
+            get
+            {
+                // Connection is filtered if any of the nodes are filtered.
+                if (start.Node.IsFiltered || end.Node.IsFiltered)
+                    return true;
+
+                // Connection is not filtered.
+                return false;
+            }
+        }
+
 
 
     }
