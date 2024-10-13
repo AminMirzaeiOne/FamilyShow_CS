@@ -121,6 +121,47 @@ namespace FamilyShow.Controls.Diagrams
             groups.Clear();
         }
 
+        /// <summary>
+        /// Arrange the groups in the row, return the total size.
+        /// </summary>
+        private Size ArrangeGroups(bool arrange)
+        {
+            // Position of the next group.
+            double pos = 0;
+
+            // Bounding area of the group.
+            Rect bounds = new Rect();
+
+            // Total size of the row.
+            Size totalSize = new Size(0, 0);
+
+            foreach (DiagramGroup group in groups)
+            {
+                // Group location.
+                bounds.X = pos;
+                bounds.Y = 0;
+
+                // Group size.                    
+                bounds.Width = group.DesiredSize.Width;
+                bounds.Height = group.DesiredSize.Height;
+
+                // Arrange the group, save the location.
+                if (arrange)
+                {
+                    group.Arrange(bounds);
+                    group.Location = bounds.TopLeft;
+                }
+
+                // Update the size of the row.
+                totalSize.Width = pos + group.DesiredSize.Width;
+                totalSize.Height = Math.Max(totalSize.Height, group.DesiredSize.Height);
+
+                pos += (bounds.Width + this.groupSpace);
+            }
+
+            return totalSize;
+        }
+
 
 
     }
