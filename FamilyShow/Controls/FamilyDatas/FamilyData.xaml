@@ -55,6 +55,11 @@
             <TextBox Style="{StaticResource TextBoxStyle}" Text="{Binding Path=FirstName}" />
         </DataTemplate>
 
+        <!-- last name column -->
+        <DataTemplate x:Key="LastNameColumnTemplate">
+            <TextBox Style="{StaticResource TextBoxStyle}" Text="{Binding Path=LastName}" />
+        </DataTemplate>
+
     </UserControl.Resources>
     
     <Grid>
