@@ -666,5 +666,10 @@
         </Setter>
     </Style>
 
+    <!-- User for styling the foreground color, applied to all MenuItems  -->
+    <Style TargetType="{x:Type MenuItem}">
+        <Setter Property="Foreground" Value="#FFFFFFFF" />
+    </Style>
+
 
 </ResourceDictionary>
