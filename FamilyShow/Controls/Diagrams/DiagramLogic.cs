@@ -546,6 +546,22 @@ namespace FamilyShow.Controls.Diagrams
             return personLookup[person].Node;
         }
 
+        /// <summary>
+        /// Return the bounds (relative to the diagram) for the specified person.
+        /// </summary>
+        public Rect GetNodeBounds(Person person)
+        {
+            Rect bounds = Rect.Empty;
+            if (person != null && personLookup.ContainsKey(person))
+            {
+                DiagramConnectorNode connector = personLookup[person];
+                bounds = new Rect(connector.TopLeft.X, connector.TopLeft.Y,
+                    connector.Node.ActualWidth, connector.Node.ActualHeight);
+            }
+
+            return bounds;
+        }
+
 
 
     }
