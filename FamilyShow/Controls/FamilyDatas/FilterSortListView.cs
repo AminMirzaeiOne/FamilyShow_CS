@@ -9,6 +9,12 @@ using System.Windows.Threading;
 
 namespace FamilyShow.Controls.FamilyDatas
 {
+
+    public class Filter
+    {
+
+    }
+
     public class FilterSortListView : SortListView
     {
         private delegate void FilterDelegate();
