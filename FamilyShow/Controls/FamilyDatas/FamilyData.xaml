@@ -222,6 +222,17 @@
             </Setter>
         </Style>
 
+        <Style x:Key="LastColumnGridViewColumnHeader" BasedOn="{StaticResource FamilyDataGridViewColumnHeader}" TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="GridViewColumnHeader.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border x:Name="Bd" Style="{DynamicResource LastColumnHeaderStyle}">
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </UserControl.Resources>
     
     <Grid>
