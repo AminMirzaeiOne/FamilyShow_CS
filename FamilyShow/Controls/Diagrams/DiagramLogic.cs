@@ -180,5 +180,25 @@ namespace FamilyShow.Controls.Diagrams
             return list;
         }
 
+        /// <summary>
+        /// Return list of people in the row that are primary or related node types.
+        /// </summary>
+        private static List<Person> GetPrimaryAndRelatedPeople(DiagramRow row)
+        {
+            List<Person> list = new List<Person>();
+            foreach (DiagramGroup group in row.Groups)
+            {
+                foreach (DiagramNode node in group.Nodes)
+                {
+                    if (node.Type == NodeType.Related || node.Type == NodeType.Primary)
+                        list.Add(node.Person);
+                }
+            }
+
+            return list;
+        }
+
+
+
     }
 }
