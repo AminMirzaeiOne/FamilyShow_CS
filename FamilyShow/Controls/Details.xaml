@@ -420,6 +420,19 @@
                 </BooleanAnimationUsingKeyFrames>
             </Storyboard>
 
+            <Microsoft.FamilyShowLib:Person x:Key="person"/>
+
+            <ControlTemplate x:Key="TextBoxErrorTemplate">
+                <!-- Visibility binding is used in this instance to hide the error adorner when the adorned element is not visible -->
+                <DockPanel Visibility="{Binding Path=AdornedElement.IsVisible, Converter={StaticResource BoolToVisibilityConverter}, ElementName=adornedElementPlaceholder}">
+                    <!-- Display the error text as tooltip -->
+                    <Rectangle DockPanel.Dock="Top" HorizontalAlignment="Right" Height="12" Width="12" Margin="0,0,0,5" Fill="{StaticResource ErrorIcon}" ToolTip="{Binding Path=AdornedElement.(Validation.Errors)[0].ErrorContent, ElementName=adornedElementPlaceholder}"/>
+                    <Border BorderBrush="Red" BorderThickness="1">
+                        <AdornedElementPlaceholder x:Name="adornedElementPlaceholder" />
+                    </Border>
+                </DockPanel>
+            </ControlTemplate>
+
 
 
         </ResourceDictionary>
