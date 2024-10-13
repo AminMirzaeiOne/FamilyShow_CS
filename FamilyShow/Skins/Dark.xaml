@@ -937,5 +937,6 @@
     <SolidColorBrush x:Key="MalePrimaryDeceasedStroke" Color="{DynamicResource RelatedColor}" />
     <SolidColorBrush x:Key="MalePrimaryDeceasedHoverFill" Color="{DynamicResource RelatedHoverColor}" Opacity="0.50" />
 
+  
 
 </ResourceDictionary>
