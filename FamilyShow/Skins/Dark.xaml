@@ -199,5 +199,11 @@
         <GradientStop Color="#444" Offset="1.0" />
     </LinearGradientBrush>
 
+    <!-- MenuBorderBrush is used as the Border for MenuItems -->
+    <LinearGradientBrush x:Key="MenuBorderBrush" EndPoint="0,1" StartPoint="0,0">
+        <GradientStop Color="#CCC" Offset="0.0" />
+        <GradientStop Color="#444" Offset="1.0" />
+    </LinearGradientBrush>
+
 
 </ResourceDictionary>
