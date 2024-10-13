@@ -7,6 +7,7 @@ using System.Windows;
 using FamilyShowLib;
 using System.Windows.Threading;
 using System.Windows.Media;
+using System.Windows.Controls;
 
 namespace FamilyShow.Controls.Diagrams
 {
@@ -179,6 +180,23 @@ namespace FamilyShow.Controls.Diagrams
                 logic.Family.ContentChanged += new EventHandler<ContentChangedEventArgs>(OnFamilyContentChanged);
                 logic.Family.CurrentChanged += new EventHandler(OnFamilyCurrentChanged);
             }
+        }
+
+        protected override void OnInitialized(EventArgs e)
+        {
+#if DEBUG
+            // Context menu so can display row and group borders.
+            this.ContextMenu = new ContextMenu();
+            MenuItem item = new MenuItem();
+            this.ContextMenu.Items.Add(item);
+            item.Header = "Show Diagram Outline";
+            item.Click += new RoutedEventHandler(OnToggleBorderClick);
+            item.Foreground = SystemColors.MenuTextBrush;
+            item.Background = SystemColors.MenuBrush;
+#endif
+
+            UpdateDiagram();
+            base.OnInitialized(e);
         }
 
     }
