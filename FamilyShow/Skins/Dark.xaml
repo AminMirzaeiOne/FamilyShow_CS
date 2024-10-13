@@ -1439,5 +1439,8 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
+    <ControlTemplate x:Key="ComboBoxTextBox" TargetType="TextBox">
+        <Border x:Name="PART_ContentHost" Focusable="False" Background="{TemplateBinding Background}" />
+    </ControlTemplate>
 
 </ResourceDictionary>
