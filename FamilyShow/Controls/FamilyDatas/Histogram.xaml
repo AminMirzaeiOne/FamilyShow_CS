@@ -76,7 +76,40 @@
 
     </UserControl.Resources>
 
-    <Grid>
-            
-    </Grid>
+    <Viewbox Margin="0">
+        <Grid Margin="4,4,4,4" x:Name="LayoutRoot">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Category Bars and X Axis Labels -->
+            <ListBox x:Name="HistogramListBox" Grid.Column="1" Margin="8,2,8,0"
+      HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+      Template="{StaticResource HistogramListBoxControlTemplate}"
+      ItemContainerStyle="{StaticResource HistogramListBoxItem}"
+      ItemTemplate="{DynamicResource CategoryTemplate}"
+      SelectionChanged="HistogramListBox_SelectionChanged" />
+
+            <!-- X Axis -->
+            <Rectangle Margin="0,82,0,0" Grid.Column="1" Height="1" 
+      Stroke="{Binding ElementName=MainElement, Path=AxisBrush}" />
+
+            <!-- Y Axis -->
+            <Rectangle Margin="0,0,0,0" Grid.Column="1" HorizontalAlignment="Left" 
+      VerticalAlignment="Top" Height="104" Width="1" 
+      Stroke="{Binding ElementName=MainElement, Path=AxisBrush}" />
+
+            <!-- Y Axis Labels -->
+            <StackPanel Grid.Column="0" Orientation="Vertical">
+                <Label x:Name="TotalCountLabel" Foreground="{Binding ElementName=MainElement, Path=Foreground}" Margin="0,0,0,54" />
+                <Label Foreground="{Binding ElementName=MainElement, Path=Foreground}" Content="0" />
+            </StackPanel>
+
+        </Grid>
+    </Viewbox>
+
 </UserControl>
