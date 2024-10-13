@@ -1404,6 +1404,40 @@
 
     <SolidColorBrush x:Key="GlyphBrush" Color="#444" />
 
+    <ControlTemplate x:Key="FamilyMemberComboBoxToggleButton" TargetType="ToggleButton">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="20" />
+            </Grid.ColumnDefinitions>
+            <Border x:Name="Border" Grid.ColumnSpan="2" CornerRadius="5" BorderThickness="1">
+                <Border.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFC1D1E5" Offset="0" />
+                        <GradientStop Color="#FF9BAEBF" Offset="1" />
+                        <GradientStop Color="#FF9BAEBF" Offset="0.514" />
+                        <GradientStop Color="#FFC1D1E5" Offset="0.51" />
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+            <Border Grid.Column="0" CornerRadius="2,0,0,2" Margin="1" Background="{StaticResource WindowBackgroundBrush}" BorderBrush="{StaticResource NormalBorderBrush}" BorderThickness="0,0,1,0" />
+            <Path x:Name="Arrow" Grid.Column="1" Fill="{StaticResource GlyphBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="ToggleButton.IsMouseOver" Value="true">
+                <Setter TargetName="Border" Property="Background" Value="{StaticResource DarkBrush}" />
+            </Trigger>
+            <Trigger Property="ToggleButton.IsChecked" Value="true">
+                <Setter TargetName="Border" Property="Background" Value="{StaticResource PressedBrush}" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="Border" Property="Background" Value="{StaticResource DisabledBackgroundBrush}" />
+                <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DisabledBorderBrush}" />
+                <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}" />
+                <Setter TargetName="Arrow" Property="Fill" Value="{StaticResource DisabledForegroundBrush}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
 
 
 </ResourceDictionary>
