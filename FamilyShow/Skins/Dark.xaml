@@ -805,5 +805,13 @@
     <!-- Converter for formatting dates to short date format -->
     <local:DateFormattingConverter x:Key="DateFormattingConverter" />
 
+    <!-- Converter for avatar -->
+    <local:ComposingConverter x:Key="ComposingConverter">
+        <local:ComposingConverter.Converters>
+            <local:NotConverter />
+            <local:BoolToVisibilityConverter />
+        </local:ComposingConverter.Converters>
+    </local:ComposingConverter>
+
 
 </ResourceDictionary>
