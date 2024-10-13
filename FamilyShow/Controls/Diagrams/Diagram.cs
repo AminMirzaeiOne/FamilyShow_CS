@@ -542,6 +542,28 @@ namespace FamilyShow.Controls.Diagrams
             Populate();
         }
 
+        /// <summary>
+        /// Called when data changed in the main People collection. This can be
+        /// a new node added to the collection, updated Person details, and 
+        /// updated relationship data.
+        /// </summary>
+        private void OnFamilyContentChanged(object sender, ContentChangedEventArgs e)
+        {
+            // Ignore if currently repopulating the diagram.
+            if (populating)
+                return;
+
+            // Save the person that is being added to the diagram.
+            // This is optional and can be null.
+            newPerson = e.NewPerson;
+
+            // Redraw the diagram.
+            UpdateDiagram();
+            this.InvalidateMeasure();
+            this.InvalidateArrange();
+            this.InvalidateVisual();
+        }
+
 
     }
 }
