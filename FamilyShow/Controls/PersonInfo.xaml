@@ -6,6 +6,31 @@
              xmlns:local="clr-namespace:FamilyShow.Controls"
              mc:Ignorable="d" 
              MinWidth="800" MinHeight="600" IsVisibleChanged="UserControl_IsVisibleChanged">
+
+    <UserControl.Resources>
+
+        <!-- Converter for displaying the the first name with an apostrophe. -->
+        <local:FirstNamePossessiveFormConverter x:Key="FirstNamePossessiveFormConverter"/>
+
+        <local:ImageConverter x:Key="ImageConverter"/>
+
+        <!-- Converter for displaying the "primary" photo text -->
+        <local:PrimaryAvatarConverter x:Key="PrimaryAvatarConverter" />
+
+        <Style x:Key="formatTextStyle" TargetType="{x:Type ButtonBase}">
+            <Setter Property="FontFamily" Value="Palatino Linotype"/>
+            <Setter Property="Width" Value="30"/>
+            <Setter Property="FontSize" Value ="14"/>
+            <Setter Property="CommandTarget" Value="{Binding ElementName=mainRTB}"/>
+        </Style>
+
+        <Style x:Key="formatImageStyle" TargetType="{x:Type ButtonBase}">
+            <Setter Property="Width" Value="30"/>
+            <Setter Property="CommandTarget" Value="{Binding ElementName=StoryRichTextBox}"/>
+        </Style>
+
+    </UserControl.Resources>
+
     <Grid>
             
     </Grid>
