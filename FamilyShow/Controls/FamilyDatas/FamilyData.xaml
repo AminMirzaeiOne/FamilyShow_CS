@@ -36,6 +36,14 @@
             <Setter Property="Foreground" Value="{DynamicResource FamilyDataFontColor}"/>
         </Style>
 
+        <!-- column header grip style -->
+        <Style x:Key="ColumnGrip" TargetType="{x:Type Thumb}">
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="Width" Value="3" />
+            <Setter Property="Opacity" Value="0.25" />
+            <Setter Property="DockPanel.Dock" Value="Right" />
+        </Style>
+
     </UserControl.Resources>
     
     <Grid>
