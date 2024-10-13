@@ -36,6 +36,14 @@ namespace FamilyShow.Controls.FamilyDatas
                 text.ToLower(CultureInfo.CurrentCulture).Contains(this.filterText));
         }
 
+        /// <summary>
+        /// Return true if the filter contains the specified date.
+        /// </summary>
+        public bool Matches(DateTime? date)
+        {
+            return (date != null && date.Value.ToShortDateString().Contains(this.filterText));
+        }
+
     }
 
     public class FilterSortListView : SortListView
