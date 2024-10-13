@@ -11,6 +11,9 @@
         <ResourceDictionary>
             <!-- Converter for formatting dates to short date format -->
             <local:DateFormattingConverter x:Key="DateFormattingConverter"/>
+
+            <!-- Converter for displaying the the first name with an apostrophe. -->
+            <local:FirstNamePossessiveFormConverter x:Key="FirstNamePossessiveFormConverter"/>
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
