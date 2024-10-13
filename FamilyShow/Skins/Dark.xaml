@@ -943,5 +943,10 @@
     <SolidColorBrush x:Key="MaleRelatedDeceasedStroke" Color="{DynamicResource RelatedColor}" />
     <SolidColorBrush x:Key="MaleRelatedDeceasedHoverFill" Color="{DynamicResource RelatedHoverColor}" Opacity="0.50" />
 
+    <!-- Male spouse brushes -->
+    <SolidColorBrush x:Key="MaleSpouseLivingFill" Color="{DynamicResource SpouseColor}" />
+    <SolidColorBrush x:Key="MaleSpouseLivingHoverFill" Color="{DynamicResource SpouseHoverColor}" />
+    <SolidColorBrush x:Key="MaleSpouseDeceasedStroke" Color="{DynamicResource SpouseColor}" />
+    <SolidColorBrush x:Key="MaleSpouseDeceasedHoverFill" Color="{DynamicResource SpouseHoverColor}" Opacity="0.50" />
 
 </ResourceDictionary>
