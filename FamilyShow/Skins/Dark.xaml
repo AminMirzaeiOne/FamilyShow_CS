@@ -1033,4 +1033,12 @@
         <GradientStop Color="#00000000" Offset="0.519" />
     </LinearGradientBrush>
 
+    <!-- Sibling right group indicator spouse -->
+    <SolidColorBrush x:Key="SiblingRightGroupFill" Color="{DynamicResource SiblingColor}" />
+    <LinearGradientBrush x:Key="SiblingRightGroupStroke" EndPoint="1,0.5" StartPoint="0,0.5">
+        <GradientStop Color="#00000000" Offset="0.043" />
+        <GradientStop Color="{DynamicResource SiblingColor}" Offset="0.524" />
+        <GradientStop Color="#00000000" Offset="0.519" />
+    </LinearGradientBrush>
+
 </ResourceDictionary>
