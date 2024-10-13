@@ -381,6 +381,13 @@
         </Setter>
     </Style>
 
+    <Style x:Key="HeaderStyle" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="Calibri" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="Foreground" Value="{DynamicResource FontColor}" />
+        <Setter Property="Margin" Value="10,0,10,10" />
+    </Style>
+
 
 
 
