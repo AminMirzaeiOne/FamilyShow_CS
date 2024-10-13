@@ -74,5 +74,14 @@ namespace FamilyShow.Controls.Diagrams
             return nodes[index];
         }
 
+        /// <summary>
+        /// Add the node to the group.
+        /// </summary>
+        public void Add(DiagramNode node)
+        {
+            this.nodes.Add(node);
+            this.AddVisualChild(node);
+        }
+
     }
 }
