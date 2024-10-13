@@ -222,5 +222,11 @@ namespace FamilyShow.Controls.Diagrams
             return ArrangeRows(false);
         }
 
+        protected override Size ArrangeOverride(Size finalSize)
+        {
+            // Arrange the rows in the diagram, return the total size.
+            return ArrangeRows(true);
+        }
+
     }
 }
