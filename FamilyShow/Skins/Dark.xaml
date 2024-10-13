@@ -937,6 +937,11 @@
     <SolidColorBrush x:Key="MalePrimaryDeceasedStroke" Color="{DynamicResource RelatedColor}" />
     <SolidColorBrush x:Key="MalePrimaryDeceasedHoverFill" Color="{DynamicResource RelatedHoverColor}" Opacity="0.50" />
 
-  
+    <!-- Male related brushes -->
+    <SolidColorBrush x:Key="MaleRelatedLivingFill" Color="{DynamicResource RelatedColor}" />
+    <SolidColorBrush x:Key="MaleRelatedLivingHoverFill" Color="{DynamicResource RelatedHoverColor}" />
+    <SolidColorBrush x:Key="MaleRelatedDeceasedStroke" Color="{DynamicResource RelatedColor}" />
+    <SolidColorBrush x:Key="MaleRelatedDeceasedHoverFill" Color="{DynamicResource RelatedHoverColor}" Opacity="0.50" />
+
 
 </ResourceDictionary>
