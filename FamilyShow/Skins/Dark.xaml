@@ -836,5 +836,9 @@
     <Pen x:Key="MarriedConnectionPen" Brush="#ff90c090" Thickness="2" />
     <Pen x:Key="FormerConnectionPen" Brush="#ff90c090" Thickness="2" DashStyle="{x:Static DashStyles.Dash}" />
 
+    <!-- Text used to draw connector text (marriage date) -->
+    <Color x:Key="ConnectionTextColor">#ffffffff</Color>
+    <FontFamily x:Key="ConnectionTextFont">Calibri</FontFamily>
+    <System:Double x:Key="ConnectionTextSize">12</System:Double>
 
 </ResourceDictionary>
