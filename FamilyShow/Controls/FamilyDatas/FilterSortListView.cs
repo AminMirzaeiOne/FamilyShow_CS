@@ -114,6 +114,17 @@ namespace FamilyShow.Controls.FamilyDatas
             ParseAge();
         }
 
+        /// <summary>
+        /// Parse the filter date.
+        /// </summary>
+        private void ParseDate()
+        {
+            DateTime date;
+            if (DateTime.TryParse(this.filterText, out date))
+                this.filterDate = date;
+        }
+
+
     }
 
     public class FilterSortListView : SortListView
