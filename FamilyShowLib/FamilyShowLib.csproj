@@ -50,6 +50,7 @@
     <Compile Include="GedcomExport.cs" />
     <Compile Include="GedcomImport.cs" />
     <Compile Include="OPCUtility.cs" />
+    <Compile Include="ParentSet.cs" />
     <Compile Include="ParentSetCollection.cs" />
     <Compile Include="People.cs" />
     <Compile Include="Person.cs" />
